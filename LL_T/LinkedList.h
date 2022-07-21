@@ -1,4 +1,4 @@
-#include "k_Student.h"
+#include <crtdbg.h>
 
 template <class T>
 class Box 
@@ -91,7 +91,7 @@ LinkedList<T>::~LinkedList() // 소멸자, 머리와 꼬리 메모리 할당 해제
 template<class T>
 Box<T>* LinkedList<T>::boxing(T data)
 {
-	_ASSERT(data);
+	//_ASSERT(data);
 	Box<T>* new_box = new Box<T>;
 	new_box->m_Data = data;
 	return new_box;
@@ -137,7 +137,7 @@ void LinkedList<T>::insertFront(T new_data)
 }
 
 template<class T>
-void LinkedList<T>::insertTargetFront(T new_data, Box<T>* target_node)
+void LinkedList<T>::insertTargetFront(T new_data, Box         <T>* target_node)
 {
 	_ASSERT(target_node != m_pHead); // head앞에 뭔가를 낑길수는 없으니까 예외처리
 
@@ -235,7 +235,7 @@ void LinkedList<T>::death(Box<T>* target_node)
 template<class T>
 Box<T>* LinkedList<T>::find(int num) const
 {
-	Box<T>* pTemp = this->begin;
+	Box<T>* pTemp = this->begin();
 	return pTemp;
 }
 

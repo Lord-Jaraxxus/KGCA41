@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include "Student_manager.h"
+
+void main() 
+{
+	Student_manager smg;
+
+	int iWork = 1;
+	int iWorkType = 0;
+
+	while (iWork)
+	{
+		printf("1:초기화 2:추가 3:검색 4:앞에추가 5:뒤에추가 6:삭제 7:정렬 8:저장 9:로드 0:종료\n");
+		scanf_s("%d", &iWorkType);
+		system("cls"); // 위치는 여기가 맞네
+
+		switch (iWorkType)
+		{
+		case 0:
+		{
+			printf("프로그램을 종료합니다.");
+			iWork = 0;
+		}break;
+		case 1:
+		{
+			smg.InitData(4);
+			smg.print_all();
+		}break;
+		case 2:
+		{
+			smg.m_List.insertBack(*smg.NewStudent()); // 돌겠네 ㅋㅋ 이거 맞음?
+			smg.print_all();
+		}break;
+		case 3:
+		{
+			printf("찾을 번호를 입력하세 : ");
+			int find_num = -1;
+			scanf_s("%d", &find_num);
+			if (smg.m_List.find(find_num) == NULL) { printf("찾으시는 번호가 없습니다.\n"); break; }
+			smg.print_all();
+		}break;
+		case 4:
+		{
+			printf("앞에 추가할 학생 번호를 입력하세 : ");
+			int find_num = -1;
+			scanf_s("%d", &find_num);
+			Box<k_Student>* target_student = smg.m_List.find(find_num);
+			if (target_student == NULL) { printf("찾으시는 번호가 없습니다.\n"); break; }
+			smg.m_List.insertTargetFront(*smg.NewStudent(), target_student);
+			system("cls");
+			smg.print_all();
+		}break;
+		case 5:
+		{
+			printf("뒤에 추가할 학생 번호를 입력하세 : ");
+			int find_num = -1;
+			scanf_s("%d", &find_num);
+			Box<k_Student>* target_student = smg.m_List.find(find_num);
+			if (target_student == NULL) { printf("찾으시는 번호가 없습니다.\n"); break; }
+			smg.m_List.insertTargetBack(*smg.NewStudent(), target_student);
+			system("cls");
+			smg.print_all();
+		}break;
+		case 6:
+		{
+			printf("삭제해라 애송이 : ");
+			int find_num = -1;
+			scanf_s("%d", &find_num);
+			Box<k_Student>* target_student = smg.m_List.find(find_num);
+			if (target_student == nullptr) { printf("찾으시는 번호가 없습니다.\n"); break; }
+			smg.m_List.death(target_student);
+			smg.print_all();
+		}break;
+		case 7:
+		{
+			//smg.m_List.sort();
+			smg.print_all();
+		}break;
+		case 8:
+		{
+			//smg.save();
+			smg.print_all();
+		}break;
+		case 9:
+		{
+			//smg.load();
+			//print_all();
+		}
+		}
+	}
+
+	smg.ReleaseData();
+}

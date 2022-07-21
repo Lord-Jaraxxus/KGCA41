@@ -1,10 +1,11 @@
 #include "LinkedList.h"
+#include "k_Student.h"
 
 class Student_manager
 {
 
 public:
-	LinkedList m_List; // 실체가 없으면 써먹질 못하니까 하나 만든?듯?
+	LinkedList<k_Student> m_List; // 실체가 없으면 써먹질 못하니까 하나 만든?듯?
 
 public:
 	k_Student* NewStudent();
@@ -15,13 +16,13 @@ public:
 
 	void ReleaseData();
 
-	void print_one(k_Student* a);
+	void print_one(Box<k_Student>*);
 
 	void print_all();
 
-	void save();
+	//void save();
 
-	void load();
+	//void load();
 
 };
 
