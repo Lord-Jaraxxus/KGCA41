@@ -44,7 +44,6 @@ public:
 	void insertTargetFront(T new_data, Box<T>* target_node);
 	void insertBack(T new_data);
 	void insertTargetBack(T new_data, Box<T>* target_node);
-	Box<T>* find(int num) const;
 	void death(Box<T>* target_node);
 	void raft(Box<T>* target_node);
 	//T* find_young_man(T* temp) const;
@@ -231,13 +230,6 @@ void LinkedList<T>::death(Box<T>* target_node)
 //		pTemp = pTemp->m_pNext;
 //	}
 //}
-
-template<class T>
-Box<T>* LinkedList<T>::find(int num) const
-{
-	Box<T>* pTemp = this->begin();
-	return pTemp;
-}
 
 template<class T>
 Box<T>* LinkedList<T>::operator[](int index)
