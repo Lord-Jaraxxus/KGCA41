@@ -21,6 +21,7 @@ void main()
 		}break;
 		case 1:
 		{
+			std_mng.ReleaseData();
 			std_mng.InitData(4);
 			std_mng.print_all();
 		}break;

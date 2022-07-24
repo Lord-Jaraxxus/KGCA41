@@ -23,68 +23,70 @@ void main()
 		}break;
 		case 1:
 		{
+			smg.ReleaseData();
 			smg.InitData(4);
-			smg.print_all();
+			smg.PrintAll();
 		}break;
 		case 2:
 		{
-			smg.m_List.insertBack(*smg.NewStudent()); // 돌겠네 ㅋㅋ 이거 맞음?
-			smg.print_all();
+			smg.m_List.insertBack(*smg.NewStudent()); 
+			smg.PrintAll();
 		}break;
 		case 3:
 		{
-			printf("찾을 번호를 입력하세 : ");
+			printf("찾을 학생의 번호를 입력하세요 : ");
 			int find_num = -1;
 			scanf_s("%d", &find_num);
-			if (smg.m_List.find(find_num) == NULL) { printf("찾으시는 번호가 없습니다.\n"); break; }
-			smg.print_all();
+			Box<k_Student>* target_student = smg.Find(find_num);
+			if (target_student == NULL) { printf("찾으시는 번호를 가진 학생이 없습니다.\n"); break; }
+			smg.PrintOne(target_student);
 		}break;
 		case 4:
 		{
 			printf("앞에 추가할 학생 번호를 입력하세 : ");
 			int find_num = -1;
 			scanf_s("%d", &find_num);
-			Box<k_Student>* target_student = smg.m_List.find(find_num);
+			Box<k_Student>* target_student = smg.Find(find_num);
 			if (target_student == NULL) { printf("찾으시는 번호가 없습니다.\n"); break; }
 			smg.m_List.insertTargetFront(*smg.NewStudent(), target_student);
 			system("cls");
-			smg.print_all();
+			smg.PrintAll();
 		}break;
 		case 5:
 		{
 			printf("뒤에 추가할 학생 번호를 입력하세 : ");
 			int find_num = -1;
 			scanf_s("%d", &find_num);
-			Box<k_Student>* target_student = smg.m_List.find(find_num);
+			Box<k_Student>* target_student = smg.Find(find_num);
 			if (target_student == NULL) { printf("찾으시는 번호가 없습니다.\n"); break; }
 			smg.m_List.insertTargetBack(*smg.NewStudent(), target_student);
 			system("cls");
-			smg.print_all();
+			smg.PrintAll();
 		}break;
 		case 6:
 		{
 			printf("삭제해라 애송이 : ");
 			int find_num = -1;
 			scanf_s("%d", &find_num);
-			Box<k_Student>* target_student = smg.m_List.find(find_num);
+			Box<k_Student>* target_student = smg.Find(find_num);
 			if (target_student == nullptr) { printf("찾으시는 번호가 없습니다.\n"); break; }
 			smg.m_List.death(target_student);
-			smg.print_all();
+			smg.PrintAll();
 		}break;
 		case 7:
 		{
-			//smg.m_List.sort();
-			smg.print_all();
+			smg.Sort();
+			smg.PrintAll();
 		}break;
 		case 8:
 		{
-			//smg.save();
-			smg.print_all();
+			smg.Save();
+			smg.PrintAll();
 		}break;
 		case 9:
 		{
-			//smg.load();
-			//print_all();
+			smg.Load();
+			smg.PrintAll();
 		}
 		}
 	}

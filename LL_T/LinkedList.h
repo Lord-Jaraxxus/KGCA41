@@ -44,10 +44,9 @@ public:
 	void insertTargetFront(T new_data, Box<T>* target_node);
 	void insertBack(T new_data);
 	void insertTargetBack(T new_data, Box<T>* target_node);
+
 	void death(Box<T>* target_node);
 	void raft(Box<T>* target_node);
-	//T* find_young_man(T* temp) const;
-	//void sort();
 	void H_T_link();
 
 public:
@@ -195,41 +194,6 @@ void LinkedList<T>::death(Box<T>* target_node)
 	target_node->m_pNext->m_pPrev = target_node->m_pPrev;    // 이래도 잘 돌아갈성싶은디
 	delete(target_node);
 }
-
-//k_Student* LinkedList::find_young_man(k_Student* temp) const
-//{
-//	if (temp->m_pNext == m_pTail) { return temp; }
-//
-//	k_Student* pTemp = temp->m_pNext;
-//	k_Student* pYoung = nullptr;
-//	int age_temp = 101;
-//	while (pTemp != m_pTail)
-//	{
-//		if (pTemp->m_iAge < age_temp)
-//		{
-//			age_temp = pTemp->m_iAge;
-//			pYoung = pTemp;
-//		}
-//		pTemp = pTemp->m_pNext;
-//	}
-//	//print_one(pYoung);
-//	return(pYoung);
-//}
-//
-//void LinkedList::sort()
-//{
-//	k_Student* pTemp = m_pHead;
-//	while (pTemp != m_pTail)
-//	{
-//		k_Student* youngman = find_young_man(pTemp);
-//		if (pTemp != youngman) // pTemp와 youngman이 같다면 굳이 멀쩡한 팔다리 짜를필요가 없음
-//		{
-//			raft(youngman);
-//			insertTargetBack(youngman, pTemp);
-//		}
-//		pTemp = pTemp->m_pNext;
-//	}
-//}
 
 template<class T>
 Box<T>* LinkedList<T>::operator[](int index)

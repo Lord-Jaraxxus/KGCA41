@@ -9,20 +9,20 @@ public:
 
 public:
 	k_Student* NewStudent();
-
 	void GRV(k_Student* new_student);
-
 	void InitData(int student_num);
-
 	void ReleaseData();
 
-	void print_one(Box<k_Student>*);
+	void PrintOne(Box<k_Student>* target_node);
+	void PrintAll();
 
-	void print_all();
+	Box<k_Student>* Find(int num);
 
-	//void save();
+	Box<k_Student>* FindYoungest(Box<k_Student>* start_node);
+	void Sort();
 
-	//void load();
+	void Save();
+	void Load();
 
 };
 
