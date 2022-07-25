@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{3461f477-dc72-4e22-8b5d-056a81cd4547}</ProjectGuid>
-    <RootNamespace>LLT</RootNamespace>
+    <ProjectGuid>{6e6d46e1-ac9e-4ae5-bb76-b757f8951cf7}</ProjectGuid>
+    <RootNamespace>sort</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -79,7 +79,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>../../output/Debug/</OutDir>
-    <IntDir>../../output/Debug/LL_T</IntDir>
+    <IntDir>../../output/Debug/sort</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -117,7 +117,7 @@
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>false</ConformanceMode>
+      <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,21 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="k_Stack.cpp" />
-    <ClCompile Include="k_Student.cpp" />
-    <ClCompile Include="LinkedList.cpp" />
-    <ClCompile Include="LL_T.cpp" />
-    <ClCompile Include="smg.cpp" />
-    <ClCompile Include="Student_manager.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="k_Stack.h" />
-    <ClInclude Include="k_Student.h" />
-    <ClInclude Include="LinkedList.h" />
-    <ClInclude Include="Student_manager.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <ClCompile Include="sort.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

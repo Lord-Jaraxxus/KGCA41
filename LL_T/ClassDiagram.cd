@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="k_Stack&lt;T&gt;" Collapsed="true">
+    <Position X="0.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAEAAAAAAAAAAIgAAAAAAAAACAAIAAAAAAA=</HashCode>
+      <FileName>k_Stack.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Box&lt;T&gt;">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEgAAIAAAAAAAAYAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>LinkedList.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LinkedList&lt;T&gt;">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gACAAAACABAEAIAAAAQABQAQAAECAAAQACAAIAIAAAA=</HashCode>
+      <FileName>LinkedList.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_pHead" />
+      <Field Name="m_pTail" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Student_manager">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAiAAAAAAAABEAQIAAABAAICAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Student_manager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="k_Student" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAEAAAgAAAAAAIAAAAAIAAAAAAQAAAAAAAEBA=</HashCode>
+      <FileName>k_Student.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

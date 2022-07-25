@@ -8,19 +8,12 @@ slave::slave()
 	this->salary_type = 0;
 	this->note = 0;
 }
-
 slave::~slave() // 영민아 이거였어!!!!!!!!!!! 이게 없었다고 병신아!!!!!!!!!!!!!
 {
 	printf("부모 클래스 소멸\n");
 }
 
-daily_slave::daily_slave() 
-{
-	this->name = nullptr;
-	this->position = 0;
-	this->salary_type = 0;
-	this->note = 0;
-}
+
 daily_slave::daily_slave(char* name, int position, int salary_type, int note) 
 {
 	this->name = name;

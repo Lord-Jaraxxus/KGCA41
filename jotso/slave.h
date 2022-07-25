@@ -19,9 +19,9 @@ public:
 class daily_slave : public slave
 {
 public:
-	daily_slave();
 	daily_slave(char* name, int position, int salary_type, int note);
-	//~daily_slave() ;
+	//~daily_slave() 
+	;
 
 public:
 	int GetMonthlySalary();
