@@ -141,7 +141,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="k_Stack.cpp" />
     <ClCompile Include="k_Student.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="LL_T.cpp" />
@@ -149,7 +148,6 @@
     <ClCompile Include="Student_manager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="k_Stack.h" />
     <ClInclude Include="k_Student.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="Student_manager.h" />

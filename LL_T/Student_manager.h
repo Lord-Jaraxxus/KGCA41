@@ -9,7 +9,6 @@ public:
 
 public:
 	k_Student* NewStudent();
-	void GRV(k_Student* new_student);
 	void InitData(int student_num);
 	void ReleaseData();
 

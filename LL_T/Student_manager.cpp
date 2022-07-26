@@ -22,30 +22,10 @@ k_Student* Student_manager::NewStudent() //
 	return new_student;
 }
 
-void Student_manager::GRV(k_Student* new_student) // give random value, 받아온 구조체의 멤버들에게 랜덤값을 부여해줌 
-{
-	new_student->m_iNum = LinkedList<k_Student>::m_iCount;
-	new_student->m_sName[0] = 65 + rand() % 26;
-	new_student->m_sName[1] = 65 + rand() % 26;
-	new_student->m_sName[2] = 65 + rand() % 26;
-	new_student->m_sName[3] = 0;
-	new_student->m_iAge = 10 + rand() % 91;
-	new_student->m_iKor = 0 + rand() % 101;
-	new_student->m_iEng = 0 + rand() % 101;
-	new_student->m_iMath = 0 + rand() % 101;
-	new_student->m_iTotal = new_student->m_iKor + new_student->m_iEng + new_student->m_iMath;
-	new_student->m_fAverage = new_student->m_iTotal / 3;
-}
 
 void Student_manager::InitData(int student_num) // 랜덤으로 student_num 명 만큼 학생을 만들고 데이터 부여
 {
-
 	for (int i = 0; i < student_num; i++)
-	{
-		m_List.insertFront(*NewStudent());
-	}
-
-	for (int i = student_num; i < student_num * 2; i++)
 	{
 		m_List.insertBack(*NewStudent());
 	}
@@ -53,7 +33,7 @@ void Student_manager::InitData(int student_num) // 랜덤으로 student_num 명 만큼 
 
 void Student_manager::PrintOne(Box<k_Student>* target_node)
 {
-	printf("%d	%s	%d	%d	%d	%d	%d	%10.4f\n",
+	printf("%d\t%s\t%d\t%d\t%d\t%d\t%d\t%10.4f\n",
 		target_node->m_Data.m_iNum,
 		target_node->m_Data.m_sName,
 		target_node->m_Data.m_iAge,
@@ -66,6 +46,7 @@ void Student_manager::PrintOne(Box<k_Student>* target_node)
 
 void Student_manager::PrintAll()
 {
+	printf("번호\t이름\t나이\t국어\t영어\t수학\t총점\t  평균\n");
 	Box<k_Student>* temp = m_List.begin();
 	while (temp->m_pPrev != m_List.end())
 	{
@@ -92,7 +73,7 @@ Box<k_Student>* Student_manager::Find(int num)
 {
 	Box<k_Student>* temp = m_List.begin();
 
-	while (temp->m_pPrev != m_List.end())
+	while (temp != m_List.end()->m_pNext)
 	{
 		if (temp->m_Data.m_iNum == num)
 		{
@@ -104,6 +85,7 @@ Box<k_Student>* Student_manager::Find(int num)
 			temp = next;
 		}
 	}
+	return nullptr;
 }
 
 // 매개변수로 가져온 학생 노드의 다음 노드부터 꼬리까지의 노드들 중 제일 나이가 적은 학생 노드를 리턴, sort에 쓰려고 제작

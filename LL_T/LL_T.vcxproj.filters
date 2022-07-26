@@ -24,9 +24,6 @@
     <ClCompile Include="LinkedList.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="k_Stack.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Student_manager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -39,9 +36,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="LinkedList.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="k_Stack.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Student_manager.h">

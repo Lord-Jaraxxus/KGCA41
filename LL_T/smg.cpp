@@ -24,7 +24,7 @@ void main()
 		case 1:
 		{
 			smg.ReleaseData();
-			smg.InitData(4);
+			smg.InitData(10);
 			smg.PrintAll();
 		}break;
 		case 2:
@@ -34,42 +34,51 @@ void main()
 		}break;
 		case 3:
 		{
+			smg.PrintAll();
 			printf("찾을 학생의 번호를 입력하세요 : ");
 			int find_num = -1;
 			scanf_s("%d", &find_num);
 			Box<k_Student>* target_student = smg.Find(find_num);
-			if (target_student == NULL) { printf("찾으시는 번호를 가진 학생이 없습니다.\n"); break; }
+			system("cls");
+			if (target_student == NULL) { printf("찾으시는 번호를 가진 학생이 없습니다.\n\n"); smg.PrintAll(); break; }
 			smg.PrintOne(target_student);
+			printf("\n\n");
+			smg.PrintAll();
 		}break;
 		case 4:
 		{
-			printf("앞에 추가할 학생 번호를 입력하세 : ");
+			smg.PrintAll();
+			printf("앞에 새 학생을 추가할 학생 번호를 입력하세요 : ");
 			int find_num = -1;
 			scanf_s("%d", &find_num);
 			Box<k_Student>* target_student = smg.Find(find_num);
-			if (target_student == NULL) { printf("찾으시는 번호가 없습니다.\n"); break; }
-			smg.m_List.insertTargetFront(*smg.NewStudent(), target_student);
 			system("cls");
+			if (target_student == NULL) { printf("찾으시는 번호를 가진 학생이 없습니다.\n\n"); smg.PrintAll(); break; }
+			smg.m_List.insertTargetFront(*smg.NewStudent(), target_student);
 			smg.PrintAll();
 		}break;
 		case 5:
 		{
-			printf("뒤에 추가할 학생 번호를 입력하세 : ");
+			smg.PrintAll();
+			printf("뒤에 새 학생을 추가할 학생 번호를 입력하세요 : ");
 			int find_num = -1;
 			scanf_s("%d", &find_num);
 			Box<k_Student>* target_student = smg.Find(find_num);
-			if (target_student == NULL) { printf("찾으시는 번호가 없습니다.\n"); break; }
-			smg.m_List.insertTargetBack(*smg.NewStudent(), target_student);
 			system("cls");
+			if (target_student == NULL) { printf("찾으시는 번호를 가진 학생이 없습니다.\n\n"); smg.PrintAll(); break; }
+			smg.m_List.insertTargetBack(*smg.NewStudent(), target_student);
 			smg.PrintAll();
 		}break;
 		case 6:
 		{
-			printf("삭제해라 애송이 : ");
+			//printf("삭제해라 애송이 : ");
+			smg.PrintAll();
+			printf("삭제할 학생의 번호를 입력하세요 : ");
 			int find_num = -1;
 			scanf_s("%d", &find_num);
 			Box<k_Student>* target_student = smg.Find(find_num);
-			if (target_student == nullptr) { printf("찾으시는 번호가 없습니다.\n"); break; }
+			system("cls");
+			if (target_student == nullptr) { printf("찾으시는 번호를 가진 학생이 없습니다.\n\n"); smg.PrintAll(); break; }
 			smg.m_List.death(target_student);
 			smg.PrintAll();
 		}break;
