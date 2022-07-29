@@ -130,16 +130,16 @@ void ReIndexing_LO_Q(Node* pParent) //큐를 사용해서 레베루오다로
     }
 }
 
-void DeleteAll(Node* pParent) //후위순회하며 전부 삭제
+void DeleteAll(Node** pParent) //후위순회하며 전부 삭제
 {
-    if (pParent == nullptr) return;
-    DeleteAll(pParent->m_pChild[0]);
-    DeleteAll(pParent->m_pChild[1]);
+   // if (pParent == nullptr) return;
+   // DeleteAll(pParent->m_pChild[0]);
+   // DeleteAll(pParent->m_pChild[1]);
 
-    int iTest = pParent->m_iIndex;
-    delete pParent;
-    pParent = nullptr;
-    std::cout << " " << iTest;
+    //int iTest = pParent->m_iIndex;
+    delete *pParent;
+    *pParent = nullptr;
+   // std::cout << " " << iTest;
 }
 
 void DeleteAll_LO(Node* pParent) 
@@ -173,8 +173,8 @@ int main()
     //ReIndexing_LO_Q(root);
     //Travel_LO(root);
 
-    DeleteAll_LO(root);
-    root = nullptr;
+    DeleteAll(&root);
+    //root = nullptr;
     std::cout << "\nHello, World!\n";
 }
 
