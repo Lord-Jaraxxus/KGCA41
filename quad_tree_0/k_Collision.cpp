@@ -54,6 +54,16 @@ bool k_Collision::RectToInRect(k_Rect& a, k_Rect& b)
     return false;
 }
 
+bool k_Collision::CircleToCircle(k_Circle& a, k_Circle& b)
+{
+    float x = a.cx - b.cx;
+    float y = a.cy - b.cy;
+    float distance = sqrt(x * x + y * y);
+
+    if (distance <= a.fRadius + b.fRadius) return true;
+    else return false;
+}
+
 void k_Collision::AddObject(k_Object* pObj) 
 {
     k_Node* pFindNode = FindNodeToGo(QT->m_pRootNode, pObj);

@@ -17,6 +17,7 @@ public:
 public:
 	static bool	RectToInRect(k_Rect& a, k_Rect& b); // a가 b를 완전히 포함하는지
 	static k_CollisionType RectToRect(k_Rect& a, k_Rect& b); // 한 사각형이 다른 사각형과 겹치는지
+	static bool CircleToCircle(k_Circle &a, k_Circle &b);
 
 	void AddObject(k_Object* pObj);
 	k_Node* AddObject(k_Object* pObj, k_Node* pNode);
