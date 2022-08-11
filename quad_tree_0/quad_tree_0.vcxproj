@@ -140,12 +140,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="k_Collision.cpp" />
+    <ClCompile Include="k_Object.cpp" />
     <ClCompile Include="k_QuadTree.cpp" />
+    <ClCompile Include="k_Vector.cpp" />
     <ClCompile Include="quad_tree_0.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="k_Collision.h" />
+    <ClInclude Include="k_Object.h" />
     <ClInclude Include="k_QuadTree.h" />
+    <ClInclude Include="k_Vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

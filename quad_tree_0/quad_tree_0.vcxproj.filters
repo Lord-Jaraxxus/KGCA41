@@ -24,12 +24,24 @@
     <ClCompile Include="k_Collision.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="k_Object.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="k_Vector.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="k_QuadTree.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="k_Collision.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="k_Object.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="k_Vector.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -19,9 +19,10 @@ public:
 	static k_CollisionType RectToRect(k_Rect& a, k_Rect& b); // 한 사각형이 다른 사각형과 겹치는지
 	static bool CircleToCircle(k_Circle &a, k_Circle &b);
 
-	void AddObject(k_Object* pObj);
-	k_Node* AddObject(k_Object* pObj, k_Node* pNode);
 	k_Node* FindNodeToGo(k_Node* pNode, k_Object* pObj);
+	void AddStaticObject(k_Object* pObj);
+	void AddDynamicObject(k_Object* pObj);
+	void DynamicObjectReset(k_Node* pNode);
 
 	std::vector<k_Object*> COL(k_Object* pObj); // Collided Object List
 	void GCO(k_Node* pNode, k_Object* pObj, std::vector<k_Object*> &list); //Get Collided Object

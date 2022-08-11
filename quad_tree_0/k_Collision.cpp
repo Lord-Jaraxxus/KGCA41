@@ -64,23 +64,22 @@ bool k_Collision::CircleToCircle(k_Circle& a, k_Circle& b)
     else return false;
 }
 
-void k_Collision::AddObject(k_Object* pObj) 
+void k_Collision::AddStaticObject(k_Object* pObj)
 {
     k_Node* pFindNode = FindNodeToGo(QT->m_pRootNode, pObj);
     if (pFindNode != nullptr)
     {
-        pFindNode->m_vObjectList.push_back(pObj);
+        pFindNode->m_StaticObjectList.push_back(pObj);
     }
 }
 
-k_Node* k_Collision::AddObject(k_Object* pObj, k_Node* pNode)
+void k_Collision::AddDynamicObject(k_Object* pObj)
 {
-    k_Node* pFindNode = FindNodeToGo(pNode, pObj);
+    k_Node* pFindNode = FindNodeToGo(QT->m_pRootNode, pObj);
     if (pFindNode != nullptr)
     {
-        pFindNode->m_vObjectList.push_back(pObj);
+        pFindNode->m_DynamicObjectList.push_back(pObj);
     }
-    return pFindNode;
 }
 
 k_Node* k_Collision::FindNodeToGo(k_Node* pNode, k_Object* pObj) // ¼±»ý´ÔÀº queue¶û do-while·Î ÇÏ¼Ì´Âµ¥ Àú¾î´Â °Á Àç±Í½áº½
@@ -102,6 +101,16 @@ k_Node* k_Collision::FindNodeToGo(k_Node* pNode, k_Object* pObj) // ¼±»ý´ÔÀº que
     return final_node;
 }
 
+void k_Collision::DynamicObjectReset(k_Node* pNode)
+{
+    if (pNode == nullptr) return;
+    pNode->m_DynamicObjectList.clear();
+    DynamicObjectReset(pNode->m_pChild[0]);
+    DynamicObjectReset(pNode->m_pChild[1]);
+    DynamicObjectReset(pNode->m_pChild[2]);
+    DynamicObjectReset(pNode->m_pChild[3]);
+}
+
 std::vector<k_Object*> k_Collision::COL(k_Object* pObj)
 {
     std::vector<k_Object*> list;
@@ -112,15 +121,27 @@ std::vector<k_Object*> k_Collision::COL(k_Object* pObj)
 void k_Collision::GCO(k_Node* pNode, k_Object* pObj, std::vector<k_Object*>& list) 
 {
     if (pNode == nullptr) return;
-    for (int iObj = 0; iObj < pNode->m_vObjectList.size(); iObj++)
+
+    for (int iObj = 0; iObj < pNode->m_StaticObjectList.size(); iObj++)
     {
         if (k_Collision::RectToRect(
-            pNode->m_vObjectList[iObj]->m_sRect,
+            pNode->m_StaticObjectList[iObj]->m_sRect,
             pObj->m_sRect))
         {
-            list.push_back(pNode->m_vObjectList[iObj]);
+            list.push_back(pNode->m_StaticObjectList[iObj]);
         }
     }
+
+    for (int iObj = 0; iObj < pNode->m_DynamicObjectList.size(); iObj++)
+    {
+        if (k_Collision::RectToRect(
+            pNode->m_DynamicObjectList[iObj]->m_sRect,
+            pObj->m_sRect))
+        {
+            list.push_back(pNode->m_DynamicObjectList[iObj]);
+        }
+    }
+
     if (pNode->m_pChild[0] != nullptr)
     {
         for (int iChild = 0; iChild < 4; iChild++)
