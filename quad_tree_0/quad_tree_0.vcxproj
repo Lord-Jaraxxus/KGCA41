@@ -78,6 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>../../output/Debug/</OutDir>
+    <IntDir>../../output/Debug/quad_tree_0</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -140,14 +142,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="k_Collision.cpp" />
+    <ClCompile Include="k_GameCore.cpp" />
+    <ClCompile Include="k_MapObject.cpp" />
+    <ClCompile Include="k_NPC.cpp" />
     <ClCompile Include="k_Object.cpp" />
+    <ClCompile Include="k_Player.cpp" />
     <ClCompile Include="k_QuadTree.cpp" />
     <ClCompile Include="k_Vector.cpp" />
-    <ClCompile Include="quad_tree_0.cpp" />
+    <ClCompile Include="sample.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="k_Collision.h" />
+    <ClInclude Include="k_GameCore.h" />
+    <ClInclude Include="k_MapObject.h" />
+    <ClInclude Include="k_NPC.h" />
     <ClInclude Include="k_Object.h" />
+    <ClInclude Include="k_Player.h" />
     <ClInclude Include="k_QuadTree.h" />
     <ClInclude Include="k_Vector.h" />
   </ItemGroup>

@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="quad_tree_0.cpp">
+    <ClCompile Include="sample.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="k_QuadTree.cpp">
@@ -30,6 +30,18 @@
     <ClCompile Include="k_Vector.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="k_Player.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="k_NPC.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="k_MapObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="k_GameCore.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="k_QuadTree.h">
@@ -42,6 +54,18 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="k_Vector.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="k_Player.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="k_NPC.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="k_MapObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="k_GameCore.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

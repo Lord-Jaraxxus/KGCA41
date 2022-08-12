@@ -1,3 +1,4 @@
+#pragma once
 #include <vector> // fabs
 #include "k_Vector.h"
 
@@ -83,6 +84,14 @@ public:
     k_Circle m_sCir;
     k_Vector2D m_vDirection;
 
+public:
+    k_Vector2D m_vForces;       // 알짜힘
+    k_Vector2D m_vAcceleration; // 가속도, 가속도는 벡터인가? 벡터라고 하는데. 왜 벡터지? 
+    k_Vector2D m_vVelocity;     // 속도, 얘는 벡터라고 치는게 대충 이해가 가는데
+    float m_fMass;              // 무게, 질량? f=ma에서 m을 담당 ㅗㅜㅑ
+    float m_fFriction;          // 마찰
+    float m_fSpeed;             // 속력, 얘는 스칼라
+
     void   SetPosition(float x, float y, float w, float h)
     {
         m_sRect.Set(x, y, w, h);
@@ -99,41 +108,8 @@ public:
         m_vDirection.y = y;
     }
 
-    void Move() 
-    {
-        k_Vector2D vStart(m_sRect.x1, m_sRect.y1); // 시작벡터
-        // 벡터의 직전의 방정식
-        // 결과벡터 = 시작벡터 + 방향벡터* t(거리 내지는 시간)
-
-        k_Vector2D vDirection = m_vDirection; // *1.0f; - 얘는 t인데 지금은 뭐 굳이같아서
-        vStart = vStart + vDirection;
-        m_sRect.x1 = vStart.x;
-        m_sRect.y1 = vStart.y;
-
-        if (vStart.x + m_sRect.w > 100.0f)
-        {
-            m_sRect.x1 = 200.0f - (vStart.x + 2*m_sRect.w);
-            m_vDirection.x *= -1.0f;
-        }
-        if (vStart.x < 0.0f)
-        {
-            m_sRect.x1 = -(vStart.x);
-            m_vDirection.x *= -1.0f;
-        }
-        if (vStart.y + m_sRect.h > 100.0f)
-        {
-            m_sRect.y1 = 200.0f - (vStart.y + 2*m_sRect.h);
-            m_vDirection.y *= -1.0f;
-        }
-        if (vStart.y < 0.0f)
-        {
-            m_sRect.y1 = -(vStart.y);
-            m_vDirection.y *= -1.0f;
-        }
-
-        SetPosition(m_sRect.x1, m_sRect.y1, m_sRect.w, m_sRect.h);
-
-    }
+    virtual void    Frame(float fDeltaTime, float fGameTime) {};
+    virtual void    AddForces(k_Vector2D f);
 
     k_Object()
     {

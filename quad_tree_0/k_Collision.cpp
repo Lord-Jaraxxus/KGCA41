@@ -66,7 +66,7 @@ bool k_Collision::CircleToCircle(k_Circle& a, k_Circle& b)
 
 void k_Collision::AddStaticObject(k_Object* pObj)
 {
-    k_Node* pFindNode = FindNodeToGo(QT->m_pRootNode, pObj);
+    k_Node* pFindNode = FindNodeToGo(QT.m_pRootNode, pObj);
     if (pFindNode != nullptr)
     {
         pFindNode->m_StaticObjectList.push_back(pObj);
@@ -75,7 +75,7 @@ void k_Collision::AddStaticObject(k_Object* pObj)
 
 void k_Collision::AddDynamicObject(k_Object* pObj)
 {
-    k_Node* pFindNode = FindNodeToGo(QT->m_pRootNode, pObj);
+    k_Node* pFindNode = FindNodeToGo(QT.m_pRootNode, pObj);
     if (pFindNode != nullptr)
     {
         pFindNode->m_DynamicObjectList.push_back(pObj);
@@ -114,7 +114,7 @@ void k_Collision::DynamicObjectReset(k_Node* pNode)
 std::vector<k_Object*> k_Collision::COL(k_Object* pObj)
 {
     std::vector<k_Object*> list;
-    GCO(QT->m_pRootNode, pObj, list);
+    GCO(QT.m_pRootNode, pObj, list);
     return list;
 };
 

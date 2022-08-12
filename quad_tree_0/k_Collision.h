@@ -11,7 +11,7 @@ enum k_CollisionType
 class k_Collision
 {
 public:
-	k_QuadTree* QT;
+	k_QuadTree QT;
 
 
 public:
