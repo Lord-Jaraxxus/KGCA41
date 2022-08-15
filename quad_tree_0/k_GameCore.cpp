@@ -3,7 +3,7 @@
 bool k_GameCore::Init()
 {
     player.SetPosition(0, 0, 30, 30);
-    player.SetDirection(6, 6);
+    player.SetVector(player.m_vForces, 1.0f, 0.0f);
     kc.QT.m_pRootNode = new k_Node;
     kc.QT.BuildQuadTree(kc.QT.m_pRootNode, 100.0f, 100.0f);
 
@@ -76,7 +76,8 @@ bool k_GameCore::Run()
 {
     Init();
     float  fGameTimer = 0.0f;
-    float  fDelay = 10;
+    //float  fDelay = 1000;
+    float  fDelay = 10; // µð¹ö±ë¿ë
     while (fGameTimer < 60.0f)
     {
         Frame(fDelay / 1000.0f, fGameTimer);

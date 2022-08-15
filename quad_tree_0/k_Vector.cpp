@@ -18,6 +18,13 @@ k_Vector2D	k_Vector2D::operator + (k_Vector2D& v)
 	return k_Vector2D(x + v.x, y + v.y);
 }
 
+k_Vector2D	k_Vector2D::operator += (k_Vector2D& v)
+{
+	x += v.x;
+	y += v.y;
+	return *this;
+}
+
 k_Vector2D	k_Vector2D::operator - (k_Vector2D& v) 
 {
 	return k_Vector2D(x - v.x, y - v.y);
@@ -26,6 +33,11 @@ k_Vector2D	k_Vector2D::operator - (k_Vector2D& v)
 k_Vector2D	k_Vector2D::operator * (float scala) 
 {
 	return k_Vector2D(x * scala, y * scala);
+}
+
+k_Vector2D	k_Vector2D::operator / (float scala)
+{
+	return k_Vector2D(x / scala, y / scala);
 }
 
 k_Vector2D k_Vector2D::operator *= (float scala) // ¾êµµ ÀÏ´Ü

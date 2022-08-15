@@ -20,8 +20,10 @@ public:
 
 public:
 	k_Vector2D	operator + (k_Vector2D& v);
+	k_Vector2D	operator += (k_Vector2D& v);
 	k_Vector2D	operator - (k_Vector2D& v);
 	k_Vector2D	operator * (float scala);
+	k_Vector2D	operator / (float scala);
 	k_Vector2D operator *= (float scala); 
 	bool		operator == (k_Vector2D& v);
 

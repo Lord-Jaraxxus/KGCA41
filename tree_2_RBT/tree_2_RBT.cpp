@@ -1,7 +1,9 @@
 ﻿#include <iostream>
 #include "Node.h"
 
-//int g_iData[10] = { 50,22,66,35,43,59,42,78,63,14 };
+// 테스트용 
+
+//int g_iData[10] = { 50,22,66,35,43,59,42,78,63,14 }; 
 int g_iData[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 int g_iCount = 0;
 int g_iFlag = 0;
