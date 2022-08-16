@@ -8,15 +8,14 @@ void   k_Player::Frame(float fDeltaTime, float fGameTime)
         // 결과벡터 = 시작벡터 + 방향벡터* t(거리 내지는 시간)
 
         m_vAcceleration = m_vForces / m_fMass; // 1초 기준 가속도
-        k_Vector2D m_vLinearAcc = m_vAcceleration * fDeltaTime;
-        k_Vector2D vV0 = m_vVelocity;
-        k_Vector2D vV1 = m_vVelocity + m_vLinearAcc;
-        k_Vector2D vAverageVelocity = (vV0 + vV1) / 2; // 평균 속도
+        //k_Vector2D vAccPerTime = m_vAcceleration * fDeltaTime; // 실제 프레임 시간만큼 지났을 때의 가속도 
+        //k_Vector2D vVelocityPerTime = m_vVelocity * fDeltaTime;
+        // ㅅㅂ 일단 시간 1초로 고정해.... 시간을 변수로 두는건 존나 어려운 것 같으니까 지금
+        m_vVelocity += m_vAcceleration;
+
+        vStart += m_vVelocity;
         
-        m_vVelocity += m_vLinearAcc;
-        k_Vector2D vDisplacement = vAverageVelocity * fDeltaTime; // 변위
-        vStart += vDisplacement;
-        
+
         m_sRect.x1 = vStart.x;
         m_sRect.y1 = vStart.y;
 

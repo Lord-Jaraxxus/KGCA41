@@ -18,27 +18,6 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="k_Collision.cpp" />
-    <ClCompile Include="k_GameCore.cpp" />
-    <ClCompile Include="k_MapObject2D.cpp" />
-    <ClCompile Include="k_NPC2D.cpp" />
-    <ClCompile Include="k_Object2D.cpp" />
-    <ClCompile Include="k_Player2D.cpp" />
-    <ClCompile Include="k_QuadTree.cpp" />
-    <ClCompile Include="k_Vector2D.cpp" />
-    <ClCompile Include="sample.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="k_Collision.h" />
-    <ClInclude Include="k_GameCore.h" />
-    <ClInclude Include="k_MapObject2D.h" />
-    <ClInclude Include="k_NPC2D.h" />
-    <ClInclude Include="k_Object2D.h" />
-    <ClInclude Include="k_Player2D.h" />
-    <ClInclude Include="k_QuadTree.h" />
-    <ClInclude Include="k_Vector2D.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -161,6 +140,27 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="k_Collision.cpp" />
+    <ClCompile Include="k_GameCore.cpp" />
+    <ClCompile Include="k_MapObject.cpp" />
+    <ClCompile Include="k_NPC.cpp" />
+    <ClCompile Include="k_Object.cpp" />
+    <ClCompile Include="k_Player.cpp" />
+    <ClCompile Include="k_QuadTree.cpp" />
+    <ClCompile Include="k_Vector.cpp" />
+    <ClCompile Include="sample.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="k_Collision.h" />
+    <ClInclude Include="k_GameCore.h" />
+    <ClInclude Include="k_MapObject.h" />
+    <ClInclude Include="k_NPC.h" />
+    <ClInclude Include="k_Object.h" />
+    <ClInclude Include="k_Player.h" />
+    <ClInclude Include="k_QuadTree.h" />
+    <ClInclude Include="k_Vector.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

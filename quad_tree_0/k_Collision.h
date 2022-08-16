@@ -1,5 +1,5 @@
-#pragma once
 #include "k_QuadTree.h"
+#include <queue>
 
 enum k_CollisionType
 {
