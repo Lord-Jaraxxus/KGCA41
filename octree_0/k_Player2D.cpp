@@ -1,6 +1,6 @@
-#include "k_Player.h"
+#include "k_Player2D.h"
 
-void   k_Player::Frame(float fDeltaTime, float fGameTime)
+void   k_Player2D::Frame(float fDeltaTime, float fGameTime)
 {
     {
         k_Vector2D vStart(m_sRect.x1, m_sRect.y1); // Ω√¿€∫§≈Õ

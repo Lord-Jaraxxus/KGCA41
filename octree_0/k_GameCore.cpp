@@ -4,19 +4,19 @@ bool k_GameCore::Init()
 {
     player.SetPosition(0, 0, 30, 30);
     player.SetVector(player.m_vForces, 1.0f, 0.0f);
-    kc.QT.m_pRootNode = new k_Node;
+    kc.QT.m_pRootNode = new k_Node2D;
     kc.QT.BuildQuadTree(kc.QT.m_pRootNode, 100.0f, 100.0f);
 
     for (int iObj = 0; iObj < 10; iObj++)
     {
-        k_Object* pObj = new k_MapObject; // 여기 했던 것 같은데 어디더라 그 다형성 어쩌구저쩌구였는데 이거 좀 중요했는데
+        k_Object2D* pObj = new k_MapObject2D; // 여기 했던 것 같은데 어디더라 그 다형성 어쩌구저쩌구였는데 이거 좀 중요했는데
         AllObjectList.insert(std::make_pair(iObj, pObj));
         kc.AddStaticObject(pObj);
     }
 
     for (int iObj = 0; iObj < 10; iObj++)
     {
-        k_Object* pObj = new k_NPC;
+        k_Object2D* pObj = new k_NPC2D;
         npcList.insert(std::make_pair(iObj, pObj));
         AllObjectList.insert(std::make_pair(iObj, pObj));
         kc.AddDynamicObject(pObj);
@@ -30,7 +30,7 @@ bool k_GameCore::Frame(float fDeltaTime, float fGameTime)
     kc.DynamicObjectReset(kc.QT.m_pRootNode);
     for (auto obj : npcList)
     {
-        k_Object* pObject = obj.second;
+        k_Object2D* pObject = obj.second;
         pObject->Frame(fDeltaTime, fGameTime);
         kc.AddDynamicObject(pObject);
     }
@@ -78,7 +78,7 @@ bool k_GameCore::Run()
     float  fGameTimer = 0.0f;
     //float  fDelay = 1000;
     float  fDelay = 1000; // 디버깅용
-    while (fGameTimer < 60.0f)
+    while (fGameTimer < 10.0f)
     {
         Frame(fDelay / 1000.0f, fGameTimer);
         Render();
