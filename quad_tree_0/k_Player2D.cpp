@@ -1,4 +1,4 @@
-#include "k_Player.h"
+#include "k_Player2D.h"
 
 void   k_Player::Frame(float fDeltaTime, float fGameTime)
 {
