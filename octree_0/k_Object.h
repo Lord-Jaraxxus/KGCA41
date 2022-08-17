@@ -52,7 +52,10 @@ struct k_Sphere
         fRadius = radius;
     }
 
-    k_Sphere() {};
+    k_Sphere()
+    {
+        Set(k_Vector(0,0,0), 0.0f);
+    }
     k_Sphere(k_Vector vC, float radius)
     {
         Set(vC, radius);

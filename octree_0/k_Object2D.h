@@ -121,7 +121,7 @@ public:
             5.0f + (rand() % 5)
         );
         SetVector(m_vDirection, 1.0f + rand()%9, 1.0f + rand() % 9);
-        SetVector(m_vForces, 1.0f, 1.0f);
+        SetVector(m_vForces, 5.0f, 5.0f);
         SetVector(m_vAcceleration, 0.0f, 0.0f); // 근데 얘를 굳이 선언하고 초기화할 이유가 있나? 함수안에서 처리해도..
         SetVector(m_vVelocity, 0.0f, 0.0f); // 얘는 좀 중요하지
         m_fMass = 1.0f;

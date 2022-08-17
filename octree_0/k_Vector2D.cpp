@@ -12,6 +12,12 @@ k_Vector2D::k_Vector2D(float x, float y)
 }
 //k_Vector2D::k_Vector2D(k_Vector2D& v) {}
 
+void k_Vector2D::Set(float x, float y) 
+{
+	this->x = x;
+	this->y = y;
+}
+
 
 k_Vector2D	k_Vector2D::operator + (k_Vector2D& v) 
 {

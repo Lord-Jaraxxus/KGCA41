@@ -4,6 +4,6 @@
 class k_NPC : public k_Object
 {
 public:
-	//void   Frame(float fDeltaTime, float fGameTime) override;
+	void   Frame(float fDeltaTime, float fGameTime) override;
 };
 

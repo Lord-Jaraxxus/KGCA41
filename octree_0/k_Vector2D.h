@@ -17,6 +17,7 @@ public:
 	k_Vector2D();
 	k_Vector2D(float x, float y);
 	//k_Vector2D(k_Vector2D& v); // 복사 생성자, 왜 만들었는지는 아직 몰?루겠으니 일단 주석처리
+	void Set(float x, float y);
 
 public:
 	k_Vector2D	operator + (k_Vector2D& v);
