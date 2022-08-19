@@ -4,10 +4,13 @@
 #include "k_GameCore.h"
 
 int main()
-{
-    k_GameCore game;
-    game.Run();
-    game.Run2D();
+{ 
+    k_GameCore* game = new k_GameCore3D;
+    game->Run();
+
+    k_GameCore* game2 = new k_GameCore2D;
+    game2->Run();
+
     std::cout << "Game Ending!\n";
 
 }

@@ -1,6 +1,6 @@
 #include "k_GameCore.h"
 
-bool k_GameCore::Init2D()
+bool k_GameCore2D::Init()
 {
     player2D.SetPosition(0, 0, 30, 30);
     player2D.SetVector(player2D.m_vForces, 5.0f, 5.0f);
@@ -26,7 +26,7 @@ bool k_GameCore::Init2D()
     return false;
 }
 
-bool k_GameCore::Frame2D(float fDeltaTime, float fGameTime)
+bool k_GameCore2D::Frame(float fDeltaTime, float fGameTime)
 {
     kc.DynamicObjectReset(kc.QT.m_pRootNode);
     for (auto obj : npcList2D)
@@ -42,7 +42,7 @@ bool k_GameCore::Frame2D(float fDeltaTime, float fGameTime)
     return false;
 }
 
-bool k_GameCore::Render2D()
+bool k_GameCore2D::Render()
 {
     std::cout << "player:"
         << player2D.m_sRect.x1 << "," << player2D.m_sRect.y1 << "  //  "
@@ -60,7 +60,7 @@ bool k_GameCore::Render2D()
     return false;
 }
 
-bool k_GameCore::Release2D()
+bool k_GameCore2D::Release()
 {
     for (auto object : AllObjectList2D)
     {
@@ -71,21 +71,21 @@ bool k_GameCore::Release2D()
     return true;
 }
 
-bool k_GameCore::Run2D()
+bool k_GameCore2D::Run()
 {
-    Init2D();
+    Init();
     float  fGameTimer = 0.0f;
     //float  fDelay = 1000;
     float  fDelay = 10; // µð¹ö±ë¿ë
     while (fGameTimer < 10.0f)
     {
-        Frame2D(fDelay / 1000.0f, fGameTimer);
-        Render2D();
+        Frame(fDelay / 1000.0f, fGameTimer);
+        Render();
         Sleep(fDelay);
         system("cls");
         fGameTimer += fDelay / 1000.0f;
     }
-    Release2D();
+    Release();
     return true;
 }
 
@@ -93,9 +93,9 @@ bool k_GameCore::Run2D()
 
 // ÀÌ ¹ØÀ¸·Î´Â 3D, ¿ÁÆ®¸®
 
-bool k_GameCore::Init()
+bool k_GameCore3D::Init()
 {
-    player.SetPosition(k_Vector(0.0f, 0.0f, 0.0f), k_Vector(50.0f, 50.0f, 50.0f));
+    player.SetPosition(k_Vector(0.0f, 0.0f, 0.0f), k_Vector(70.0f, 70.0f, 70.0f));
     player.m_vForces.Set(5.0f, 5.0f, 5.0f);
     kc.OT.m_pRootNode = new k_Node;
     kc.OT.BuildOctree(kc.OT.m_pRootNode, k_Vector(100.0f, 100.0f, 100.0f));
@@ -108,7 +108,7 @@ bool k_GameCore::Init()
         kc.AddObject(pObj, 0); // ½ºÅÂÆ½(Á¤Àû) ¿ÀºêÁ§Æ®
     }
 
-    for (int iObj = 0; iObj < 10; iObj++)
+    for (int iObj = 0; iObj < 20; iObj++)
     {
         k_Object* pObj = new k_NPC;
         npcList.insert(std::make_pair(iObj, pObj));
@@ -119,7 +119,7 @@ bool k_GameCore::Init()
     return false;
 }
 
-bool k_GameCore::Frame(float fDeltaTime, float fGameTime)
+bool k_GameCore3D::Frame(float fDeltaTime, float fGameTime)
 {
     kc.DynamicObjectReset(kc.OT.m_pRootNode);
     for (auto obj : npcList)
@@ -135,7 +135,7 @@ bool k_GameCore::Frame(float fDeltaTime, float fGameTime)
     return false;
 }
 
-bool k_GameCore::Render()
+bool k_GameCore3D::Render()
 {
     std::cout << "player:"
         << player.m_Box.vMin.x << "," << player.m_Box.vMin.y << "," << player.m_Box.vMin.z << "     //      " 
@@ -158,7 +158,7 @@ bool k_GameCore::Render()
     return false;
 }
 
-bool k_GameCore::Release()
+bool k_GameCore3D::Release()
 {
     for (auto object : AllObjectList)
     {
@@ -169,13 +169,13 @@ bool k_GameCore::Release()
     return true;
 }
 
-bool k_GameCore::Run()
+bool k_GameCore3D::Run()
 {
     Init();
     float  fGameTimer = 0.0f;
     //float  fDelay = 1000;
     float  fDelay = 10.0f; // µð¹ö±ë¿ë
-    while (fGameTimer < 1.0f)
+    while (fGameTimer < 10.0f)
     {
         Frame(fDelay / 1000.0f, fGameTimer);
         Render();

@@ -23,6 +23,7 @@
     <ClCompile Include="k_GameCore.cpp" />
     <ClCompile Include="k_MapObject.cpp" />
     <ClCompile Include="k_MapObject2D.cpp" />
+    <ClCompile Include="k_Node_Factory.cpp" />
     <ClCompile Include="k_NPC.cpp" />
     <ClCompile Include="k_NPC2D.cpp" />
     <ClCompile Include="k_Object.cpp" />
@@ -40,6 +41,7 @@
     <ClInclude Include="k_GameCore.h" />
     <ClInclude Include="k_MapObject.h" />
     <ClInclude Include="k_MapObject2D.h" />
+    <ClInclude Include="k_Node_Factory.h" />
     <ClInclude Include="k_NPC.h" />
     <ClInclude Include="k_NPC2D.h" />
     <ClInclude Include="k_Object.h" />
@@ -57,8 +59,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{90657ae5-69f9-4228-a554-09665f30c6b2}</ProjectGuid>
-    <RootNamespace>octree0</RootNamespace>
+    <ProjectGuid>{d54f045c-3bb9-41e3-8c4d-82050179def1}</ProjectGuid>
+    <RootNamespace>octree1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -114,8 +116,6 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>../../output/Debug/</OutDir>
-    <IntDir>../../output/Debug/octree_0</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
