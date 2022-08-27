@@ -6,7 +6,8 @@ void   k_Player2D::Frame(float fDeltaTime, float fGameTime)
         k_Vector2D vStart(m_sRect.x1, m_sRect.y1); // 시작벡터
 
         m_vAcceleration = m_vForces / m_fMass; // 1초 기준 가속도
-        k_Vector2D vLinearAcc = m_vAcceleration * fDeltaTime;
+        //k_Vector2D vFriction = m_vDirection * m_fFriction;
+        k_Vector2D vLinearAcc = m_vAcceleration * fDeltaTime; 
         k_Vector2D vV0 = m_vVelocity;   // 처음 속도
         k_Vector2D vV1 = m_vVelocity + vLinearAcc; // fDeltaTime이 지난 다음의 속도
         k_Vector2D vAverageVelocity = (vV0 + vV1) / 2; // fDeltaTime 동안의 평균 속도

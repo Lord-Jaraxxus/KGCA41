@@ -3,7 +3,8 @@
 bool k_GameCore2D::Init()
 {
     player2D.SetPosition(0, 0, 30, 30);
-    player2D.SetVector(player2D.m_vForces, 5.0f, 5.0f);
+    player2D.m_vDirection.Set(1.0f, 1.0f);
+    player2D.SetForces(5.0f);
     kc.QT.m_pRootNode = new k_Node2D;
     kc.QT.BuildQuadTree(kc.QT.m_pRootNode, 100.0f, 100.0f);
 
@@ -95,7 +96,7 @@ bool k_GameCore2D::Run()
 
 bool k_GameCore3D::Init()
 {
-    player.SetPosition(k_Vector(0.0f, 0.0f, 0.0f), k_Vector(70.0f, 70.0f, 70.0f));
+    player.SetPosition(k_Vector(0.0f, 0.0f, 0.0f), k_Vector(30.0f, 30.0f, 30.0f));
     player.m_vForces.Set(5.0f, 5.0f, 5.0f);
     kc.OT.m_pRootNode = new k_Node;
     kc.OT.BuildOctree(kc.OT.m_pRootNode, k_Vector(100.0f, 100.0f, 100.0f));

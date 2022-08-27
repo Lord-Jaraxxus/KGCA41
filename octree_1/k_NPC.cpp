@@ -7,7 +7,7 @@ void   k_NPC::Frame(float fDeltaTime, float fGameTime)
         // 벡터의 직전의 방정식
         // 결과벡터 = 시작벡터 + 방향벡터* t(거리 내지는 시간)
 
-        k_Vector vDirection = m_vDirection; // *1.0f; - 얘는 t인데 지금은 뭐 굳이같아서
+        k_Vector vDirection = m_vDirection * fDeltaTime; 
         vStart = vStart + vDirection;
         m_Box.vMin = vStart;
 
