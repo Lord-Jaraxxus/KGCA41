@@ -141,13 +141,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="K_BaseObject.cpp" />
     <ClCompile Include="K_Device.cpp" />
+    <ClCompile Include="k_Vector.cpp" />
     <ClCompile Include="K_Window.cpp" />
     <ClCompile Include="Sample.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="K_BaseObject.h" />
     <ClInclude Include="K_Device.h" />
     <ClInclude Include="K_Std.h" />
+    <ClInclude Include="k_Vector.h" />
     <ClInclude Include="K_Window.h" />
     <ClInclude Include="Sample.h" />
   </ItemGroup>

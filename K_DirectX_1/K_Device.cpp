@@ -118,8 +118,8 @@ HRESULT K_Device::CreateRenderTargetView()
 void K_Device::CreateViewport()
 {
     D3D11_VIEWPORT vp;
-    vp.Width = g_rtClient.right;
-    vp.Height = g_rtClient.bottom;
+    vp.Width = g_rtClient.right;              // 오류 원인 찾았음!! 여기였어!
+    vp.Height = g_rtClient.bottom;            // 사실 빨간색 띄우는거(렌더타겟뷰)랑 뷰포트는 별개였기 때문이었던것이었던것이었다
     vp.TopLeftX = 0;
     vp.TopLeftY = 0;
     vp.MinDepth = 0.0f;

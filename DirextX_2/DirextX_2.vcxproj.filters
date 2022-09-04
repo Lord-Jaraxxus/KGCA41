@@ -24,6 +24,12 @@
     <ClCompile Include="Sample.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="K_BaseObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="k_Vector.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="K_Device.h">
@@ -36,6 +42,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Sample.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="K_BaseObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="k_Vector.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

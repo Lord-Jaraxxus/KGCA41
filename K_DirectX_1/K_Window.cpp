@@ -145,7 +145,7 @@ BOOL K_Window::InitInstance(const WCHAR* szTitle, UINT iWidth, UINT iHeight)
     }
 
     g_hWnd = m_hWnd;
-    //g_rtClient = m_rtClient; ************** 이것 위치때문에 Draw가 안됐었는데, 대체 왜임??????
+    //g_rtClient = m_rtClient; //************** 이것 위치때문에 Draw가 안됐었는데, 대체 왜임??????
 
     ShowWindow(m_hWnd, SW_SHOW); // 윈도우가 화면에 뜬다. 쇼윈도에걸린너의셔츠를보며
     GetWindowRect(m_hWnd, &m_rtWindow); // 이거저거 다 있는 모든 화면영역

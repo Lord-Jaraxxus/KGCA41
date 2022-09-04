@@ -11,7 +11,7 @@
 #pragma comment(lib, "d3dcompiler.lib")
 #pragma comment(lib, "dxgi.lib")
 
-
+#include"k_Vector.h"
 
 
 extern HWND g_hWnd;
