@@ -35,7 +35,16 @@ bool Sample::Render()
     //m_pImmediateContext->DSSetShader(NULL, NULL, NULL); // 내 은 일단 안해도됨, 맨앞 값도 NULL로 둬서 패스할꺼임
     //m_pImmediateContext->GSSetShader(NULL, NULL, NULL); // 셋
     m_pImmediateContext->PSSetShader(m_pPS, NULL, 0); // 픽셀 쉐이더 세팅, 얘는 반드시 해야함. 그러므로 픽셀 쉐이더를 만들러가보자..
-    m_pImmediateContext->Draw(3, 0);
+    
+    // 프리미티브는 점,선,면. 면(삼각형)이 디폴트
+    m_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST); // 디폴트 (삼각형)
+    //m_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_POINTLIST); // 점
+    //m_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST); // 선
+    
+    //m_pImmediateContext->Draw(2, 0);
+    //m_pImmediateContext->Draw(2, 1); // 선 세개 긋기
+    //m_pImmediateContext->Draw(2, 2);
+    m_pImmediateContext->Draw(6, 0);
     return true;
 }
 
@@ -56,19 +65,25 @@ HRESULT Sample::CreateVertexBuffer()
     
     // NDC 좌표계 공간
     // x,y는 -1 ~ 1, z는 0 ~ 1
-    // v0       v1
+    // v0       v1,v4
     //
-    // v2
+    // v2,v3    v5
+    // 
+    // 반드시 시계방향(앞면)으로 구성한다.
     SimpleVertex vertices[] = 
     {
-        -0.0f, 1.0f,  0.0f, //0.0f,0.0f,0.0f,0.0f,// v0
-        +1.0f, 1.0f,  0.0f, //0.0f,0.0f,0.0f,0.0f,// v1
-        -1.0f, -1.0f, 0.0f, //0.0f,0.0f,0.0f,0.0f,// v2
-    };
+        -0.5f, 0.5f,  0.0f, 1.0f, 0.0f, 0.0f, 0.0f,// v0
+        +0.5f, 0.5f,  0.0f, 0.0f, 1.0f, 0.0f, 0.0f,// v1
+        -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f,// v2
 
+        -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f,// v3
+        +0.5f, 0.5f,  0.0f, 0.0f, 1.0f, 0.0f, 1.0f,// v4
+        +0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f,// v5
+    };
+    UINT NumVertex = sizeof(vertices) / sizeof(vertices[0]);
     D3D11_BUFFER_DESC       bd; 
     ZeroMemory(&bd, sizeof(bd));
-    bd.ByteWidth = sizeof(SimpleVertex)*3; // 바이트 용량
+    bd.ByteWidth = sizeof(SimpleVertex) * NumVertex; // 바이트 용량
     bd.Usage = D3D11_USAGE_DEFAULT; // 버퍼의 할당 장소 내지는 버퍼의 용도. 디폴트가 GPU, 앵간하면 디폴트 쓴다생각
     bd.BindFlags = D3D11_BIND_VERTEX_BUFFER; // 이 버퍼가 뭐냐
     //bd.CPUAccessFlags = 0; // cpu가 접근 가능해 안해? 안해임마
@@ -117,7 +132,7 @@ HRESULT Sample::CreateShader()
         L"VertexShader.txt",
         NULL,
         NULL,
-        "main",
+        "VS",
         "vs_5_0",
         0,
         0,
@@ -168,7 +183,7 @@ HRESULT Sample::CreateShader()
         L"PixelShader.txt",
         NULL,
         NULL,
-        "PSMain",
+        "PS",
         "ps_5_0",
         0,
         0,
@@ -218,7 +233,7 @@ HRESULT Sample::CreateVertexLayout()
     D3D11_INPUT_ELEMENT_DESC ied[] = // 보통 이런식으로 열거형으로 많이 사용한다
     {
         {"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0},
-        //{"COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 9, D3D11_INPUT_PER_VERTEX_DATA, 0}
+        {"COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0}
     };
     //ied.SemanticName = "POSITION";
     //ied.SemanticIndex = 0;

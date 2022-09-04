@@ -56,8 +56,11 @@ bool K_Window::Run()
 
     MSG msg = { 0, };
     // 기본 메시지 루프입니다:
-    while (msg.message != WM_QUIT)
+    bool m_bGameRun = true;
+    while (m_bGameRun)
     {
+        if (msg.message == WM_QUIT)  break;
+
         if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
         {
             TranslateMessage(&msg); // 메세지 번역
@@ -65,8 +68,7 @@ bool K_Window::Run()
         }
         else // 처리할 메세지가 없을때 프레임 렌더 실행, 이게 게임이지 ㅋㅋ
         {
-            TCoreFrame();
-            TCoreRender();
+            if (!TCoreFrame() || !TCoreRender()) m_bGameRun = false;
         }
 
     }

@@ -46,7 +46,7 @@ HRESULT K_Device::CreateDevice()
         pFeatureLevels,
         FeatureLevels,
         D3D11_SDK_VERSION,
-        &m_pd3dDevice,
+        &m_pD3dDevice,
         &pFeatureLevel,
         &m_pImmediateContext
     );
@@ -96,7 +96,7 @@ HRESULT K_Device::CreateSwapChain()
     //DXGI_SWAP_EFFECT SwapEffect;
     //UINT Flags;
 
-    return m_pGIFactory->CreateSwapChain(m_pd3dDevice, &sd, &m_pSwapChain);
+    return m_pGIFactory->CreateSwapChain(m_pD3dDevice, &sd, &m_pSwapChain);
 }
 
 // 4) 렌더타겟뷰 생성
@@ -107,7 +107,7 @@ HRESULT K_Device::CreateRenderTargetView()
     // 스왑체인에서 0번 버퍼를 가져와서 만들어져 있는 백버퍼에 텍스쳐로 리턴해줘
     m_pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&pBackBuffer);
     // 나는 이 버퍼를 갖고 렌더타겟으로 만들어 쓰겠다
-    hr = m_pd3dDevice->CreateRenderTargetView(pBackBuffer, NULL, &m_pRTV);
+    hr = m_pD3dDevice->CreateRenderTargetView(pBackBuffer, NULL, &m_pRTV);
     // 이제 렌더타겟뷰(에?를?) 뿌리면 결과적으로 스왑체인의 0번버퍼가 렌더가 된다
     pBackBuffer->Release(); // 렌더타겟뷰를 만든 다음엔 반드시 릴리즈 해줘야댐
 
@@ -169,7 +169,7 @@ bool K_Device::TCorePostRender()
 bool K_Device::TCoreRelease()
 {
     Release();  
-    if (m_pd3dDevice) m_pd3dDevice->Release();
+    if (m_pD3dDevice) m_pD3dDevice->Release();
     if (m_pImmediateContext) m_pImmediateContext->Release();
     if (m_pGIFactory) m_pGIFactory->Release();
     if (m_pSwapChain) m_pSwapChain->Release();

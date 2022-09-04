@@ -61,7 +61,7 @@ HRESULT Sample::CreateVertexBuffer()
     // v2
     SimpleVertex vertices[] = 
     {
-        -0.0f, 1.0f,  0.0f, //0.0f,0.0f,0.0f,0.0f,// v0
+        -1.0f, 1.0f,  0.0f, //0.0f,0.0f,0.0f,0.0f,// v0
         +1.0f, 1.0f,  0.0f, //0.0f,0.0f,0.0f,0.0f,// v1
         -1.0f, -1.0f, 0.0f, //0.0f,0.0f,0.0f,0.0f,// v2
     };
@@ -83,7 +83,7 @@ HRESULT Sample::CreateVertexBuffer()
 
     //m_pVertexBuffer;
 
-    hr = m_pd3dDevice->CreateBuffer
+    hr = m_pD3dDevice->CreateBuffer
     (
         &bd, // 버퍼 할당
         &sd, // 초기 할당된 버퍼를 채우는 CPU 메모리 주소
@@ -114,10 +114,10 @@ HRESULT Sample::CreateShader()
     // 컴파일하면 오브젝트 파일이 생기는데 m_pVSCode는 오브젝트 파일의 시작 주소, 오브젝트 파일의 전체 크기 이렇게 반환받는다
 
     hr = D3DCompileFromFile(
-        L"VertexShader.txt",
+        L"VertexShader.hlsl",
         NULL,
         NULL,
-        "main",
+        "VS",
         "vs_5_0",
         0,
         0,
@@ -142,7 +142,7 @@ HRESULT Sample::CreateShader()
     //ID3D11VertexShader** ppVertexShader = &m_pVS;
 
     // 버텍스 쉐이더 생성, 컴파일이랑 별개임ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
-    hr = m_pd3dDevice->CreateVertexShader(
+    hr = m_pD3dDevice->CreateVertexShader(
         m_pVSCode->GetBufferPointer(),
         m_pVSCode->GetBufferSize(),
         NULL,
@@ -165,10 +165,10 @@ HRESULT Sample::CreateShader()
     // 컴파일하면 오브젝트 파일이 생기는데 m_pVSCode는 오브젝트 파일의 시작 주소, 오브젝트 파일의 전체 크기 이렇게 반환받는다
 
     hr = D3DCompileFromFile(
-        L"PixelShader.txt",
+        L"PixelShader.hlsl",
         NULL,
         NULL,
-        "PSMain",
+        "PS",
         "ps_5_0",
         0,
         0,
@@ -192,7 +192,7 @@ HRESULT Sample::CreateShader()
     //ID3D11VertexShader** ppVertexShaderT = &m_pVS;
 
     // 픽셀 쉐이더 생성
-    hr = m_pd3dDevice->CreatePixelShader(
+    hr = m_pD3dDevice->CreatePixelShader(
         m_pPSCode->GetBufferPointer(),
         m_pPSCode->GetBufferSize(),
         NULL,
@@ -233,7 +233,7 @@ HRESULT Sample::CreateVertexLayout()
     SIZE_T BytecodeLength = m_pVSCode->GetBufferSize(); // 버퍼 사이즈 (오브젝트 파일의 크기인듯?)
     //m_pVertexLayout;
      
-    hr = m_pd3dDevice->CreateInputLayout(
+    hr = m_pD3dDevice->CreateInputLayout(
         ied, // 배열의 주소니까 & 날려도됨
         NumElements,
         m_pVSCode->GetBufferPointer(),

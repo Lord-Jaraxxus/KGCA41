@@ -6,10 +6,10 @@ struct SimpleVertex
 	float x;
 	float y;
 	float z;
-	//float r;
-	//float g;
-	//float b;
-	//float a;
+	float r;
+	float g;
+	float b;
+	float a;
 };
 
 class Sample : public K_Device

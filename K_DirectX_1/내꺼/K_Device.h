@@ -14,7 +14,7 @@ public:
 
 public:
 	// 인터페이스 -> 하드웨어 직접 제어
-	ID3D11Device* m_pd3dDevice = nullptr; // 디바이스 객체
+	ID3D11Device* m_pD3dDevice = nullptr; // 디바이스 객체
 	ID3D11DeviceContext* m_pImmediateContext = nullptr; // 그래서 얘가 뭐임?
 	// m_pD3dDevice : 다른 인터페이스 생성시 사용한다
 	// m_pImmediateContext : 생성된 인터페이스를 사용(관리,제어) 할때 사용한다

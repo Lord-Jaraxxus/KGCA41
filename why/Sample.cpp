@@ -61,7 +61,7 @@ HRESULT Sample::CreateVertexBuffer()
     // v2
     SimpleVertex vertices[] = 
     {
-        -0.0f, 1.0f,  0.0f, //0.0f,0.0f,0.0f,0.0f,// v0
+        -1.0f, 1.0f,  0.0f, //0.0f,0.0f,0.0f,0.0f,// v0
         +1.0f, 1.0f,  0.0f, //0.0f,0.0f,0.0f,0.0f,// v1
         -1.0f, -1.0f, 0.0f, //0.0f,0.0f,0.0f,0.0f,// v2
     };

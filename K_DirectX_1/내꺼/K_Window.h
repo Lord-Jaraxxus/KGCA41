@@ -18,7 +18,7 @@ public:
 
 public:
 	bool SetWindow(HINSTANCE hInstance, const WCHAR* szTitle, UINT iWidth = 1600, UINT iHeight = 900);
-	ATOM MyRegisterClass();
+	ATOM MyRegisterClass(HINSTANCE hInstance);
 	BOOL InitInstance(const WCHAR* szTitle, UINT iWidth, UINT iHeight);
 	LRESULT MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 	bool Run();
