@@ -1,0 +1,60 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(498,5): warning MSB8004: Intermediate 디렉터리가 슬래시로 끝나지 않습니다. Intermediate 디렉터리의 적절한 평가를 허용하는 데 필요하므로 이 빌드 인스턴스에서 슬래시를 추가합니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: Output 디렉터리가 슬래시로 끝나지 않습니다. Output 디렉터리의 적절한 평가를 허용하는 데 필요하므로 이 빌드 인스턴스에서 슬래시를 추가합니다.
+  K_BaseObject.cpp
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\K_BaseObject.cpp(49,53): warning C4267: '인수': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\K_BaseObject.cpp(89,41): warning C4267: '초기화 중': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  k_Collision.cpp
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,56): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,41): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,26): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  K_Device.cpp
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\K_Device.cpp(121,26): warning C4244: '=': 'LONG'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\K_Device.cpp(122,27): warning C4244: '=': 'LONG'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  k_GameCore.cpp
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,56): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,41): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,26): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_GameCore.cpp(94,15): warning C4244: '인수': 'float'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_GameCore.cpp(192,15): warning C4244: '인수': 'float'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  k_MapObject.cpp
+  k_MapObject2D.cpp
+  k_Node_Factory.cpp
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,56): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,41): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,26): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  k_NPC.cpp
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,56): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,41): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,26): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  k_NPC2D.cpp
+  k_Object.cpp
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,56): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,41): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,26): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  k_Object2D.cpp
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object2D.cpp(53,17): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object2D.cpp(52,17): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  k_Octree.cpp
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,56): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,41): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,26): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  k_Player.cpp
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,56): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,41): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,26): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  k_Player2D.cpp
+  k_QuadTree.cpp
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,56): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,41): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,26): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  k_Vector.cpp
+  k_Vector2D.cpp
+  K_Window.cpp
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\K_Window.cpp(159,34): warning C4838: 'UINT'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\K_Window.cpp(159,49): warning C4838: 'UINT'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+  Sample.cpp
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,56): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,41): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\OctreeDraw\k_Object.h(93,26): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+  OctreeDraw.vcxproj -> A:\KGCA41\KGCA41_KingYoungMin\output\Debug\OctreeDraw.exe
