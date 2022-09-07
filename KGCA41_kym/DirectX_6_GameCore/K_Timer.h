@@ -13,6 +13,8 @@ public:
 	float m_fGameTimer = 0.0f;
 	float m_fElapseTimer = 0.0f;
 	UINT m_iFPS = 0;
+	std::wstring m_szTimer;
+
 
 //얘들은 temp라서 일단 외부접근 막아둠
 private:

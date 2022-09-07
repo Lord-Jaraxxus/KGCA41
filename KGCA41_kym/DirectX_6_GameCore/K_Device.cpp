@@ -1,4 +1,4 @@
-#include "K_Device.h"
+ #include "K_Device.h"
 
 bool K_Device::Init()
 {
@@ -71,7 +71,7 @@ HRESULT K_Device::CreateDevice()
         nullptr,
         D3D_DRIVER_TYPE_HARDWARE,
         NULL,
-        0,
+        D3D11_CREATE_DEVICE_BGRA_SUPPORT, // D2D를 쓰려면 플래그를 이걸로 해야한다 
         pFeatureLevels,
         FeatureLevels,
         D3D11_SDK_VERSION,

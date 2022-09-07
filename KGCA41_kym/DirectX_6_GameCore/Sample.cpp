@@ -19,15 +19,27 @@ bool Sample::Init()
 
 bool Sample::Frame()
 {
-	if (I_Input.GetKey(VK_SPACE) == KEY_HOLD)
-	{
-	}
 	return true;
 }
 
 bool Sample::Render()
 {
-
+	if (I_Input.GetKey('W') == KEY_HOLD || I_Input.GetKey('W') == KEY_HOLD)
+	{
+		m_Write.Draw(500, 500, L"W", { 1,1,1,1 });
+	}
+	if (I_Input.GetKey('A') == KEY_HOLD || I_Input.GetKey('A') == KEY_HOLD)
+	{
+		m_Write.Draw(400, 600, L"A", { 1,1,1,1 });
+	}
+	if (I_Input.GetKey('S') == KEY_HOLD || I_Input.GetKey('S') == KEY_HOLD)
+	{
+		m_Write.Draw(500, 600, L"S", { 1,1,1,1 });
+	}
+	if (I_Input.GetKey('D') == KEY_HOLD || I_Input.GetKey('D') == KEY_HOLD)
+	{
+		m_Write.Draw(600, 600, L"D", { 1,1,1,1 });
+	}
 	return true;
 }
 

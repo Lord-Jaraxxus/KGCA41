@@ -22,10 +22,14 @@ bool K_GameCore::Release()
 
 bool K_GameCore::K_GameCoreInit()
 {
+    HRESULT hr;
     if (Init() != true) return false;
     if(K_Device::Init() != true) return false; 
     if (I_Timer.Init() != true) return false;
     if (I_Input.Init() != true) return false;
+    if (m_Write.Init() != true) return false;
+    hr = m_pSwapChain->GetBuffer(0, __uuidof(IDXGISurface1), (void**)&m_pBackBuffer);
+    m_Write.Set(m_pBackBuffer);
 	return true; 
 }
 
@@ -35,16 +39,33 @@ bool K_GameCore::K_GameCoreFrame()
     if (K_Device::Frame() != true) return false;
     if (I_Timer.Frame() != true) return false;
     if (I_Input.Frame() != true) return false;
+    if (m_Write.Frame() != true) return false;
 	return true;
+}
+
+bool K_GameCore::K_GameCorePreRender()
+{
+    K_Device::PreRender();
+    return true;
 }
 
 bool K_GameCore::K_GameCoreRender()
 {
+    K_GameCorePreRender();
+
     if (Render() != true) return false;
-    if (K_Device::Render() != true) return false;
     if (I_Timer.Render() != true) return false;
-    if (I_Input.Render() != true) return false;
+    if (I_Input.Render() != true) return false; 
+    //if (m_Write.Render() != true) return false;
+    m_Write.Draw(0, 0, I_Timer.m_szTimer, { 1,0,0,1 });
+    K_GameCorePostRender();
 	return true;
+}
+
+bool K_GameCore::K_GameCorePostRender()
+{
+    K_Device::PostRender();
+    return true;
 }
 
 bool K_GameCore::K_GameCoreRelease()
@@ -53,6 +74,7 @@ bool K_GameCore::K_GameCoreRelease()
     if (K_Device::Release() != true) return false;
     if (I_Timer.Release() != true) return false;
     if (I_Input.Release() != true) return false;
+    if (m_Write.Release() != true) return false;
 	return true;
 }
 

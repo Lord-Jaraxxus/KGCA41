@@ -24,6 +24,7 @@
     <ClCompile Include="K_Input.cpp" />
     <ClCompile Include="K_Timer.cpp" />
     <ClCompile Include="K_Window.cpp" />
+    <ClCompile Include="K_Write.cpp" />
     <ClCompile Include="Sample.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -33,6 +34,7 @@
     <ClInclude Include="K_Std.h" />
     <ClInclude Include="K_Timer.h" />
     <ClInclude Include="K_Window.h" />
+    <ClInclude Include="K_Write.h" />
     <ClInclude Include="Sample.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

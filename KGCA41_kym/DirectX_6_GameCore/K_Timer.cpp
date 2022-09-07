@@ -36,12 +36,12 @@ bool K_Timer::Frame()
 
 bool K_Timer::Render()
 {
-    std::wstring timer = std::to_wstring(m_fGameTimer);
+    m_szTimer = std::to_wstring(m_fGameTimer);
 
-    timer += L" ";
-    timer += std::to_wstring(m_iFPS);
-    timer += L"\n";
-    OutputDebugString(timer.c_str());
+    m_szTimer += L" ";
+    m_szTimer += std::to_wstring(m_iFPS);
+    m_szTimer += L"\n";
+    OutputDebugString(m_szTimer.c_str());
 
     return true;
 }
