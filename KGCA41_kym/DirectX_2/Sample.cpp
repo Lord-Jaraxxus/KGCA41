@@ -13,7 +13,6 @@
 
 bool Sample::Init() 
 {
-
 	m_object.SetDevice(m_pd3dDevice, m_pImmediateContext);
 	m_object.Init();
 	return true; 

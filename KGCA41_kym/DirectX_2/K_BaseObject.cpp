@@ -1,5 +1,7 @@
 #include "K_BaseObject.h"
 
+static float frame_test = 0;
+
 bool K_BaseObject::Init()
 {
     if (FAILED(CreateVertexBuffer())) return false;
@@ -11,7 +13,8 @@ bool K_BaseObject::Init()
 
 bool K_BaseObject::Frame()
 {
-    m_VertexList[0] = { {-1.0f, 1.0f, 0.0f}, {1.0f, 0.0f, 0.0f, 0.0f} };
+    m_VertexList[0] = { {frame_test, 1.0f, 0.0f}, {1.0f, 0.0f, 0.0f, 0.0f} };
+    frame_test -= 0.00001f;
     // gpu update ÇÔ¼ö
 
     m_pImmediateContext->UpdateSubresource(m_pVertexBuffer, 0, NULL, &m_VertexList.at(0) ,0 ,0);
@@ -54,12 +57,12 @@ bool K_BaseObject::Render()
 
 bool K_BaseObject::Release()
 {
-    //if (m_pVertexBuffer) m_pVertexBuffer->Release();
-    //if (m_pVertexLayout) m_pVertexLayout->Release();
-    //if (m_pVS) m_pVS->Release();
-    //if (m_pPS) m_pPS->Release();
-    //if (m_pVSCode) m_pVSCode->Release();
-    //if (m_pPSCode) m_pPSCode->Release(); 
+    if (m_pVertexBuffer) m_pVertexBuffer->Release();
+    if (m_pVertexLayout) m_pVertexLayout->Release();
+    if (m_pVS) m_pVS->Release();
+    if (m_pPS) m_pPS->Release();
+    if (m_pVSCode) m_pVSCode->Release();
+    if (m_pPSCode) m_pPSCode->Release(); 
     return true;
 }
 

@@ -42,6 +42,7 @@ public:
 	HRESULT	CreateVertexBuffer();
 	HRESULT CreateShader(std::wstring filename);
 	HRESULT CreateVertexLayout();
+
 	HRESULT LoadTexture(std::wstring filename);
 };
 

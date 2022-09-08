@@ -48,7 +48,7 @@ bool K_GameCore::K_GameCorePreRender()
     K_Device::PreRender();
     return true;
 }
-
+  
 bool K_GameCore::K_GameCoreRender()
 {
     K_GameCorePreRender();
@@ -58,6 +58,7 @@ bool K_GameCore::K_GameCoreRender()
     if (I_Input.Render() != true) return false; 
     //if (m_Write.Render() != true) return false;
     m_Write.Draw(0, 0, I_Timer.m_szTimer, { 1,0,0,1 });
+
     K_GameCorePostRender();
 	return true;
 }

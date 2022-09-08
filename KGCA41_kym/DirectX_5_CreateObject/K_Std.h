@@ -1,17 +1,25 @@
 #pragma once
-#include <windows.h>
+
 #include <map>
 #include <vector>
 #include <list>
 #include <set>
 #include <string>
-#include <d3d11.h>
-#include <d3dcompiler.h> // D3DCompileFromFile()
-#pragma comment(lib, "d3d11.lib")
-#pragma comment(lib, "d3dcompiler.lib")
-#pragma comment(lib, "dxgi.lib")
 #pragma comment(lib, "winmm.lib") // timeGetTime
 
+// 윈도우
+#include <windows.h>
+
+// 디바이스
+#include <d3d11.h>
+#pragma comment(lib, "d3d11.lib")
+#pragma comment(lib, "dxgi.lib")
+
+// 쉐이더
+#pragma comment(lib, "d3dcompiler.lib")
+#include <d3dcompiler.h> // D3DCompileFromFile()
+
+// 텍스처
 #include "WICTextureLoader.h"
 #include "DDSTextureLoader.h"
 #pragma comment(lib, "DirectXTK.lib")

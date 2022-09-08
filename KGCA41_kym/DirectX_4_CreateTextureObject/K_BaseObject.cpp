@@ -43,7 +43,7 @@ bool K_BaseObject::Render()
         &offset
     ); // s가 붙은 것들은 배열로 넘길 수 있다
 
-    m_pImmediateContext->IASetInputLayout(m_pVertexLayout); // 인풋-어셈블 스테이지 세팅
+    m_pImmediateContext->IASetInputLayout(m_pVertexLayout); // 인풋-어셈블 스테이지 세팅, 레이아웃을 넘겨주는듯?
     m_pImmediateContext->VSSetShader(m_pVS, NULL, 0); // 버텍스 쉐이더 세팅, 뒤에 두개는 일단 사용하지 않을것
     m_pImmediateContext->PSSetShader(m_pPS, NULL, 0); // 픽셀 쉐이더 세팅, 얘는 반드시 해야함. 그러므로 픽셀 쉐이더를 만들러가보자..
 
