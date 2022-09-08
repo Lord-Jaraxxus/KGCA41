@@ -19,23 +19,38 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="K_BaseObject.cpp" />
     <ClCompile Include="K_Device.cpp" />
     <ClCompile Include="K_GameCore.cpp" />
     <ClCompile Include="K_Input.cpp" />
+    <ClCompile Include="K_Shader.cpp" />
+    <ClCompile Include="K_ShaderManager.cpp" />
     <ClCompile Include="K_Timer.cpp" />
+    <ClCompile Include="k_Vector.cpp" />
+    <ClCompile Include="k_Vector2D.cpp" />
     <ClCompile Include="K_Window.cpp" />
     <ClCompile Include="K_Write.cpp" />
     <ClCompile Include="Sample.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="K_BaseObject.h" />
     <ClInclude Include="K_Device.h" />
     <ClInclude Include="K_GameCore.h" />
     <ClInclude Include="K_Input.h" />
+    <ClInclude Include="K_Shader.h" />
+    <ClInclude Include="K_ShaderManager.h" />
     <ClInclude Include="K_Std.h" />
     <ClInclude Include="K_Timer.h" />
+    <ClInclude Include="k_Vector.h" />
+    <ClInclude Include="k_Vector2D.h" />
     <ClInclude Include="K_Window.h" />
     <ClInclude Include="K_Write.h" />
     <ClInclude Include="Sample.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="DefaultShape.txt" />
+    <Text Include="PixelShader.txt" />
+    <Text Include="VertexShader.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -106,7 +106,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>../../output/Debug</OutDir>
-    <IntDir>../../output/Debug/DirectX_4_CreateTextureObject</IntDir>
+    <IntDir>../../output/Debug/DirectX_5_CreateObject</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>

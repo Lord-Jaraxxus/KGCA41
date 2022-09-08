@@ -1,6 +1,6 @@
 #include "K_BaseObject.h"
-#include "K_TextureManager.h"
-#include "K_ShaderManager.h"
+
+static float frame_test = 0;
 
 bool K_BaseObject::Init()
 {
@@ -25,6 +25,9 @@ bool K_BaseObject::Frame()
     //m_VertexList[2].t = { 1.0f, 1.0f };
     //m_VertexList[3].t = { 1.0f, 1.0f };
     // 텍스처 좌표를 뒤집어서 그림을 좌우반전 시킨거, 근데 대체 뭔지 아직 잘 모르겠따;
+
+    m_VertexList[0] = { {frame_test, 1.0f, 0.0f}, {1.0f, 0.0f, 0.0f, 0.0f} };
+    frame_test -= 0.00001f;
 
     // gpu update 함수
     m_pImmediateContext->UpdateSubresource(m_pVertexBuffer, 0, NULL, &m_VertexList.at(0) ,0 ,0);
@@ -54,12 +57,12 @@ bool K_BaseObject::Render()
     m_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST); // 디폴트 (삼각형)
 
     // PSSetShaderResources 함수에 필요한 매개변수들
-    UINT StartSlot = 0;
-    UINT NumViews = 1;
-    ID3D11ShaderResourceView* const* ppShaderResourceViews = &m_pTexture->m_pTextureSRV;
+    //UINT StartSlot = 0;
+    //UINT NumViews = 1;
+    //ID3D11ShaderResourceView* const* ppShaderResourceViews = &m_pTexture->m_pTextureSRV;
 
-    // 텍스처를 쉐이더리소스뷰에 담아? 쉐이더리소스뷰를 통해? 아무튼 그렇게 파이프라인에 넘겨줌
-    m_pImmediateContext->PSSetShaderResources(0, 1, &m_pTexture->m_pTextureSRV);
+    //// 텍스처를 쉐이더리소스뷰에 담아? 쉐이더리소스뷰를 통해? 아무튼 그렇게 파이프라인에 넘겨줌
+    //m_pImmediateContext->PSSetShaderResources(0, 1, &m_pTexture->m_pTextureSRV);
 
     m_pImmediateContext->Draw(m_VertexList.size(), 0);
 
@@ -68,7 +71,7 @@ bool K_BaseObject::Render()
 
 bool K_BaseObject::Release()
 {
-    if (m_pTexture) m_pTexture->Release();
+    //if (m_pTexture) m_pTexture->Release();
     if (m_pVertexBuffer) m_pVertexBuffer->Release();
     if (m_pVertexLayout) m_pVertexLayout->Release();
     if (m_pShader) m_pShader->Release();
@@ -109,15 +112,15 @@ HRESULT K_BaseObject::CreateVertexBuffer()
     // 반드시 시계방향(앞면)으로 구성한다.
     m_VertexList.resize(6); 
     m_VertexList[0].p = { -0.5f, 0.5f, 0.0f };
-    m_VertexList[0].c = { 1.0f, 0.0f, 0.0f, 0.0f };
+    m_VertexList[0].c = { 1.0f, 1.0f, 0.0f, 0.0f };
     m_VertexList[0].t = { 0.0f, 0.0f };
 
     m_VertexList[1].p = { +0.5f, 0.5f,  0.0f };
-    m_VertexList[1].c = { 1.0f, 0.0f, 0.0f, 0.0f };
+    m_VertexList[1].c = { 1.0f, 1.0f, 0.0f, 0.0f };
     m_VertexList[1].t = { 1.0f, 0.0f };
 
     m_VertexList[2].p = { -0.5f, -0.5f, 0.0f };
-    m_VertexList[2].c = { 1.0f, 0.0f, 0.0f, 0.0f };
+    m_VertexList[2].c = { 1.0f, 1.0f, 0.0f, 0.0f };
     m_VertexList[2].t = { 0.0f, 1.0f };
 
     m_VertexList[3].p = m_VertexList[2].p;
@@ -129,7 +132,7 @@ HRESULT K_BaseObject::CreateVertexBuffer()
     m_VertexList[4].t = m_VertexList[1].t;
 
     m_VertexList[5].p = { +0.5f, -0.5f, 0.0f };
-    m_VertexList[5].c = { 1.0f, 0.0f, 0.0f, 0.0f };
+    m_VertexList[5].c = { 1.0f, 1.0f, 0.0f, 0.0f };
     m_VertexList[5].t = { 1.0f, 1.0f };
 
     UINT NumVertex = m_VertexList.size();
@@ -206,9 +209,9 @@ HRESULT K_BaseObject::CreateVertexLayout()
 
 bool K_BaseObject::LoadTexture(std::wstring filename)
 {
-   
-    m_pTexture = I_Tex.Load(filename);
-    if (m_pTexture != nullptr) return true;
+    //m_pTexture = I_Tex.Load(filename);
+    //if (m_pTexture != nullptr) return true;
 
-    return false;
+    //return false;
+    return true;
 }

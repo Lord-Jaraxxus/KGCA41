@@ -1,18 +1,20 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(498,5): warning MSB8004: Intermediate 디렉터리가 슬래시로 끝나지 않습니다. Intermediate 디렉터리의 적절한 평가를 허용하는 데 필요하므로 이 빌드 인스턴스에서 슬래시를 추가합니다.
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: Output 디렉터리가 슬래시로 끝나지 않습니다. Output 디렉터리의 적절한 평가를 허용하는 데 필요하므로 이 빌드 인스턴스에서 슬래시를 추가합니다.
-  K_BaseObject.cpp
-D:\KGCA41\KGCA41_kym\DirectX_4_CreateTextureObject\K_BaseObject.cpp(61,53): warning C4267: '인수': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\KGCA41\KGCA41_kym\DirectX_4_CreateTextureObject\K_BaseObject.cpp(137,41): warning C4267: '초기화 중': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  K_Device.cpp
-D:\KGCA41\KGCA41_kym\DirectX_4_CreateTextureObject\K_Device.cpp(121,26): warning C4244: '=': 'LONG'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\KGCA41\KGCA41_kym\DirectX_4_CreateTextureObject\K_Device.cpp(122,27): warning C4244: '=': 'LONG'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  k_Vector.cpp
-  k_Vector2D.cpp
-  K_Window.cpp
-D:\KGCA41\KGCA41_kym\DirectX_4_CreateTextureObject\K_Window.cpp(131,34): warning C4838: 'UINT'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\KGCA41\KGCA41_kym\DirectX_4_CreateTextureObject\K_Window.cpp(131,49): warning C4838: 'UINT'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-  Sample.cpp
-  코드를 생성하고 있습니다...
-DirectXTK.lib(pch.obj) : warning LNK4099: 'DirectXTK.pdb' PDB를 'DirectXTK.lib(pch.obj)' 또는 'D:\KGCA41\output\Debug\DirectXTK.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-DirectXTK.lib(WICTextureLoader.obj) : warning LNK4099: 'DirectXTK.pdb' PDB를 'DirectXTK.lib(WICTextureLoader.obj)' 또는 'D:\KGCA41\output\Debug\DirectXTK.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-  DirectX_4_CreateTextureObject.vcxproj -> D:\KGCA41\output\Debug\DirectX_4_CreateTextureObject.exe
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: 중간 디렉터리(../../output/Debug/DirectX_4_CreateTextureObject\)에 다른 프로젝트(DirectX_5_CreateObject.vcxproj)에서 공유하는 파일이 포함되어 있습니다.  이로 인해 잘못된 정리 및 다시 빌드 동작이 수행될 수 있습니다.
+K_BaseObject.obj : error LNK2019: "public: bool __cdecl K_Texture::Release(void)" (?Release@K_Texture@@QEAA_NXZ)"public: virtual bool __cdecl K_BaseObject::Release(void)" (?Release@K_BaseObject@@UEAA_NXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
+K_BaseObject.obj : error LNK2019: "public: bool __cdecl K_Shader::Release(void)" (?Release@K_Shader@@QEAA_NXZ)"public: virtual bool __cdecl K_BaseObject::Release(void)" (?Release@K_BaseObject@@UEAA_NXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
+K_BaseObject.obj : error LNK2019: "private: __cdecl K_TextureManager::K_TextureManager(void)" (??0K_TextureManager@@AEAA@XZ)"public: static class K_TextureManager & __cdecl K_Singleton<class K_TextureManager>::GetInstance(void)" (?GetInstance@?$K_Singleton@VK_TextureManager@@@@SAAEAVK_TextureManager@@XZ) 함수에서 참조되는 확인할 수 없는 외부 기호
+Sample.obj : error LNK2001: 확인할 수 없는 외부 기호 "private: __cdecl K_TextureManager::K_TextureManager(void)" (??0K_TextureManager@@AEAA@XZ)
+K_BaseObject.obj : error LNK2019: "private: __cdecl K_TextureManager::~K_TextureManager(void)" (??1K_TextureManager@@AEAA@XZ)"void __cdecl `public: static class K_TextureManager & __cdecl K_Singleton<class K_TextureManager>::GetInstance(void)'::`2'::`dynamic atexit destructor for 'theSingleInstance''(void)" (??__FtheSingleInstance@?1??GetInstance@?$K_Singleton@VK_TextureManager@@@@SAAEAVK_TextureManager@@XZ@YAXXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
+Sample.obj : error LNK2001: 확인할 수 없는 외부 기호 "private: __cdecl K_TextureManager::~K_TextureManager(void)" (??1K_TextureManager@@AEAA@XZ)
+K_BaseObject.obj : error LNK2019: "public: class K_Texture * __cdecl K_TextureManager::Load(class std::basic_string<wchar_t,struct std::char_traits<wchar_t>,class std::allocator<wchar_t> >)" (?Load@K_TextureManager@@QEAAPEAVK_Texture@@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@Z)"public: bool __cdecl K_BaseObject::LoadTexture(class std::basic_string<wchar_t,struct std::char_traits<wchar_t>,class std::allocator<wchar_t> >)" (?LoadTexture@K_BaseObject@@QEAA_NV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@Z) 함수에서 참조되는 확인할 수 없는 외부 기호
+Sample.obj : error LNK2001: 확인할 수 없는 외부 기호 "public: class K_Texture * __cdecl K_TextureManager::Load(class std::basic_string<wchar_t,struct std::char_traits<wchar_t>,class std::allocator<wchar_t> >)" (?Load@K_TextureManager@@QEAAPEAVK_Texture@@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@Z)
+K_BaseObject.obj : error LNK2019: "private: __cdecl K_ShaderManager::K_ShaderManager(void)" (??0K_ShaderManager@@AEAA@XZ)"public: static class K_ShaderManager & __cdecl K_Singleton<class K_ShaderManager>::GetInstance(void)" (?GetInstance@?$K_Singleton@VK_ShaderManager@@@@SAAEAVK_ShaderManager@@XZ) 함수에서 참조되는 확인할 수 없는 외부 기호
+Sample.obj : error LNK2001: 확인할 수 없는 외부 기호 "private: __cdecl K_ShaderManager::K_ShaderManager(void)" (??0K_ShaderManager@@AEAA@XZ)
+K_BaseObject.obj : error LNK2019: "private: __cdecl K_ShaderManager::~K_ShaderManager(void)" (??1K_ShaderManager@@AEAA@XZ)"void __cdecl `public: static class K_ShaderManager & __cdecl K_Singleton<class K_ShaderManager>::GetInstance(void)'::`2'::`dynamic atexit destructor for 'theSingleInstance''(void)" (??__FtheSingleInstance@?1??GetInstance@?$K_Singleton@VK_ShaderManager@@@@SAAEAVK_ShaderManager@@XZ@YAXXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
+Sample.obj : error LNK2001: 확인할 수 없는 외부 기호 "private: __cdecl K_ShaderManager::~K_ShaderManager(void)" (??1K_ShaderManager@@AEAA@XZ)
+K_BaseObject.obj : error LNK2019: "public: class K_Shader * __cdecl K_ShaderManager::Load(class std::basic_string<wchar_t,struct std::char_traits<wchar_t>,class std::allocator<wchar_t> >)" (?Load@K_ShaderManager@@QEAAPEAVK_Shader@@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@Z)"public: bool __cdecl K_BaseObject::CreateShader(class std::basic_string<wchar_t,struct std::char_traits<wchar_t>,class std::allocator<wchar_t> >)" (?CreateShader@K_BaseObject@@QEAA_NV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@Z) 함수에서 참조되는 확인할 수 없는 외부 기호
+Sample.obj : error LNK2019: "public: class K_Texture * __cdecl K_TextureManager::Find(class std::basic_string<wchar_t,struct std::char_traits<wchar_t>,class std::allocator<wchar_t> >)" (?Find@K_TextureManager@@QEAAPEAVK_Texture@@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@Z)"public: virtual bool __cdecl Sample::Render(void)" (?Render@Sample@@UEAA_NXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
+Sample.obj : error LNK2019: "public: void __cdecl K_TextureManager::SetDevice(struct ID3D11Device *,struct ID3D11DeviceContext *)" (?SetDevice@K_TextureManager@@QEAAXPEAUID3D11Device@@PEAUID3D11DeviceContext@@@Z)"public: virtual bool __cdecl Sample::Init(void)" (?Init@Sample@@UEAA_NXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
+Sample.obj : error LNK2019: "public: void __cdecl K_ShaderManager::SetDevice(struct ID3D11Device *,struct ID3D11DeviceContext *)" (?SetDevice@K_ShaderManager@@QEAAXPEAUID3D11Device@@PEAUID3D11DeviceContext@@@Z)"public: virtual bool __cdecl Sample::Init(void)" (?Init@Sample@@UEAA_NXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
+..\..\output\Debug\DirectX_4_CreateTextureObject.exe : fatal error LNK1120: 11개의 확인할 수 없는 외부 참조입니다.

@@ -1,24 +1,32 @@
 #pragma once
-#include <windows.h>
+
 #include <map>
 #include <vector>
 #include <list>
 #include <set>
 #include <string>
-#include <d3d11.h>
-#include <d3dcompiler.h> // D3DCompileFromFile()
-#pragma comment(lib, "d3d11.lib")
-#pragma comment(lib, "d3dcompiler.lib")
-#pragma comment(lib, "dxgi.lib")
 #pragma comment(lib, "winmm.lib") // timeGetTime
 
+#include <d3d11.h> // 얘는 꼭 있어야하는듯? 다른애들도 m_pDevice 갖다써서 그런가
+
+// 윈도우
+//#include <windows.h>
+
+// 디바이스
+//#pragma comment(lib, "d3d11.lib")
+//#pragma comment(lib, "dxgi.lib")
+
+// 쉐이더
+//#pragma comment(lib, "d3dcompiler.lib")
+//#include <d3dcompiler.h> // D3DCompileFromFile()
+
+// 텍스처
 //#include "WICTextureLoader.h"
-//#include "DDSTextureLoader.h"
+//#include "DDSTextureLoader.h" // ???? 얘한테 뭐가 있나?? 아닌데? 얜 중간에 넣은놈인데?
 //#pragma comment(lib, "DirectXTK.lib")
- 
+
 //#include"k_Vector.h"
 //#include"k_Vector2D.h"
-
 
 extern HWND g_hWnd;
 extern RECT g_rtClient;

@@ -1,6 +1,11 @@
 #pragma once
-#include "K_Texture.h"
+//#include "K_Texture.h"
+//#include "K_TextureManager.h"
 #include "K_Shader.h"
+#include "K_ShaderManager.h"
+
+#include"k_Vector.h"
+#include"k_Vector2D.h"
 
 struct SimpleVertex
 {
@@ -34,7 +39,7 @@ public:
 	K_Shader* m_pShader;
 
 public:
-	K_Texture* m_pTexture; // 지금은 포인터 아님, 한장만 쓸거, 나중에바꿀꺼
+	//K_Texture* m_pTexture;
 
 public:
 	HRESULT	CreateVertexBuffer();

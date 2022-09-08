@@ -1,5 +1,10 @@
 #pragma once
 #include "K_Std.h"
+
+#include "WICTextureLoader.h"
+#include "DDSTextureLoader.h"
+#pragma comment(lib, "DirectXTK.lib")
+
 class K_Texture
 {
 public:

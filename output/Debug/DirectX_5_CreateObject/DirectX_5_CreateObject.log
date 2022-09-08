@@ -1,20 +1,6 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(498,5): warning MSB8004: Intermediate 디렉터리가 슬래시로 끝나지 않습니다. Intermediate 디렉터리의 적절한 평가를 허용하는 데 필요하므로 이 빌드 인스턴스에서 슬래시를 추가합니다.
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: Output 디렉터리가 슬래시로 끝나지 않습니다. Output 디렉터리의 적절한 평가를 허용하는 데 필요하므로 이 빌드 인스턴스에서 슬래시를 추가합니다.
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(498,5): warning MSB8004: Intermediate 디렉터리가 슬래시로 끝나지 않습니다. Intermediate 디렉터리의 적절한 평가를 허용하는 데 필요하므로 이 빌드 인스턴스에서 슬래시를 추가합니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: Output 디렉터리가 슬래시로 끝나지 않습니다. Output 디렉터리의 적절한 평가를 허용하는 데 필요하므로 이 빌드 인스턴스에서 슬래시를 추가합니다.
   K_BaseObject.cpp
-  K_Device.cpp
-A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\DirectX_5_CreateObject\K_Device.cpp(121,26): warning C4244: '=': 'LONG'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\DirectX_5_CreateObject\K_Device.cpp(122,27): warning C4244: '=': 'LONG'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  K_Shader.cpp
-  K_ShaderManager.cpp
-  K_Texture.cpp
-  K_TextureManager.cpp
-  k_Vector.cpp
-  k_Vector2D.cpp
-  K_Window.cpp
-A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\DirectX_5_CreateObject\K_Window.cpp(159,34): warning C4838: 'UINT'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-A:\KGCA41\KGCA41_KingYoungMin\KGCA41_kym\DirectX_5_CreateObject\K_Window.cpp(159,49): warning C4838: 'UINT'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-  Sample.cpp
-  코드를 생성하고 있습니다...
-K_Texture.obj : error LNK2019: "long __cdecl DirectX::CreateWICTextureFromFile(struct ID3D11Device *,struct ID3D11DeviceContext *,wchar_t const *,struct ID3D11Resource * *,struct ID3D11ShaderResourceView * *,unsigned int)" (?CreateWICTextureFromFile@DirectX@@YAJPAUID3D11Device@@PAUID3D11DeviceContext@@PB_WPAPAUID3D11Resource@@PAPAUID3D11ShaderResourceView@@I@Z)"public: long __thiscall K_Texture::Load(struct ID3D11Device *,struct ID3D11DeviceContext *,class std::basic_string<wchar_t,struct std::char_traits<wchar_t>,class std::allocator<wchar_t> >)" (?Load@K_Texture@@QAEJPAUID3D11Device@@PAUID3D11DeviceContext@@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@Z) 함수에서 참조되는 확인할 수 없는 외부 기호
-..\..\Lib\DirectXTK.lib : warning LNK4272: 'x64' 라이브러리 컴퓨터 종류가 'x86' 대상 컴퓨터 종류와 충돌합니다.
-..\..\output\Debug\DirectX_5_CreateObject.exe : fatal error LNK1120: 1개의 확인할 수 없는 외부 참조입니다.
+D:\KGCA41\KGCA41_kym\DirectX_5_CreateObject\K_BaseObject.cpp(64,53): warning C4267: '인수': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\KGCA41\KGCA41_kym\DirectX_5_CreateObject\K_BaseObject.cpp(135,41): warning C4267: '초기화 중': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  DirectX_5_CreateObject.vcxproj -> D:\KGCA41\output\Debug\DirectX_5_CreateObject.exe

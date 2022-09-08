@@ -3,6 +3,7 @@
 #include "K_Timer.h"
 #include "K_Input.h"
 #include "K_Write.h"
+#include "K_BaseObject.h"
 
 class K_GameCore : public K_Device
 {
@@ -24,6 +25,9 @@ private:
 
 public:
 	bool m_bGameRun = true;
+
+public:
+	std::vector<K_BaseObject*> m_pObjectList;
 
 };
 

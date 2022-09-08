@@ -14,7 +14,7 @@
 //}  
 
 bool Sample::Init() 
-{
+{                                                                                                                                        
 	I_Tex.SetDevice(m_pd3dDevice, m_pImmediateContext);
 	I_Shader.SetDevice(m_pd3dDevice, m_pImmediateContext);
 

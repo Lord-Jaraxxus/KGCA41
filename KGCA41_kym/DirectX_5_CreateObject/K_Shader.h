@@ -1,5 +1,7 @@
 #pragma once
 #include "K_Std.h"
+#pragma comment(lib, "d3dcompiler.lib")
+#include <d3dcompiler.h> // D3DCompileFromFile()
 
 class K_Shader
 {

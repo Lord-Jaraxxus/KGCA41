@@ -29,6 +29,15 @@ bool K_GameCore::K_GameCoreInit()
     if (I_Input.Init() != true) return false;
     if (I_Write.Init() != true) return false;
     I_Write.Set(m_pSwapChain);
+
+    I_Shader.SetDevice(m_pd3dDevice, m_pImmediateContext);
+    I_Shader.Load(L"DefaultShape.txt");
+    //I_Tex.SetDevice(m_pd3dDevice, m_pImmediateContext);
+    K_BaseObject* pObject = new K_BaseObject;
+    pObject->Create(m_pd3dDevice, m_pImmediateContext,
+        L"../../data/img/1.png",
+        L"DefaultShape.txt");
+    m_pObjectList.push_back(pObject);
 	return true; 
 }
 
@@ -39,6 +48,7 @@ bool K_GameCore::K_GameCoreFrame()
     if (I_Timer.Frame() != true) return false;
     if (I_Input.Frame() != true) return false;
     if (I_Write.Frame() != true) return false;
+    for (auto obj : m_pObjectList) { obj->Frame(); }
 	return true;
 }
 
@@ -58,7 +68,7 @@ bool K_GameCore::K_GameCoreRender()
     //if (m_Write.Render() != true) return false;
     I_Write.Draw(0, 0, I_Timer.m_szTimer, { 1,0,0,1 });
     I_Write.Draw(100, 400, I_Timer.m_szTimer, { 1,1,1,0.8 });
-
+    for (auto obj : m_pObjectList) { obj->Render(); }
     K_GameCorePostRender();
 	return true;
 }
@@ -76,6 +86,11 @@ bool K_GameCore::K_GameCoreRelease()
     if (I_Timer.Release() != true) return false;
     if (I_Input.Release() != true) return false;
     if (I_Write.Release() != true) return false;
+    for (auto obj : m_pObjectList)
+    {
+        obj->Release();
+        delete obj;
+    }
 	return true;
 }
 

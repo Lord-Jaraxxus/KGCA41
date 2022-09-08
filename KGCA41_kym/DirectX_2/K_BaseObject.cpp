@@ -84,13 +84,18 @@ HRESULT K_BaseObject::CreateVertexBuffer()
     // 
     // 반드시 시계방향(앞면)으로 구성한다.
     m_VertexList.resize(6); 
-    m_VertexList[0] = { {-0.5f, 0.5f, 0.0f}, {1.0f, 0.0f, 0.0f, 0.0f} };
-    m_VertexList[1] = { {+0.5f, 0.5f,  0.0f}, {0.0f, 1.0f, 0.0f, 0.0f} };
-    m_VertexList[2] = { {-0.5f, -0.5f, 0.0f}, {0.0f, 0.0f, 1.0f, 0.0f} };
-    m_VertexList[3] = { {-0.5f, -0.5f, 0.0f}, {1.0f, 0.0f, 1.0f, 0.0f} };
-    m_VertexList[4] = { {+0.5f, 0.5f,  0.0f}, {1.0f, 1.0f, 0.0f, 0.0f} };
-    m_VertexList[5] = { {+0.5f, -0.5f, 0.0f}, {1.0f, 0.0f, 1.0f, 0.0f} };
-
+    //m_VertexList[0] = { {-0.5f, 0.5f, 0.0f}, {1.0f, 0.0f, 0.0f, 0.0f} };
+    //m_VertexList[1] = { {+0.5f, 0.5f,  0.0f}, {0.0f, 1.0f, 0.0f, 0.0f} };
+    //m_VertexList[2] = { {-0.5f, -0.5f, 0.0f}, {0.0f, 0.0f, 1.0f, 0.0f} };
+    //m_VertexList[3] = { {-0.5f, -0.5f, 0.0f}, {1.0f, 0.0f, 1.0f, 0.0f} };
+    //m_VertexList[4] = { {+0.5f, 0.5f,  0.0f}, {1.0f, 1.0f, 0.0f, 0.0f} };
+    //m_VertexList[5] = { {+0.5f, -0.5f, 0.0f}, {1.0f, 0.0f, 1.0f, 0.0f} };
+    m_VertexList[0] = { {-0.5f, 0.5f, 0.0f}, {0.0f, 0.0f, 0.0f, 0.0f} };
+    m_VertexList[1] = { {+0.5f, 0.5f,  0.0f}, {0.0f, 0.0f, 0.0f, 0.0f} };
+    m_VertexList[2] = { {-0.5f, -0.5f, 0.0f}, {0.0f, 0.0f, 0.0f, 0.0f} };
+    m_VertexList[3] = { {-0.5f, -0.5f, 0.0f}, {0.0f, 0.0f, 0.0f, 0.0f} };
+    m_VertexList[4] = { {+0.5f, 0.5f,  0.0f}, {0.0f, 0.0f, 0.0f, 0.0f} };
+    m_VertexList[5] = { {+0.5f, -0.5f, 0.0f}, {0.0f, 0.0f, 0.0f, 0.0f} };
     UINT NumVertex = m_VertexList.size();
     D3D11_BUFFER_DESC       bd;
     ZeroMemory(&bd, sizeof(bd));

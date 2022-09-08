@@ -1,5 +1,6 @@
 #pragma once
 #include "K_Std.h"
+#include <windows.h>
 
 class K_Window 
 {
