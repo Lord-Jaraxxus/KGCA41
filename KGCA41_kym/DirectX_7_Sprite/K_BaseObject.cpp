@@ -1,6 +1,7 @@
 #include "K_BaseObject.h"
 
 static float frame_test = 0;
+static bool test_flag = true;
 
 bool K_BaseObject::Init()
 {
@@ -27,7 +28,11 @@ bool K_BaseObject::Frame()
     // 텍스처 좌표를 뒤집어서 그림을 좌우반전 시킨거, 근데 대체 뭔지 아직 잘 모르겠따;
 
     m_VertexList[0] = { {frame_test, 1.0f, 0.0f}, {1.0f, 0.0f, 0.0f, 0.0f} };
-    frame_test -= 0.00001f;
+    if (frame_test <= -1.0f) { test_flag = false; }
+    else if (frame_test >= 0.0f) { test_flag = true; }
+
+    if (test_flag == true) frame_test -= 0.001f;
+    else frame_test += 0.001f;
 
     // gpu update 함수
     m_pImmediateContext->UpdateSubresource(m_pVertexBuffer, 0, NULL, &m_VertexList.at(0) ,0 ,0);
