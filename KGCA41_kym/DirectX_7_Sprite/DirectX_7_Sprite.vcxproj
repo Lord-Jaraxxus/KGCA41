@@ -21,10 +21,13 @@
   <ItemGroup>
     <ClCompile Include="K_BaseObject.cpp" />
     <ClCompile Include="K_Device.cpp" />
+    <ClCompile Include="K_DxState.cpp" />
     <ClCompile Include="K_GameCore.cpp" />
     <ClCompile Include="K_Input.cpp" />
     <ClCompile Include="K_Shader.cpp" />
     <ClCompile Include="K_ShaderManager.cpp" />
+    <ClCompile Include="K_Texture.cpp" />
+    <ClCompile Include="K_TextureManager.cpp" />
     <ClCompile Include="K_Timer.cpp" />
     <ClCompile Include="k_Vector.cpp" />
     <ClCompile Include="k_Vector2D.cpp" />
@@ -35,11 +38,14 @@
   <ItemGroup>
     <ClInclude Include="K_BaseObject.h" />
     <ClInclude Include="K_Device.h" />
+    <ClInclude Include="K_DxState.h" />
     <ClInclude Include="K_GameCore.h" />
     <ClInclude Include="K_Input.h" />
     <ClInclude Include="K_Shader.h" />
     <ClInclude Include="K_ShaderManager.h" />
     <ClInclude Include="K_Std.h" />
+    <ClInclude Include="K_Texture.h" />
+    <ClInclude Include="K_TextureManager.h" />
     <ClInclude Include="K_Timer.h" />
     <ClInclude Include="k_Vector.h" />
     <ClInclude Include="k_Vector2D.h" />
@@ -155,7 +161,7 @@
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
       <AdditionalIncludeDirectories>../../include/dxtk</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>

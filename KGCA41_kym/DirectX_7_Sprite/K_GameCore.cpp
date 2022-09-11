@@ -32,11 +32,11 @@ bool K_GameCore::K_GameCoreInit()
 
     I_Shader.SetDevice(m_pd3dDevice, m_pImmediateContext);
     I_Shader.Load(L"DefaultShape.txt");
-    //I_Tex.SetDevice(m_pd3dDevice, m_pImmediateContext);
+    I_Tex.SetDevice(m_pd3dDevice, m_pImmediateContext);
+    K_DxState::SetState(m_pd3dDevice);
+
     K_BaseObject* pObject = new K_BaseObject;
-    pObject->Create(m_pd3dDevice, m_pImmediateContext,
-        L"../../data/img/1.png",
-        L"DefaultShape.txt");
+    pObject->Create(m_pd3dDevice, m_pImmediateContext, L"../../data/img/1.png", L"DefaultShape.txt");
     m_pObjectList.push_back(pObject);
 	return true; 
 }
@@ -55,6 +55,7 @@ bool K_GameCore::K_GameCoreFrame()
 bool K_GameCore::K_GameCorePreRender()
 {
     K_Device::PreRender();
+    m_pImmediateContext->PSSetSamplers(0, 1, &K_DxState::g_pDefaultSS);
     return true;
 }
   
@@ -65,7 +66,7 @@ bool K_GameCore::K_GameCoreRender()
     if (Render() != true) return false;
     if (I_Timer.Render() != true) return false;
     if (I_Input.Render() != true) return false; 
-    //if (m_Write.Render() != true) return false;
+    //if (I_Write.Render() != true) return false;
     I_Write.Draw(0, 0, I_Timer.m_szTimer, { 1,0,0,1 });
     I_Write.Draw(100, 400, I_Timer.m_szTimer, { 1,1,1,0.8 });
     for (auto obj : m_pObjectList) { obj->Render(); }
@@ -81,6 +82,7 @@ bool K_GameCore::K_GameCorePostRender()
 
 bool K_GameCore::K_GameCoreRelease()
 {
+    K_DxState::Release();
     if (Release() != true) return false;
     if (K_Device::Release() != true) return false;
     if (I_Timer.Release() != true) return false;

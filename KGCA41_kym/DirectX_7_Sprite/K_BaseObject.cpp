@@ -67,7 +67,7 @@ bool K_BaseObject::Render()
     //ID3D11ShaderResourceView* const* ppShaderResourceViews = &m_pTexture->m_pTextureSRV;
 
     //// 텍스처를 쉐이더리소스뷰에 담아? 쉐이더리소스뷰를 통해? 아무튼 그렇게 파이프라인에 넘겨줌
-    //m_pImmediateContext->PSSetShaderResources(0, 1, &m_pTexture->m_pTextureSRV);
+    m_pImmediateContext->PSSetShaderResources(0, 1, &m_pTexture->m_pTextureSRV);
 
     m_pImmediateContext->Draw(m_VertexList.size(), 0);
 
@@ -76,7 +76,7 @@ bool K_BaseObject::Render()
 
 bool K_BaseObject::Release()
 {
-    //if (m_pTexture) m_pTexture->Release();
+    if (m_pTexture) m_pTexture->Release();
     if (m_pVertexBuffer) m_pVertexBuffer->Release();
     if (m_pVertexLayout) m_pVertexLayout->Release();
     if (m_pShader) m_pShader->Release();
@@ -214,9 +214,8 @@ HRESULT K_BaseObject::CreateVertexLayout()
 
 bool K_BaseObject::LoadTexture(std::wstring filename)
 {
-    //m_pTexture = I_Tex.Load(filename);
-    //if (m_pTexture != nullptr) return true;
+    m_pTexture = I_Tex.Load(filename);
+    if (m_pTexture != nullptr) return true;
 
-    //return false;
-    return true;
+    return false;
 }
