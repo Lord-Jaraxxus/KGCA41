@@ -1,6 +1,6 @@
 #pragma once
 #include "K_Window.h"
-#include <d3d11.h>
+
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "dxgi.lib")
 
@@ -11,7 +11,6 @@ public:
 	virtual bool Frame();
 	virtual bool Render();
 	virtual bool Release();
-
 public:
 	bool PreRender();
 	bool PostRender();
@@ -32,5 +31,6 @@ public:
 	HRESULT CreateSwapChain();	// 3) ½º¿ÒÃ¼ÀÎ »ý¼º
 	HRESULT CreateRenderTargetView();	// 4) ·»´õÅ¸°Ùºä »ý¼º
 	void CreateViewport();	// 5) ºäÆ÷Æ® ¼³Á¤
+
 };
 

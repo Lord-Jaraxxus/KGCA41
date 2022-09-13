@@ -1,4 +1,53 @@
-#include "K_Device.h"
+ #include "K_Device.h"
+
+bool K_Device::Init()
+{
+    HRESULT hr;
+    if (FAILED(hr = CreateDevice())) return false;
+    if (FAILED(hr = CreateDXGIDevice())) return false;
+    if (FAILED(hr = CreateSwapChain())) return false;
+    if (FAILED(hr = CreateRenderTargetView())) return false;
+    CreateViewport();
+
+    return true;
+}
+
+bool K_Device::Frame()
+{
+    return true;
+}
+
+bool K_Device::PreRender()
+{
+    m_pImmediateContext->OMSetRenderTargets(1, &m_pRTV, NULL);
+    float color[4] = { 0.5f,0.5f,0.5f,1.0f };
+    m_pImmediateContext->ClearRenderTargetView(m_pRTV, color);
+    return true;
+}
+
+bool K_Device::Render()
+{
+    PreRender();
+    PostRender();
+    return true;
+}
+
+bool K_Device::PostRender()
+{
+    m_pSwapChain->Present(0, 0);
+    return true;
+}
+
+bool K_Device::Release()
+{
+    if (m_pd3dDevice) m_pd3dDevice->Release();
+    if (m_pImmediateContext) m_pImmediateContext->Release();
+    if (m_pGIFactory) m_pGIFactory->Release();
+    if (m_pSwapChain) m_pSwapChain->Release();
+    if (m_pRTV) m_pRTV->Release();
+    return true;
+}
+
 
 // 1)디바이스 만들기
 HRESULT K_Device::CreateDevice()
@@ -22,7 +71,7 @@ HRESULT K_Device::CreateDevice()
         nullptr,
         D3D_DRIVER_TYPE_HARDWARE,
         NULL,
-        0,
+        D3D11_CREATE_DEVICE_BGRA_SUPPORT, // D2D를 쓰려면 플래그를 이걸로 해야한다 
         pFeatureLevels,
         FeatureLevels,
         D3D11_SDK_VERSION,
@@ -107,51 +156,4 @@ void K_Device::CreateViewport()
     m_pImmediateContext->RSSetViewports(1, &vp);
 }
 
-bool K_Device::Init()
-{
-    HRESULT hr;
-    if (FAILED(hr = CreateDevice())) return false;
-    if (FAILED(hr = CreateDXGIDevice())) return false;
-    if (FAILED(hr = CreateSwapChain())) return false;
-    if (FAILED(hr = CreateRenderTargetView())) return false;
-    CreateViewport();
-     
-    return true;
-}
-
-bool K_Device::Frame()
-{
-    return true;
-}
-
-bool K_Device::PreRender()
-{
-    m_pImmediateContext->OMSetRenderTargets(1, &m_pRTV, NULL);
-    float color[4] = { 1.0f, 0.0f, 1.0f, 1.0f };
-    m_pImmediateContext->ClearRenderTargetView(m_pRTV, color);
-    return true;
-}
-
-bool K_Device::Render()
-{
-    PreRender();
-    PostRender();
-    return true;
-}
-
-bool K_Device::PostRender()
-{
-    m_pSwapChain->Present(0, 0);
-    return true;
-}
-
-bool K_Device::Release()
-{
-    if (m_pd3dDevice) m_pd3dDevice->Release();
-    if (m_pImmediateContext) m_pImmediateContext->Release();
-    if (m_pGIFactory) m_pGIFactory->Release();
-    if (m_pSwapChain) m_pSwapChain->Release();
-    if (m_pRTV) m_pRTV->Release();
-    return true;
-}
 

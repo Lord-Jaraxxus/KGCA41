@@ -39,7 +39,7 @@ bool K_BaseObject::Frame()
     return true;
 }
 
-bool K_BaseObject::Render()
+bool K_BaseObject::PreRender()
 {
     UINT stride = sizeof(SimpleVertex); // 정점 1개의 바이트용량
     UINT offset = 0; // 정점버퍼에서 출발지점(바이트)
@@ -67,8 +67,22 @@ bool K_BaseObject::Render()
     //ID3D11ShaderResourceView* const* ppShaderResourceViews = &m_pTexture->m_pTextureSRV;
 
     //// 텍스처를 쉐이더리소스뷰에 담아? 쉐이더리소스뷰를 통해? 아무튼 그렇게 파이프라인에 넘겨줌
-    m_pImmediateContext->PSSetShaderResources(0, 1, &m_pTexture->m_pTextureSRV);
+    ID3D11ShaderResourceView* srv = m_pTexture->GetSRV();
+    m_pImmediateContext->PSSetShaderResources(0, 1, &srv);
 
+    return true;
+}
+
+bool K_BaseObject::Render()
+{
+    PreRender();
+    PostRender();
+
+    return true;
+}
+
+bool K_BaseObject::PostRender()
+{
     m_pImmediateContext->Draw(m_VertexList.size(), 0);
 
     return true;
@@ -116,15 +130,15 @@ HRESULT K_BaseObject::CreateVertexBuffer()
     // 
     // 반드시 시계방향(앞면)으로 구성한다.
     m_VertexList.resize(6); 
-    m_VertexList[0].p = { -0.5f, 0.5f, 0.0f };
+    m_VertexList[0].p = { -1.0f, 1.0f, 0.0f };
     m_VertexList[0].c = { 1.0f, 1.0f, 0.0f, 0.0f };
     m_VertexList[0].t = { 0.0f, 0.0f };
 
-    m_VertexList[1].p = { +0.5f, 0.5f,  0.0f };
+    m_VertexList[1].p = { +1.0f, 1.0f,  0.0f };
     m_VertexList[1].c = { 1.0f, 1.0f, 0.0f, 0.0f };
     m_VertexList[1].t = { 1.0f, 0.0f };
 
-    m_VertexList[2].p = { -0.5f, -0.5f, 0.0f };
+    m_VertexList[2].p = { -1.0f, -1.0f, 0.0f };
     m_VertexList[2].c = { 1.0f, 1.0f, 0.0f, 0.0f };
     m_VertexList[2].t = { 0.0f, 1.0f };
 
@@ -136,7 +150,7 @@ HRESULT K_BaseObject::CreateVertexBuffer()
     m_VertexList[4].c = m_VertexList[1].c;
     m_VertexList[4].t = m_VertexList[1].t;
 
-    m_VertexList[5].p = { +0.5f, -0.5f, 0.0f };
+    m_VertexList[5].p = { +1.0f, -1.0f, 0.0f };
     m_VertexList[5].c = { 1.0f, 1.0f, 0.0f, 0.0f };
     m_VertexList[5].t = { 1.0f, 1.0f };
 

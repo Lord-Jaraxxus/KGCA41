@@ -43,7 +43,6 @@ bool K_GameCore::K_GameCoreFrame()
     if (I_Timer.Frame() != true) return false;
     if (I_Input.Frame() != true) return false;
     if (I_Write.Frame() != true) return false;
-    for (auto obj : m_pObjectList) { obj->Frame(); }
     if (Frame() != true) return false;
 	return true;
 }
@@ -65,7 +64,6 @@ bool K_GameCore::K_GameCoreRender()
     //if (I_Write.Render() != true) return false;
     I_Write.Draw(0, 0, I_Timer.m_szTimer, { 1,0,0,1 });
     I_Write.Draw(100, 400, I_Timer.m_szTimer, { 1,1,1,0.8 });
-    for (auto obj : m_pObjectList) { obj->Render(); }
     K_GameCorePostRender();
 	return true;
 }
@@ -84,11 +82,6 @@ bool K_GameCore::K_GameCoreRelease()
     if (I_Timer.Release() != true) return false;
     if (I_Input.Release() != true) return false;
     if (I_Write.Release() != true) return false;
-    for (auto obj : m_pObjectList)
-    {
-        obj->Release();
-        delete obj;
-    }
 	return true;
 }
 

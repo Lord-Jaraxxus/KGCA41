@@ -28,7 +28,6 @@ public:
 	bool m_bGameRun = true;
 
 public:
-	std::vector<K_BaseObject*> m_pObjectList;
-
+	//std::vector<K_BaseObject*> m_pObjectList;
 };
 

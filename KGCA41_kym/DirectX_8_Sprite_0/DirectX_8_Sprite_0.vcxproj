@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="DefaultShape.txt" />
+    <Text Include="MaskShape.txt" />
     <Text Include="PixelShader.txt" />
     <Text Include="VertexShader.txt" />
   </ItemGroup>

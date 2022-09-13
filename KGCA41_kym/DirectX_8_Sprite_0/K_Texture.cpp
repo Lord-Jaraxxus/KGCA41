@@ -18,10 +18,10 @@ bool K_Texture::Render()
 bool K_Texture::Release()
 {
     if (m_pTextureSRV) m_pTextureSRV->Release();
-    if (m_pResource) m_pResource->Release();
+    if (m_pTexture) m_pTexture->Release();
 
     m_pTextureSRV = nullptr;
-    m_pResource = nullptr;
+    m_pTexture = nullptr;
 
     return true;
 }
@@ -42,9 +42,9 @@ HRESULT K_Texture::Load(ID3D11Device* d3dDevice,
             d3dDevice,
             pContext,
             filename.c_str(),
-            (ID3D11Resource**)&m_pResource,
+            (ID3D11Resource**)&m_pTexture,
             &m_pTextureSRV);
 
-    m_pResource->GetDesc(&m_Desc);
+    m_pTexture->GetDesc(&m_Desc);
     return hr;
 }

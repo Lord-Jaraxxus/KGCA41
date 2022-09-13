@@ -1,5 +1,7 @@
 #pragma once
+#pragma comment(lib, "KymGameCore_d.lib")
 #include "K_Device.h"
+
 
 class Sample : public K_Device
 {

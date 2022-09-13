@@ -1,8 +1,8 @@
 #include "K_Window.h"
 HWND g_hWnd;
 RECT g_rtClient;
-K_Window* g_pWindow = nullptr;
 
+K_Window* g_pWindow = nullptr;
 
 //// 얘는 반드시 이 규격이여야 함? 외부 함수여야 한다;
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -27,22 +27,22 @@ LRESULT K_Window::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 bool K_Window::Init()
 {
-    return true;
+    return false;
 }
 
 bool K_Window::Frame()
 {
-    return true;
+    return false;
 }
 
 bool K_Window::Render()
 {
-    return true;
+    return false;
 }
 
 bool K_Window::Release()
 {
-    return true;
+    return false;
 }
 
 K_Window::K_Window()
@@ -52,67 +52,22 @@ K_Window::K_Window()
 
 bool K_Window::Run()
 {
-    if (Init() == false) return false; // 이 Init은 밑에 껏이 돌게될껐이다?
-    //K_Window::Init();
-
-
     MSG msg = { 0, };
 
-    m_bGameRun = true;
-    m_fGameTimer = 0.0f;
-    m_fElapseTimer = 0.0f;
-    DWORD dwBeforeTime = timeGetTime(); // 1000이 1초
-    UINT fps = 0;
-    UINT counter = 0;
-    float fFps = 0.0f;
     // 기본 메시지 루프입니다:
-    while (m_bGameRun)
+    while (msg.message != WM_QUIT) 
     {
-        if (msg.message == WM_QUIT)  break;
-
-
         if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
         {
             TranslateMessage(&msg); // 메세지 번역
             DispatchMessage(&msg);  // 메세지 프로시저에 전달
         }
-        else // 처리할 메세지가 없을때 프레임 렌더 실행, 이게 게임이지 ㅋㅋ
+        else
         {
-            //if (!TCoreFrame() || !TCoreRender()) m_bGameRun = false;
-            m_bGameRun = false;
-#ifdef GoJimGo
-            m_bGameRun = true;
-#endif GoJimGo
-
+            return true;
         }
-
-
-        DWORD dwCurrentTime = timeGetTime();
-        DWORD dwElapseTime = dwCurrentTime - dwBeforeTime;
-        m_fElapseTimer = dwElapseTime / 1000.0f;
-        m_fGameTimer += m_fElapseTimer;
-
-        std::wstring timer = std::to_wstring(m_fGameTimer);
-
-        dwBeforeTime = timeGetTime();
-
-        counter++;
-        fFps += m_fElapseTimer;
-        if (fFps >= 1.0f)
-        {
-            fps = counter;
-            counter = 0;
-            fFps = 0.0f;
-        }
-        timer += L" ";
-        timer += std::to_wstring(fps);
-        timer += L"\n";
-        OutputDebugString(timer.c_str());
-
-        return true;
     }
-    Release();
-    return true;
+    return false;
 }
 
 void K_Window::CenterWindow()

@@ -19,7 +19,9 @@ class K_BaseObject
 public: 
 	virtual bool Init();
 	virtual bool Frame();
+	virtual bool PreRender();
 	virtual bool Render();
+	virtual bool PostRender();
 	virtual bool Release();
 
 	virtual bool Create(ID3D11Device* pd3dDevice,

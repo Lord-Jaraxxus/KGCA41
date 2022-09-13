@@ -158,11 +158,6 @@
   <ItemGroup>
     <ClCompile Include="Sample.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\KymGameCore\KymGameCore.vcxproj">
-      <Project>{c90af616-923e-486f-bd3c-0473c139cdbe}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
