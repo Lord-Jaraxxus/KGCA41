@@ -21,7 +21,7 @@ class K_Player : public K_2dObject
 };
 
 
-class K_Scene : public K_GameCore
+class K_Scene 
 {
 public:
 	std::vector<K_BaseObject*> m_pObjectList;
