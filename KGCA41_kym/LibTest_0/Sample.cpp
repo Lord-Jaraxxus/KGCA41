@@ -3,6 +3,7 @@
 
 bool K_Map::Frame()
 {
+
 	if (I_Input.GetKey(VK_LBUTTON) == KEY_PUSH) m_iStage++;
 
 	float MovePerFrame = 0.5f * g_fSecondPerFrame;
@@ -29,6 +30,7 @@ bool K_Map::Frame()
 void K_Map::SetPosition(k_Vector2D pos)
 {
 	m_vPos = pos;
+
 	m_vDrawPos.x = (pos.x / g_rtClient.right) * 2.0f - 1.0f;
 	m_vDrawPos.y = -((pos.y / g_rtClient.bottom) * 2.0f - 1.0f);
 
