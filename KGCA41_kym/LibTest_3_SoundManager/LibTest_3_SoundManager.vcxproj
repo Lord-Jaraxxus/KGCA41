@@ -19,13 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="K_Sound.cpp" />
-    <ClCompile Include="K_SoundManager.cpp" />
     <ClCompile Include="Sample.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="K_Sound.h" />
-    <ClInclude Include="K_SoundManager.h" />
     <ClInclude Include="Sample.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

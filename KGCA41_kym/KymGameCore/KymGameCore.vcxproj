@@ -31,6 +31,8 @@
     <ClCompile Include="K_Input.cpp" />
     <ClCompile Include="K_Shader.cpp" />
     <ClCompile Include="K_ShaderManager.cpp" />
+    <ClCompile Include="K_Sound.cpp" />
+    <ClCompile Include="K_SoundManager.cpp" />
     <ClCompile Include="K_Texture.cpp" />
     <ClCompile Include="K_TextureManager.cpp" />
     <ClCompile Include="K_Timer.cpp" />
@@ -48,6 +50,8 @@
     <ClInclude Include="K_Input.h" />
     <ClInclude Include="K_Shader.h" />
     <ClInclude Include="K_ShaderManager.h" />
+    <ClInclude Include="K_Sound.h" />
+    <ClInclude Include="K_SoundManager.h" />
     <ClInclude Include="K_Std.h" />
     <ClInclude Include="K_Texture.h" />
     <ClInclude Include="K_TextureManager.h" />
@@ -163,7 +167,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../../include/dxtk</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../include/dxtk; ../../include/fmod;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>

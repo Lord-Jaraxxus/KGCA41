@@ -30,6 +30,8 @@
     <ClCompile Include="K_Window.cpp" />
     <ClCompile Include="K_Write.cpp" />
     <ClCompile Include="K_2dObject.cpp" />
+    <ClCompile Include="K_Sound.cpp" />
+    <ClCompile Include="K_SoundManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="K_BaseObject.h">
@@ -78,6 +80,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="K_2dObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="K_Sound.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="K_SoundManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
