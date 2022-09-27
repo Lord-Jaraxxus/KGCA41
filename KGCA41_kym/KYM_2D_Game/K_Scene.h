@@ -12,7 +12,13 @@ public:
 
 class K_Npc : public K_2dObject
 {
+public:
 	virtual bool	Frame() override;
+	virtual void	SetPosition(k_Vector2D pos) override;
+	int				m_iMouseFlag = 0;
+	int				m_iDragFlag = 0;
+	float			m_fZoom = 1.0f;
+	k_Vector2D		m_vMousePos;
 };
 
 class K_Player : public K_2dObject

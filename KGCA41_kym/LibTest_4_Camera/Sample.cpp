@@ -23,8 +23,27 @@ bool K_Map::Frame()
 	//if (I_Input.GetKey('W') && m_rtUV.y - MovePerFrame >= 0.0f) m_rtUV.y -= MovePerFrame;
 	//if (I_Input.GetKey('S') && m_rtUV.y + m_rtUV.w + MovePerFrame <= 1.0f) m_rtUV.y += MovePerFrame;
 
-	if (I_Input.GetKey(VK_LBUTTON)) m_fZoom += 1.0f * g_fSecondPerFrame * 1.0f;
-	if (I_Input.GetKey(VK_RBUTTON)) m_fZoom -= 1.0f * g_fSecondPerFrame * 1.0f;
+	//if (I_Input.GetKey(VK_LBUTTON)) m_fZoom += 1.0f * g_fSecondPerFrame * 1.0f;
+	//if (I_Input.GetKey(VK_RBUTTON)) m_fZoom -= 1.0f * g_fSecondPerFrame * 1.0f;
+
+	if (I_Input.GetKey(VK_LBUTTON) == KEY_PUSH)
+	{
+		if (m_iZoomFlag == 0) m_iZoomFlag = 1; 
+	}
+	if (m_iZoomFlag == 1) 
+	{
+		if (m_fZoom > 2.1f) m_iZoomFlag = 2;
+		else m_fZoom += 2.0f * g_fSecondPerFrame * 1.0f;
+	}
+	else if (m_iZoomFlag == 2) 
+	{
+		if (m_fZoom < 2.0f)
+		{
+			m_fZoom = 2.0f;
+			m_iZoomFlag = 0;
+		}
+		else m_fZoom -= 2.0f * g_fSecondPerFrame * 1.0f;
+	}
 
 	SetCamera(g_vCameraPos);
 	SetPosition(m_vPos);

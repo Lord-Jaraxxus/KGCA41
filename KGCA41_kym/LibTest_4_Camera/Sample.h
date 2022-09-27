@@ -11,6 +11,7 @@ public:
 	virtual void	SetPosition(k_Vector2D pos) override;
 	float			m_fZoom = 2.0f;
 	int				m_iStage = 0;
+	int				m_iZoomFlag = 0;
 };
 
 class K_Npc : public K_2dObject
