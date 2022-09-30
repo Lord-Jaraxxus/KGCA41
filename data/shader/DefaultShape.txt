@@ -45,8 +45,18 @@ struct PS_Input
 	float2 t : TEXCOORD0;		// TEXCOORD0 ~ TEXCOORD7 (15)
 };
 
-// 해당 픽쉘의 컬러를 반환한다. 어디에? SV_TARGET 레지스터에
+struct PS_Output // 이름은 중요한게 아니라고~
+{
+	float4 p  : SV_POSITION;
+	float4 c : COLOR0; // COLOR0 or COLOR1 
+	float2 t : TEXCOORD0; // TEXCOORD0 ~ TEXCOORD7 (15)
+};
+
+//해당 픽쉘의 컬러를 반환한다. 어디에? SV_TARGET 레지스터에
 float4 PS( PS_Input input) : SV_TARGET
 {
-	return g_txTextureA.Sample(g_SampleA, input.t); // 텍스처에 대한 샘플링이 들어가야한다
+	//return input.c;
+	//return g_txTextureA.Sample(g_SampleA, input.t);
+	float4 vColor = g_txTextureA.Sample(g_SampleA, input.t);
+	return vColor; //* float4(1,0,0,1); // 텍스처에 대한 샘플링이 들어가야한다
 }

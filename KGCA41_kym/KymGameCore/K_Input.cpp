@@ -25,8 +25,7 @@ bool K_Input::Frame()
 
 	::GetCursorPos(&m_ptPos); // 화면좌표계로 마우스 위치를 얻어옴
 	::ScreenToClient(g_hWnd, &m_ptPos); // 화면좌표계를 클라이언트 좌표계로 변경
-
-	  
+	 
 	return true;
 }
 

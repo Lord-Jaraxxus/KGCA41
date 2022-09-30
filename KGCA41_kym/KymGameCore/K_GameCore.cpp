@@ -62,7 +62,7 @@ bool K_GameCore::K_GameCoreRender()
     if (I_Timer.Render() != true) return false;
     if (I_Input.Render() != true) return false; 
     //if (I_Write.Render() != true) return false;
-    I_Write.Draw(0, 0, I_Timer.m_szTimer, { 1,0,0,1 });
+    //I_Write.Draw(0, 0, I_Timer.m_szTimer, { 1,0,0,1 });
     K_GameCorePostRender();
 	return true;
 }

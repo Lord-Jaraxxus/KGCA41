@@ -1,31 +1,6 @@
 #pragma once
 #include "K_GameCore.h"
-#include "K_2dObject.h"
-
-class K_Map : public K_2dObject
-{
-public:
-	virtual bool	Frame() override;
-	virtual void	SetPosition(k_Vector2D pos) override;
-	int				m_iStage = 0;
-};
-
-class K_Npc : public K_2dObject
-{
-public:
-	virtual bool	Frame() override;
-	virtual void	SetPosition(k_Vector2D pos) override;
-	int				m_iMouseFlag = 0;
-	int				m_iDragFlag = 0;
-	float			m_fZoom = 1.0f;
-	k_Vector2D		m_vMousePos;
-};
-
-class K_Player : public K_2dObject
-{
-	virtual bool	Frame() override;
-};
-
+#include "2dObjects.h"
 
 class K_Scene 
 {
@@ -38,9 +13,11 @@ public:
 public:
 	std::vector<K_BaseObject*> m_pObjectList;
 	std::vector<K_BaseObject*> m_pNPCList;
-	K_Map* m_pMap;
+	K_BackGround* m_pMap;
 	K_Player* m_pUser;
 
+public:
+	int	m_iSceneState = 0;
 
 public:
 	ID3D11Device* m_pd3dDevice;

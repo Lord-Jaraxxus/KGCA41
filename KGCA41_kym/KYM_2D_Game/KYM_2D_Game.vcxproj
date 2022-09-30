@@ -19,11 +19,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="2dObjects.cpp" />
+    <ClCompile Include="K_BattleScene.cpp" />
+    <ClCompile Include="K_Deck.cpp" />
+    <ClCompile Include="K_MapScene.cpp" />
     <ClCompile Include="K_Scene.cpp" />
+    <ClCompile Include="K_TitleScene.cpp" />
     <ClCompile Include="Sample.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="2dObjects.h" />
+    <ClInclude Include="K_BattleScene.h" />
+    <ClInclude Include="K_Deck.h" />
+    <ClInclude Include="K_MapScene.h" />
     <ClInclude Include="K_Scene.h" />
+    <ClInclude Include="K_TitleScene.h" />
     <ClInclude Include="Sample.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

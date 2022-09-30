@@ -1,6 +1,11 @@
 #include "K_2dObject.h"
 #include "K_Input.h"
 
+void K_2dObject::SetCamera(k_Vector2D vCameraPos)
+{
+	m_vCameraPos = vCameraPos;
+}
+
 void K_2dObject::SetRect(k_Vector4D rt)
 {
 	m_rtInit = rt;
@@ -17,21 +22,24 @@ void K_2dObject::SetRect(k_Vector4D rt)
 void K_2dObject::SetPosition(k_Vector2D pos)
 {
 	m_vPos = pos;
+
+	pos.x -= m_vCameraPos.x;
+	pos.y -= m_vCameraPos.y;
+
 	m_vDrawPos.x = (pos.x / g_rtClient.right) * 2.0f - 1.0f;
 	m_vDrawPos.y = -((pos.y / g_rtClient.bottom) * 2.0f - 1.0f);
 
-	//m_vDrawPos.x = m_vDrawPos.x - m_vDrawSize.x / 2;
-	//m_vDrawPos.y = m_vDrawPos.y + m_vDrawSize.y / 2;
-
 	// 클라이언트 크기 바꿔도 원본 이쁘게 유지, 해상도가 몇이던 간에 항상 일정한 픽셀만큼 잡아먹음
-	m_vDrawSize.x = m_rtInit.z / g_rtClient.right;
-	m_vDrawSize.y = m_rtInit.w / g_rtClient.bottom;
+	m_vDrawSize.x = m_rtInit.z / g_rtClient.right * 2.0f;
+	m_vDrawSize.y = m_rtInit.w / g_rtClient.bottom * 2.0f;
 
 	// 클라이언트 크기 바꾸면 찌그러지도록
 	//m_vDrawSize.x = m_rtInit.z / m_ptImageSize.x;
 	//m_vDrawSize.y = m_rtInit.w / m_ptImageSize.y;
 
 	UpdateVertexBuffer();
+
+	m_rtCollision = { m_VertexList[0].p.x, m_VertexList[0].p.y, m_VertexList[5].p.x, m_VertexList[5].p.y };
 }
 
 void K_2dObject::UpdateVertexBuffer()
