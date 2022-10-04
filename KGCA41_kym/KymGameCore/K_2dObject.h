@@ -19,8 +19,9 @@ public:
 	k_Vector2D	m_vDrawSize;
 
 public:
-	virtual void	SetPosition(k_Vector2D pos);
 	virtual void	SetRect(k_Vector4D rt);
+	virtual void	SetPosition(k_Vector2D pos);
+	virtual void	SetDrawSize(k_Vector2D size);
 	virtual void	UpdateVertexBuffer();
 	virtual void	SetMask(K_Texture* pMaskTex);
 	virtual bool	Frame() override;

@@ -226,7 +226,7 @@ void K_MapObject::SetPosition(k_Vector2D pos)
 
 	// 중앙 기준으로 뿌리도록
 	m_vDrawPos.x -= m_vDrawSize.x / 2.0f;
-	m_vDrawPos.y += m_vDrawSize.x / 2.0f;
+	m_vDrawPos.y += m_vDrawSize.y / 2.0f;
 
 	UpdateVertexBuffer();
 
@@ -249,8 +249,8 @@ bool K_Card::Frame()
 	{
 		m_iMouseFlag = 1;
 
-		if (I_Input.GetKey(VK_LBUTTON) == KEY_HOLD)	m_iDragFlag = 1;
-		else m_iDragFlag = 0;
+		if (I_Input.GetKey(VK_LBUTTON) == KEY_PUSH)	m_iDragFlag = 1;
+		else if (I_Input.GetKey(VK_LBUTTON) == KEY_UP) m_iDragFlag = 0;
 	}
 	else m_iMouseFlag = 0;
 
@@ -261,6 +261,14 @@ bool K_Card::Frame()
 	{
 		m_vPos += vMousePosMove;
 	}
+	else 
+	{
+		m_vPos = m_vPosOrigin;
+	}
+
+	// 일정 높이 이상으로 카드를 끌어올리면 사용한 판정
+	if (m_vPos.y < 250.0f) { 
+		m_bUsed = true; }
 
 	SetPosition(m_vPos);
 	m_pImmediateContext->UpdateSubresource(m_pVertexBuffer, 0, NULL, &m_VertexList.at(0), 0, 0);
@@ -276,16 +284,44 @@ void K_Card::SetPosition(k_Vector2D pos)
 	m_vDrawPos.x = (pos.x / g_rtClient.right) * 2.0f - 1.0f;
 	m_vDrawPos.y = -((pos.y / g_rtClient.bottom) * 2.0f - 1.0f);
 
-	// 클라이언트 크기 바꿔도 원본 이쁘게 유지, 해상도가 몇이던 간에 항상 일정한 픽셀만큼 잡아먹음
-	m_vDrawSize.x = m_rtInit.z / g_rtClient.right * 2.0f * m_fZoom;
-	m_vDrawSize.y = m_rtInit.w / g_rtClient.bottom * 2.0f * m_fZoom;
+	m_vDrawSize.x = m_rtInit.z / g_rtClient.right * 1.5f * m_fZoom;
+	m_vDrawSize.y = m_rtInit.w / g_rtClient.bottom * 1.5f * m_fZoom;
 
 	// 중앙 기준으로 뿌리도록
 	m_vDrawPos.x -= m_vDrawSize.x / 2.0f;
-	m_vDrawPos.y += m_vDrawSize.x / 2.0f;
+	m_vDrawPos.y += m_vDrawSize.y / 2.0f;
 
 	UpdateVertexBuffer();
 
 	m_rtCollision = { m_vDrawPos.x, m_vDrawPos.y, 
 						m_vDrawPos.x + m_vDrawSize.x / m_fZoom, m_vDrawPos.y - m_vDrawSize.y / m_fZoom };
+}
+
+void K_Character::SetPosition(k_Vector2D pos)
+{
+	m_vPos = pos;
+
+	pos.x -= m_vCameraPos.x;
+	pos.y -= m_vCameraPos.y;
+
+	m_vDrawPos.x = (pos.x / g_rtClient.right) * 2.0f - 1.0f;
+	m_vDrawPos.y = -((pos.y / g_rtClient.bottom) * 2.0f - 1.0f);
+
+	// 클라이언트 크기 바꿔도 원본 이쁘게 유지, 해상도가 몇이던 간에 항상 일정한 픽셀만큼 잡아먹음
+	m_vDrawSize.x = m_rtInit.z / g_rtClient.right * 2.0f;
+	m_vDrawSize.y = m_rtInit.w / g_rtClient.bottom * 2.0f;
+
+
+	UpdateVertexBuffer();
+
+	m_rtCollision = { m_VertexList[0].p.x, m_VertexList[0].p.y, m_VertexList[5].p.x, m_VertexList[5].p.y };
+}
+
+void K_Character::SetDrawPos()
+{
+	// 좌하단 점을 기준으로 뿌리도록
+	m_vDrawPos.y += m_vDrawSize.y;
+	UpdateVertexBuffer();
+
+	m_rtCollision = { m_VertexList[0].p.x, m_VertexList[0].p.y, m_VertexList[5].p.x, m_VertexList[5].p.y };
 }

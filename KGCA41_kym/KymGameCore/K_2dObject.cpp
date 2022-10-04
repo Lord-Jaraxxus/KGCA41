@@ -42,6 +42,15 @@ void K_2dObject::SetPosition(k_Vector2D pos)
 	m_rtCollision = { m_VertexList[0].p.x, m_VertexList[0].p.y, m_VertexList[5].p.x, m_VertexList[5].p.y };
 }
 
+// 화면에 그려질 크기 설정, 디폴트는 위에 SetPosition에서 되어있음
+void K_2dObject::SetDrawSize(k_Vector2D size) 
+{
+	m_vDrawSize = size;
+	UpdateVertexBuffer();
+
+	m_rtCollision = { m_VertexList[0].p.x, m_VertexList[0].p.y, m_VertexList[5].p.x, m_VertexList[5].p.y };
+}
+
 void K_2dObject::UpdateVertexBuffer()
 {
 	m_VertexList[0].p = { m_vDrawPos.x, m_vDrawPos.y, 0.0f };

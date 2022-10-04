@@ -23,5 +23,9 @@ public:
 	K_BattleScene*	m_pBattleScene;
 	K_Scene*		m_pTestScene;
 	K_Deck*			m_pDeck;
+
+public:
+	int				m_iPlayerMaxHP;
+	int				m_iPlayerCurrentHP;
 }; 
 

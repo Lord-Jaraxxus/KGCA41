@@ -2,6 +2,11 @@
 
 bool Sample::Init() 
 {
+	m_iPlayerMaxHP = 60;
+	m_iPlayerCurrentHP = m_iPlayerMaxHP;
+
+	m_pDeck = new K_Deck;
+
 	m_pTitleScene = new K_TitleScene;
 	m_pTitleScene->SetDevice(m_pd3dDevice, m_pImmediateContext);
 	m_pTitleScene->Init();
@@ -13,7 +18,7 @@ bool Sample::Init()
 	m_pBattleScene = new K_BattleScene;
 	m_pBattleScene->SetDevice(m_pd3dDevice, m_pImmediateContext);
 	m_pBattleScene->Init();
-	m_pBattleScene->m_pDeck = m_pDeck;
+	m_pBattleScene->SetDeck(m_pDeck);
 
 	m_pTestScene = new K_Scene;
 	m_pTestScene->SetDevice(m_pd3dDevice, m_pImmediateContext);
@@ -33,11 +38,22 @@ bool Sample::Render()
 {
 	m_pCurrentScene->Render();
 
-	if (m_pCurrentScene == m_pTitleScene && m_pCurrentScene->m_iSceneState == 1) m_pCurrentScene = m_pMapScene;
-	if (m_pCurrentScene == m_pMapScene && m_pCurrentScene->m_iSceneState == 1)
+	if (m_pCurrentScene == m_pTitleScene && m_pCurrentScene->m_iSceneState == 1) // Å¸ÀÌÆ²->¸Ê
+	{
+		m_pCurrentScene = m_pMapScene;
+	}
+
+	if (m_pCurrentScene == m_pMapScene && m_pCurrentScene->m_iSceneState == 1) // ¸Ê->ÀüÅõ
 	{
 		m_pCurrentScene->m_iSceneState = 0;
 		m_pCurrentScene = m_pBattleScene;
+		m_pBattleScene->SetPlayerHP(m_iPlayerCurrentHP, m_iPlayerMaxHP);
+	}
+
+	if (m_pCurrentScene == m_pBattleScene && m_pCurrentScene->m_iSceneState == 1) //ÀüÅõ->¸Ê
+	{
+		m_pCurrentScene->m_iSceneState = 0;
+		m_pCurrentScene = m_pMapScene;
 	}
 
 	return true;

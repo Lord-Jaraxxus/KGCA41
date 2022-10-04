@@ -63,9 +63,29 @@ public:
 
 public:
 	k_Vector2D		m_vMousePos;
+	k_Vector2D		m_vPosOrigin;
 	int				m_iMouseFlag = 0;
 	int				m_iDragFlag = 0;
 	float			m_fZoom = 1.0f;
 	bool			m_bUsed = false;
+	bool			m_bAvailable = true;
+
+public:
+	int				m_iCardNum;
+	int				m_iCardMana = 1;
+};
+
+class K_Character : public K_2dObject
+{
+public:
+	virtual void	SetPosition(k_Vector2D pos) override;
+	void			SetDrawPos();
+};
+
+class K_EnemyIntent : public K_2dObject 
+{
+public:
+	std::vector<K_Texture*>	m_pEnemyIntentTextureList;
+	std::vector<K_Texture*>	m_pEnemyIntentMaskTextureList;
 };
 

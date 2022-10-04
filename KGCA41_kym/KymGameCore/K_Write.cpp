@@ -81,6 +81,35 @@ bool K_Write::Set(IDXGISwapChain* pSwapChain)
 	return true;
 }
 
+void K_Write::SetFontSize(float font_size)
+{
+	HRESULT hr;
+	hr = D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, &m_d2dFactory);
+	hr = DWriteCreateFactory(DWRITE_FACTORY_TYPE_SHARED,
+		__uuidof(IDWriteFactory),
+		(IUnknown**)&m_pDWriteFactory);
+
+	// CreateTextFormat 매개변수들
+	//WCHAR const* fontFamilyName;
+	//IDWriteFontCollection* fontCollection;
+	//DWRITE_FONT_WEIGHT fontWeight;
+	//DWRITE_FONT_STYLE fontStyle;
+	//DWRITE_FONT_STRETCH fontStretch;
+	//FLOAT fontSize;
+	//WCHAR const* localeName;
+	//IDWriteTextFormat** textFormat;
+
+	hr = m_pDWriteFactory->CreateTextFormat(
+		L"고딕",
+		NULL,
+		DWRITE_FONT_WEIGHT_NORMAL,
+		DWRITE_FONT_STYLE_NORMAL,
+		DWRITE_FONT_STRETCH_NORMAL,
+		font_size,
+		L"ko-kr", // L"en-us"
+		&m_pTextFormat);
+}
+
 bool K_Write::Draw(float x, float y, std::wstring text, D2D1_COLOR_F color)
 {
 	m_d2dRT->BeginDraw();

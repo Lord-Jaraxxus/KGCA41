@@ -28,6 +28,7 @@ public:
 public:
 	IDXGISurface1* m_pBackBuffer;
 	bool Set(IDXGISwapChain* pSwapChain); // 백버퍼를 연동
+	void SetFontSize(float font_size); // 지정한 폰트 사이즈로 텍스트 포멧을 바꿈
 	bool Draw(float x, float y, std::wstring text, D2D1_COLOR_F color = {0,0,0,1});
 };
 
