@@ -12,19 +12,11 @@ bool K_BackGround::Frame()
 void K_BackGround::SetPosition(k_Vector2D pos)
 {
 	m_vPos = pos;
+	pos.x -= m_vCameraPos.x;
+	pos.y -= m_vCameraPos.y;
+
 	m_vDrawPos.x = (pos.x / g_rtClient.right) * 2.0f - 1.0f;
 	m_vDrawPos.y = -((pos.y / g_rtClient.bottom) * 2.0f - 1.0f);
-
-	//m_vDrawPos.x = m_vDrawPos.x - m_vDrawSize.x / 2;
-	//m_vDrawPos.y = m_vDrawPos.y + m_vDrawSize.y / 2;
-
-	// 클라이언트 크기 바꿔도 원본 이쁘게 유지, 해상도가 몇이던 간에 항상 일정한 픽셀만큼 잡아먹음
-	//m_vDrawSize.x = (m_rtInit.z / g_rtClient.right) * 1.0f;
-	//m_vDrawSize.y = (m_rtInit.w / g_rtClient.bottom) * 1.0f;
-
-	// 클라이언트 크기 바꾸면 찌그러지도록
-	//m_vDrawSize.x = m_rtInit.z / m_ptImageSize.x;
-	//m_vDrawSize.y = m_rtInit.w / m_ptImageSize.y;
 
 	m_vDrawSize.x = 2.0f;
 	m_vDrawSize.y = 2.0f;

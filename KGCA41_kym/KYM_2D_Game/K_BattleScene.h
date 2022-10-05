@@ -16,6 +16,8 @@ public:
 	K_Character*			m_pEnemy;
 	K_Button*				m_pTurnEndButton;
 	K_EnemyIntent*			m_pEnemyIntent;
+	K_EnemyIntent*			m_pPlayerEffect; // 귀찮으니 일단.. 나중에 이름을 K_Effect로 바꾸든가 해야지
+	K_EnemyIntent*			m_pEnemyEffect;
 	int						m_iEnemyIntentPower;
 	int						m_iMaxMana = 3;
 	int						m_iCurrentMana = 3;
@@ -39,10 +41,22 @@ public:
 	void			CardUsed(int card_num);
 	void			EnemyTurn(int turn);
 	void			CardSetting();
+	void			EffectProcessing();
+	void			EnemyTurnProcessing();
+	void			CharacterActionProcessing();
+	void			CameraShake();
+	void			EnemyDefeat();
 
 public:
 	K_Deck*			m_pDeck;
 	int				m_iTurn = 0;
 	bool			m_bTurnStart = true;
+	bool			m_bEnemyTurn = false;
+	float			m_fEnemyTurnTimer = 0.0f;
+	int				m_iPlayerState = 0;
+	float			m_fPlayerActionTimer = 0.0f;
+	int				m_iEnemyStae = 0;
+	k_Vector2D		m_vCameraPos = { 0,0 };
+	int				m_iCameraState = 0;
 };
 

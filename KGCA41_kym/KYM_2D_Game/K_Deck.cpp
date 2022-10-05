@@ -11,7 +11,8 @@ K_Deck::K_Deck()
 	m_DeckList.push_back(Defend);
 	m_DeckList.push_back(Defend);
 	m_DeckList.push_back(Bludgeon);
-
+	m_DeckList.push_back(PommelStrike);
+	
 	for (auto obj : m_DeckList) 
 	{
 		m_RemainingCardList.push_back(obj);
@@ -37,7 +38,7 @@ void K_Deck::Draw(int num_of_draw)
 
 void K_Deck::Shuffle()
 {
-	for (auto obj : m_DeckList)
+	for (auto obj : m_DiscardList)
 	{
 		m_RemainingCardList.push_back(obj);
 	}
@@ -51,7 +52,10 @@ void K_Deck::TurnEnd()
 {
 	for (auto obj : m_HandList)
 	{
-		m_DiscardList.push_back(obj);
+		if (obj != 99) 
+		{
+			m_DiscardList.push_back(obj);
+		}
 	}
 	m_HandList.clear();
 }

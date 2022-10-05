@@ -80,12 +80,17 @@ class K_Character : public K_2dObject
 public:
 	virtual void	SetPosition(k_Vector2D pos) override;
 	void			SetDrawPos();
+	k_Vector2D		m_vPosOrgin;
+	std::vector<K_Texture*>	m_pCharacterTextureList;
 };
 
 class K_EnemyIntent : public K_2dObject 
 {
 public:
 	std::vector<K_Texture*>	m_pEnemyIntentTextureList;
-	std::vector<K_Texture*>	m_pEnemyIntentMaskTextureList;
+
+public:
+	bool	m_bEffectOn = false;
+	float	m_fEffectTimer = 0.0f;
 };
 

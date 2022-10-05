@@ -20,7 +20,7 @@ bool K_Device::Frame()
 bool K_Device::PreRender()
 {
     m_pImmediateContext->OMSetRenderTargets(1, &m_pRTV, NULL);
-    float color[4] = { 0.5f,0.5f,0.5f,1.0f };
+    float color[4] = { 0.0f,0.0f,0.0f,1.0f };
     m_pImmediateContext->ClearRenderTargetView(m_pRTV, color);
     return true;
 }
