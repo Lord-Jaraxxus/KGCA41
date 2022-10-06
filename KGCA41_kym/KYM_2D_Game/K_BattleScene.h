@@ -1,6 +1,5 @@
 #pragma once
 #include "K_Scene.h"
-#include "K_Deck.h"
 
 class K_BattleScene : public K_Scene
 {
@@ -21,9 +20,22 @@ public:
 	int						m_iEnemyIntentPower;
 	int						m_iMaxMana = 3;
 	int						m_iCurrentMana = 3;
+	bool					m_bNoMana = false;
+	float					m_fWarningTimer = 0.0f;
 	
+	K_2dObject* m_pManaImage;
+	K_2dObject* m_pShieldImage;
+
+	K_Button* m_pRemainViewButton;
+	K_Button* m_pDiscardViewButton;
+
 	std::vector<K_Card*>	m_pCardList;
 	std::vector<K_Texture*>	m_pCardTextureList;
+
+	K_Sound*	m_pBGM;
+	K_Sound*	m_pPlayerSound = nullptr;
+	K_Sound*	m_pEnemySound = nullptr;
+	std::map<std::wstring, K_Sound*>	m_pEffectSoundList;
 
 public:
 	int				m_iPlayerMaxHP;

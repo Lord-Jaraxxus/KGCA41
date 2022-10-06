@@ -73,17 +73,17 @@ void K_Sound::Play(bool bLoop)
             SetLoop(bLoop);
         }
     }
-    else
-    {
-        Stop();
-        fr = m_pSystem->playSound(m_pSound, nullptr, false, &m_pChannel);
-        if (fr == FMOD_OK)
-        {
-            float fVolume = 0.5f;
-            m_pChannel->setVolume(fVolume);
-            SetLoop(bLoop);
-        }
-    }
+    //else
+    //{
+    //    Stop();
+    //    fr = m_pSystem->playSound(m_pSound, nullptr, false, &m_pChannel);
+    //    if (fr == FMOD_OK)
+    //    {
+    //        float fVolume = 0.5f;
+    //        m_pChannel->setVolume(fVolume);
+    //        SetLoop(bLoop);
+    //    }
+    //}
 }
 
 void K_Sound::PlayEffect()

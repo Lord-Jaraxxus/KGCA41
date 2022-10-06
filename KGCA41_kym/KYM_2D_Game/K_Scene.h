@@ -1,6 +1,8 @@
 #pragma once
 #include "K_GameCore.h"
 #include "2dObjects.h"
+#include "K_Deck.h"
+#include "K_SoundManager.h"
 
 class K_Scene 
 {

@@ -5,13 +5,12 @@ K_Deck::K_Deck()
 	m_DeckList.push_back(Strike);
 	m_DeckList.push_back(Strike);
 	m_DeckList.push_back(Strike);
-	m_DeckList.push_back(Strike);
 	m_DeckList.push_back(Defend);
 	m_DeckList.push_back(Defend);
 	m_DeckList.push_back(Defend);
-	m_DeckList.push_back(Defend);
-	m_DeckList.push_back(Bludgeon);
 	m_DeckList.push_back(PommelStrike);
+	m_DeckList.push_back(IronWave); 
+	//m_DeckList.push_back(ShrugItOff); // ㅅㅂ 대체 왜안되는거야
 	
 	for (auto obj : m_DeckList) 
 	{

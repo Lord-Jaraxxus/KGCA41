@@ -16,7 +16,7 @@ enum CardNum
 class K_Deck
 {
 public:
-	K_Deck::K_Deck();
+	K_Deck();
 
 public:
 	std::vector<int> m_DeckList;

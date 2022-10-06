@@ -10,9 +10,11 @@ public:
 	virtual bool Release() override;
 
 public:
-	std::vector<K_BaseObject*> m_pBackGroundList;
+	std::vector<K_2dObject*> m_pBackGroundList;
 	K_Button*	m_pStartButton;
 	K_Button*	m_pSettingButton;
 	K_Button*	m_pEndButton;
+
+	K_Sound*	m_pBGM;
 };
 

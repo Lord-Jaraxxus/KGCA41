@@ -29,11 +29,14 @@ class K_Button : public K_2dObject
 public:
 	virtual bool	Frame() override;
 	virtual void	SetPosition(k_Vector2D pos) override;
+	virtual void	UpdateVertexBuffer() override;
 
 public:
 	int				m_iMouseFlag = 0;
 	bool			m_bButtonPushed = false;
 	float			m_fZoom = 1.2f;
+	float			m_fSize = 1.0f;
+	float			m_fColor = 1.0f;
 };
 
 class K_Map : public K_2dObject 
@@ -53,6 +56,7 @@ public:
 	float			m_fZoom = 1.0f;
 	float			m_fColor = 0.4f;
 	int				m_iStage = 0;
+	bool			m_bStageDone = false;
 };
 
 class K_Card : public K_2dObject 
@@ -84,7 +88,7 @@ public:
 	std::vector<K_Texture*>	m_pCharacterTextureList;
 };
 
-class K_EnemyIntent : public K_2dObject 
+class K_EnemyIntent : public K_2dObject // K_Effect로 나중에 이름 바꿔야하는디
 {
 public:
 	std::vector<K_Texture*>	m_pEnemyIntentTextureList;
