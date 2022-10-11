@@ -30,6 +30,7 @@ public:
 	BOOL InitInstance(const WCHAR* szTitle, UINT iWidth, UINT iHeight);
 	LRESULT MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 	void CenterWindow();
+	virtual HRESULT ResizeDevice(UINT width, UINT height);
 
 public:
 	K_Window();

@@ -32,5 +32,10 @@ public:
 	HRESULT CreateRenderTargetView();	// 4) ·»´õÅ¸°Ùºä »ý¼º
 	void CreateViewport();	// 5) ºäÆ÷Æ® ¼³Á¤
 
+public:
+	virtual HRESULT ResizeDevice(UINT width, UINT height);
+	virtual HRESULT CreateDXResource();
+	virtual HRESULT DeleteDXResource();
+
 };
 

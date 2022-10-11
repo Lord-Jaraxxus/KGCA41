@@ -156,4 +156,48 @@ void K_Device::CreateViewport()
     m_pImmediateContext->RSSetViewports(1, &vp);
 }
 
+HRESULT K_Device::ResizeDevice(UINT width, UINT height)
+{
+    HRESULT hr;
+    if (m_pd3dDevice == nullptr) return S_OK; // 윈도우를 생성할 때도 VM_SIZE 메세지가 호출되기 때문, 그때는 얘가 없응꼐
+
+    if(FAILED(hr = DeleteDXResource())) return hr; // 렌더타겟이랑 연결된 놈들 먼저 지워주고
+
+    // 현재 설정된 랜더타겟 해제 및 소멸
+    m_pImmediateContext->OMSetRenderTargets(0, nullptr, NULL); 
+    if (m_pRTV != nullptr)
+    {
+        m_pRTV->Release();
+    }
+
+    // 백버퍼의 크기를 조정
+    DXGI_SWAP_CHAIN_DESC CurrentSD, AfterSD;
+    m_pSwapChain->GetDesc(&CurrentSD);
+    hr = m_pSwapChain->ResizeBuffers(CurrentSD.BufferCount, width, height, CurrentSD.BufferDesc.Format, 0);
+
+    // 변경된 백버퍼의 크기를 얻는다, 근데 쌤 코드에서는 여기가 없네? 머임? 
+    // 딱히 필요가 없었나? 아 위에 윈도우에서 VM_SIZE 검거했을때 이미 해줘서그릉가
+    m_pSwapChain->GetDesc(&AfterSD);
+    GetClientRect(m_hWnd, &g_rtClient);
+
+    // 변경된 백 버퍼의 크기를 얻고 렌더타켓 뷰를 다시 생성 및 적용 -> CreateRenderTargetView() 한번하면 끝 ㅎ
+    if (FAILED(hr = CreateRenderTargetView())) return hr;
+    // 뷰포트 재 지정
+    CreateViewport();
+    // 연결된 놈들 다시 살려줌
+    if (FAILED(hr = CreateDXResource())) return hr;
+    
+    return S_OK;
+}
+
+HRESULT K_Device::CreateDXResource()
+{
+    return S_OK;
+}
+
+HRESULT K_Device::DeleteDXResource()
+{
+    return S_OK;
+}
+
 

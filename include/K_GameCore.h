@@ -25,6 +25,10 @@ private:
 	 bool K_GameCoreRelease();
 
 public:
+	virtual HRESULT CreateDXResource();
+	virtual HRESULT DeleteDXResource();
+
+public:
 	bool m_bGameRun = true;
 
 public:

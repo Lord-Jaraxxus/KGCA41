@@ -16,9 +16,30 @@ LRESULT K_Window::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
+    case WM_SIZE:
+        if (SIZE_MINIMIZED != wParam) // 최소화
+        {
+            UINT width = LOWORD(lParam);
+            UINT height = HIWORD(lParam);
+
+            GetWindowRect(hWnd, &m_rtWindow);
+            GetClientRect(hWnd, &m_rtClient);
+
+            g_rtClient = m_rtClient;
+
+            m_iClientWidth = m_rtClient.right - m_rtClient.left;
+            m_iClientHeight = m_rtClient.bottom - m_rtClient.top;
+
+            if (FAILED(ResizeDevice(width, height)))
+            {
+            }
+        }
+        break;
+
     case WM_DESTROY:
         PostQuitMessage(0); // 메세지큐에 직접 WM_QUIT
         break;
+
     default:
         return DefWindowProc(hWnd, message, wParam, lParam); // 메세지 내가 처리 불가, 니가 대신 '해줘'
     }
@@ -77,6 +98,11 @@ void K_Window::CenterWindow()
     UINT cx = (iScreenWidth - m_iClientWidth) / 2;
     UINT cy = (iScreenHeight - m_iClientHeight) / 2;
     MoveWindow(m_hWnd, cx, cy, m_iClientWidth, m_iClientHeight, TRUE);
+}
+
+HRESULT K_Window::ResizeDevice(UINT width, UINT height)
+{
+    return S_OK;
 }
 
 bool K_Window::SetWindow(HINSTANCE hInstance, const WCHAR* szTitle, UINT iWidth, UINT iHeight)

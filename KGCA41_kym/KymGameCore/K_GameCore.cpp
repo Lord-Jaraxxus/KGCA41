@@ -84,6 +84,25 @@ bool K_GameCore::K_GameCoreRelease()
 	return true;
 }
 
+HRESULT K_GameCore::CreateDXResource()
+{
+    HRESULT hr;
+    if (I_Write.m_pBackBuffer == nullptr) return S_OK; // 윈도우 켜질때 호출되는 VM_SIZE 대비
+
+    I_Write.Set(m_pSwapChain); // 변경된 스왑체인을 먹여서 렌더타겟을 다시 맹글어줌, 겸사겸사 m_pTextColor도
+    if (FAILED(hr = I_Write.CreateDXResource())) return hr; // ??그럼 얘는 필요가 없겠는데??
+    return S_OK;
+}
+
+HRESULT K_GameCore::DeleteDXResource()
+{
+    HRESULT hr;
+    if (I_Write.m_pBackBuffer == nullptr) return S_OK; // 윈도우 켜질때 호출되는 VM_SIZE 대비
+
+    if(FAILED(hr = I_Write.DeleteDXResource())) return hr;
+    return S_OK;
+}
+
 bool K_GameCore::Run()
 {
     if (K_GameCoreInit() == false) return false; // 이 Init은 밑에 샘플껏이 돌게될껐이다?

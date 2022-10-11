@@ -119,3 +119,16 @@ bool K_Write::Draw(float x, float y, std::wstring text, D2D1_COLOR_F color)
 	m_d2dRT->EndDraw();
 	return true;
 }
+
+HRESULT K_Write::CreateDXResource()
+{
+	return S_OK;
+}
+
+HRESULT K_Write::DeleteDXResource()
+{
+	if (m_pBackBuffer) m_pBackBuffer->Release();
+	if (m_pTextColor) m_pTextColor->Release();
+	if (m_d2dRT) m_d2dRT->Release();
+	return S_OK;
+}
