@@ -20,7 +20,9 @@ class K_Npc : public K_2dObject
 
 class K_Player : public K_2dObject
 {
+public:
 	virtual bool	Frame() override;
+	virtual void	UpdateVertexBuffer() override;
 };
 
 class Sample : public K_GameCore

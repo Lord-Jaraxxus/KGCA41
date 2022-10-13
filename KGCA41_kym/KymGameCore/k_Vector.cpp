@@ -1,4 +1,5 @@
 #include "k_Vector.h"
+#include "K_Matrix.h"
 
 k_Vector::k_Vector() 
 {
@@ -42,6 +43,18 @@ k_Vector	k_Vector::operator - (k_Vector& v)
 k_Vector	k_Vector::operator * (float scala) 
 {
 	return k_Vector(x*scala, y*scala, z*scala);
+}
+
+// 곱셈 연산자 재정의, 행렬용
+k_Vector k_Vector::operator * (K_Matrix mat)
+{
+	k_Vector result;
+
+	result.x = x * mat._11 + y * mat._21 + z * mat._31 + 1.0f * mat._41;
+	result.y = x * mat._12 + y * mat._22 + z * mat._32 + 1.0f * mat._42;
+	result.z = x * mat._13 + y * mat._23 + z * mat._33 + 1.0f * mat._43;
+
+	return result;
 }
 
 k_Vector	k_Vector::operator / (float scala)

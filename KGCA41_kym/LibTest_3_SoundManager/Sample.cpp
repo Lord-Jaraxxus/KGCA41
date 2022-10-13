@@ -77,11 +77,35 @@ bool K_Player::Frame()
 	if (I_Input.GetKey('A')) vPos.x += -1.0f * g_fSecondPerFrame * 100.0f;
 	if (I_Input.GetKey('S')) vPos.y += 1.0f * g_fSecondPerFrame * 100.0f;
 	if (I_Input.GetKey('D')) vPos.x += 1.0f * g_fSecondPerFrame * 100.0f;
+
 	SetPosition(vPos);
 
 	m_pImmediateContext->UpdateSubresource(m_pVertexBuffer, NULL, NULL, &m_VertexList.at(0), 0, 0);
 
 	return true;
+}
+
+void K_Player::UpdateVertexBuffer()
+{
+	//m_VertexList[0].p = { m_vDrawPos.x, m_vDrawPos.y, 0.5f };
+	//m_VertexList[0].t = { m_rtUV.x, m_rtUV.y };
+
+	//m_VertexList[1].p = { m_vDrawPos.x + m_vDrawSize.x, m_vDrawPos.y,  0.5f };
+	//m_VertexList[1].t = { m_rtUV.x + m_rtUV.z, m_rtUV.y };
+
+	//m_VertexList[2].p = { m_vDrawPos.x, m_vDrawPos.y - m_vDrawSize.y, 0.5f };
+	//m_VertexList[2].t = { m_rtUV.x, m_rtUV.y + m_rtUV.w };
+
+	//m_VertexList[3].p = m_VertexList[2].p;
+	//m_VertexList[3].t = m_VertexList[2].t;
+
+	//m_VertexList[4].p = m_VertexList[1].p;
+	//m_VertexList[4].t = m_VertexList[1].t;
+
+	//m_VertexList[5].p = { m_vDrawPos.x + m_vDrawSize.x, m_vDrawPos.y - m_vDrawSize.y, 0.5f };
+	//m_VertexList[5].t = { m_rtUV.x + m_rtUV.z, m_rtUV.y + m_rtUV.w };
+	
+	m_pImmediateContext->UpdateSubresource(m_pVertexBuffer, 0, nullptr, &m_VertexList.at(0), 0, 0);
 }
 
 bool Sample::Init() 
@@ -138,6 +162,23 @@ bool Sample::Frame()
 
 	if (I_Input.GetKey(VK_F5) == KEY_PUSH) m_pEffect1->PlayEffect();
 	if (I_Input.GetKey(VK_F6) == KEY_PUSH) m_pEffect2->PlayEffect();
+
+
+	float fWhat = sin(g_fGameTimer) * 0.5f + 0.5f;
+	K_Matrix scale, rotation, translation;
+	scale = scale.Scale(0.5f, 0.5f, 0.5f);
+	rotation = rotation.RotationZ(g_fGameTimer);
+	translation = translation.Translation(0.5f, 0.0f, 0.0f);
+
+	for (int i = 0; i < m_pUser->m_InitVertexList.size(); i++)
+	{
+		k_Vector v = m_pUser->m_InitVertexList[i].p;
+		v = v * scale; // s * r * t 		
+		v = v * rotation;
+		v = v * translation;
+		m_pUser->m_VertexList[i].p = v;
+	}
+	m_pUser->UpdateVertexBuffer();
 
 	return true;
 }

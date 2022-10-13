@@ -130,15 +130,15 @@ HRESULT K_BaseObject::CreateVertexBuffer()
     // 
     // 반드시 시계방향(앞면)으로 구성한다.
     m_VertexList.resize(6); 
-    m_VertexList[0].p = { -1.0f, 1.0f, 0.0f };
+    m_VertexList[0].p = { -1.0f, 1.0f, 0.5f };
     m_VertexList[0].c = { 1.0f, 1.0f, 0.0f, 0.0f };
     m_VertexList[0].t = { 0.0f, 0.0f };
 
-    m_VertexList[1].p = { +1.0f, 1.0f,  0.0f };
+    m_VertexList[1].p = { +1.0f, 1.0f,  0.5f };
     m_VertexList[1].c = { 1.0f, 1.0f, 0.0f, 0.0f };
     m_VertexList[1].t = { 1.0f, 0.0f };
 
-    m_VertexList[2].p = { -1.0f, -1.0f, 0.0f };
+    m_VertexList[2].p = { -1.0f, -1.0f, 0.5f };
     m_VertexList[2].c = { 1.0f, 1.0f, 0.0f, 0.0f };
     m_VertexList[2].t = { 0.0f, 1.0f };
 
@@ -150,9 +150,11 @@ HRESULT K_BaseObject::CreateVertexBuffer()
     m_VertexList[4].c = m_VertexList[1].c;
     m_VertexList[4].t = m_VertexList[1].t;
 
-    m_VertexList[5].p = { +1.0f, -1.0f, 0.0f };
+    m_VertexList[5].p = { +1.0f, -1.0f, 0.5f };
     m_VertexList[5].c = { 1.0f, 1.0f, 0.0f, 0.0f };
     m_VertexList[5].t = { 1.0f, 1.0f };
+
+    m_InitVertexList = m_VertexList;
 
     UINT NumVertex = m_VertexList.size();
     D3D11_BUFFER_DESC       bd;

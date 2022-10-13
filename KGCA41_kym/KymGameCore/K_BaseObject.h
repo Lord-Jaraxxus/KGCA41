@@ -4,8 +4,9 @@
 #include "K_Shader.h"
 #include "K_ShaderManager.h"
 
-#include"k_Vector.h"
-#include"k_Vector2D.h"
+#include "k_Vector.h"
+#include "k_Vector2D.h"
+#include "K_Matrix.h"
 
 struct SimpleVertex
 {
@@ -34,7 +35,8 @@ public:
 	ID3D11DeviceContext* m_pImmediateContext = nullptr; // 콘텍스트, 생성된 걸 컨트롤하는 용도
 	void SetDevice(ID3D11Device* pd3dDevice, ID3D11DeviceContext* pContext); // 디바이스와 콘텍스트를 넘겨주는 함수
 public:
-	std::vector<SimpleVertex> m_VertexList;
+	std::vector<SimpleVertex> m_VertexList; 
+	std::vector<SimpleVertex> m_InitVertexList;
 	ID3D11Buffer* m_pVertexBuffer;
 	ID3D11InputLayout* m_pVertexLayout;
 

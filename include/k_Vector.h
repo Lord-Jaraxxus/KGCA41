@@ -7,6 +7,8 @@
 #define RadianToDegree(x) (x * (180.0f/k_PI)) // 라디안을 디그리로
 #define k_Epsilon 0.001f						  // 허용오차	
 
+class K_Matrix; // 전방선언, 아마 행렬 클래스랑 include 물빨하면 지랄나니까 일케 한듯?
+
 class k_Vector
 {
 public:
@@ -25,6 +27,7 @@ public:
 	k_Vector	operator += (k_Vector& v);
 	k_Vector	operator - (k_Vector& v);
 	k_Vector	operator * (float scala);
+	k_Vector	operator * (K_Matrix mat); // 곱셈 연산자 재정의, 행렬용
 	k_Vector	operator / (float scala);
 	k_Vector	operator *= (float scala); 
 	bool		operator == (k_Vector& v);
