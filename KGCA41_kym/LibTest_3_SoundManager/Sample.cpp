@@ -87,23 +87,23 @@ bool K_Player::Frame()
 
 void K_Player::UpdateVertexBuffer()
 {
-	//m_VertexList[0].p = { m_vDrawPos.x, m_vDrawPos.y, 0.5f };
-	//m_VertexList[0].t = { m_rtUV.x, m_rtUV.y };
+	m_VertexList[0].p = { m_vDrawPos.x, m_vDrawPos.y, 0.5f };
+	m_VertexList[0].t = { m_rtUV.x, m_rtUV.y };
 
-	//m_VertexList[1].p = { m_vDrawPos.x + m_vDrawSize.x, m_vDrawPos.y,  0.5f };
-	//m_VertexList[1].t = { m_rtUV.x + m_rtUV.z, m_rtUV.y };
+	m_VertexList[1].p = { m_vDrawPos.x + m_vDrawSize.x, m_vDrawPos.y,  0.5f };
+	m_VertexList[1].t = { m_rtUV.x + m_rtUV.z, m_rtUV.y };
 
-	//m_VertexList[2].p = { m_vDrawPos.x, m_vDrawPos.y - m_vDrawSize.y, 0.5f };
-	//m_VertexList[2].t = { m_rtUV.x, m_rtUV.y + m_rtUV.w };
+	m_VertexList[2].p = { m_vDrawPos.x, m_vDrawPos.y - m_vDrawSize.y, 0.5f };
+	m_VertexList[2].t = { m_rtUV.x, m_rtUV.y + m_rtUV.w };
 
-	//m_VertexList[3].p = m_VertexList[2].p;
-	//m_VertexList[3].t = m_VertexList[2].t;
+	m_VertexList[3].p = m_VertexList[2].p;
+	m_VertexList[3].t = m_VertexList[2].t;
 
-	//m_VertexList[4].p = m_VertexList[1].p;
-	//m_VertexList[4].t = m_VertexList[1].t;
+	m_VertexList[4].p = m_VertexList[1].p;
+	m_VertexList[4].t = m_VertexList[1].t;
 
-	//m_VertexList[5].p = { m_vDrawPos.x + m_vDrawSize.x, m_vDrawPos.y - m_vDrawSize.y, 0.5f };
-	//m_VertexList[5].t = { m_rtUV.x + m_rtUV.z, m_rtUV.y + m_rtUV.w };
+	m_VertexList[5].p = { m_vDrawPos.x + m_vDrawSize.x, m_vDrawPos.y - m_vDrawSize.y, 0.5f };
+	m_VertexList[5].t = { m_rtUV.x + m_rtUV.z, m_rtUV.y + m_rtUV.w };
 	
 	m_pImmediateContext->UpdateSubresource(m_pVertexBuffer, 0, nullptr, &m_VertexList.at(0), 0, 0);
 }
@@ -178,7 +178,8 @@ bool Sample::Frame()
 		v = v * translation;
 		m_pUser->m_VertexList[i].p = v;
 	}
-	m_pUser->UpdateVertexBuffer();
+	m_pImmediateContext->UpdateSubresource(m_pUser->m_pVertexBuffer, 0, nullptr, &m_pUser->m_VertexList.at(0), 0, 0);
+
 
 	return true;
 }

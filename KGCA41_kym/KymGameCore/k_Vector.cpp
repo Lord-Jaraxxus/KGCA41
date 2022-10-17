@@ -112,6 +112,18 @@ bool k_Vector::operator >= (k_Vector& v) {
 	return false;
 }
 
+// 내적
+float k_Vector::operator|(k_Vector& const v0)
+{
+	return x * v0.x + y * v0.y + z * v0.z;
+}
+
+// 외적
+k_Vector k_Vector::operator^(k_Vector& const v0)
+{
+	return k_Vector((y * v0.z - z * v0.y), (z * v0.x - x * v0.z), (x * v0.y - y * v0.x));
+}
+
 
 float		k_Vector::LengthSquared() 
 {
@@ -123,6 +135,7 @@ float		k_Vector::Length()
 	return sqrt(LengthSquared());
 }
 
+// 스스로를 정규화
 void		k_Vector::Normalize() 
 {
 	float fInvertLength = 1.0f / Length();
@@ -131,7 +144,8 @@ void		k_Vector::Normalize()
 	z = z * fInvertLength;
 }
 
-k_Vector	k_Vector::Identity() 
+// 스스로를 정규화한 벡터(단위벡터)를 반환 (지는 안바뀜)
+k_Vector	k_Vector::Normal()
 {
 	float fInvertLength = 1.0f / Length();
 	return k_Vector(x*fInvertLength, y*fInvertLength, z*fInvertLength);

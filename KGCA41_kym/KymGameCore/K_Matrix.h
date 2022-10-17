@@ -29,6 +29,13 @@ public:
 	K_Matrix Translation(float x, float y, float z); // 이동. 얘도 xyz 각각 따로 얼만큼 움직일지 세팅가능
 
 public:
+	K_Matrix ViewLookAt(k_Vector& vPosition, k_Vector& vTarget, k_Vector& vUp); // 뷰 행렬을 반환하는 함수
+	void ObjectLookAt(k_Vector& vPosition, k_Vector& vTarget, k_Vector& vUp); // 스스로를 오브젝트 변환 행렬로 만드는 함수
+	K_Matrix OrthoLH(float w, float h, float n, float f); // 스스로를 투영 행렬로 만들어 반환하는 함수, 직교 투영
+	K_Matrix OrthoOffCenterLH(float l, float r, float b, float t, float near, float far); // 스스로를 투영 행렬로 만들어 반환하는 함수, 직교 투영 + 영역 지정
+	K_Matrix PerspectiveFovLH(float fNearPlane, float fFarPlane, float fovY, float Aspect);
+
+public:
 	K_Matrix operator * (K_Matrix &back_matrix); // 곱셈 연산자 재정의
 };
 
