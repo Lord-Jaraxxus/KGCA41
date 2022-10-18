@@ -1,4 +1,5 @@
 #pragma once
+#include <windows.h>
 #include <iostream>
 #include <math.h>
 
@@ -33,12 +34,16 @@ public:
 	bool		operator == (k_Vector& v);
 	bool		operator <= (k_Vector& v);
 	bool		operator >= (k_Vector& v);
+	// Dot Prouduct, 내적
+	float		operator | (k_Vector& const v0);
+	// Cross Product, 외적
+	k_Vector	operator ^ (k_Vector& const v0);
 
 public:
 	float		LengthSquared();	// 크기에 루트를 씌우지 않은 값을 반환
 	float		Length();			// 크기 반환 (직각삼각형의 빗변의 길이)
 	void		Normalize();		// 정규화 (스스로를)
-	k_Vector	Identity();			// 스스로를 정규화한 벡터(단위벡터)를 반환 (지는 안바뀜)
+	k_Vector	Normal();			// 스스로를 정규화한 벡터(단위벡터)를 반환 (지는 안바뀜)
 	//float		Angle(k_Vector);	// 두 벡터를 내적해서 사이각인 세타를 반환, 일단 오늘은 안쓸듯하니 주석
 	
 };

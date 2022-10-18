@@ -147,28 +147,30 @@ void K_Matrix::ObjectLookAt(k_Vector& vPosition, k_Vector& vTarget, k_Vector& vU
 }
 
 // 스스로를 투영 행렬로 만들어 반환하는 함수, 직교 투영
-K_Matrix K_Matrix::OrthoLH(float w, float h, float near, float far)
+K_Matrix K_Matrix::OrthoLH(float w, float h, float n, float f)
 {
 	Identity();
 	_11 = 2.0f / w;
 	_22 = 2.0f / h;
-	_33 = 1.0f / (far - near);
-	_43 = -near / (far - near);
+	_33 = 1.0f / (f - n);
+	_43 = -n / (f - n);
+	return *this;
 }
 
 // 스스로를 투영 행렬로 만들어 반환하는 함수, 직교 투영 + 영역 지정
-K_Matrix K_Matrix::OrthoOffCenterLH(float l, float r, float b, float t, float near, float far)
+K_Matrix K_Matrix::OrthoOffCenterLH(float l, float r, float b, float t, float n, float f)
 {
 	Identity();
 	_11 = 2.0f / (r - l);
 	_22 = 2.0f / (t - b);
-	_33 = 1.0f / (far - near);
-	_43 = -near / (far - near);
+	_33 = 1.0f / (f - n);
+	_43 = -n / (f - n);
 	_41 = (l + r) / (l - r);
 	_42 = (t + b) / (b - t);
 	return *this;
 }
 
+// 스스로를 투영 행렬로 만들어 반환하는 함수, 원근 투영
 K_Matrix K_Matrix::PerspectiveFovLH(float fNearPlane, float fFarPlane, float fovY, float Aspect)
 {
 	float    h, w, Q;

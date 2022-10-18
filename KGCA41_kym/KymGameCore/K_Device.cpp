@@ -7,6 +7,7 @@ bool K_Device::Init()
     if (FAILED(hr = CreateDXGIDevice())) return false;
     if (FAILED(hr = CreateSwapChain())) return false;
     if (FAILED(hr = CreateRenderTargetView())) return false;
+    if (FAILED(hr = CreateDepthStencilView())) return false;
     CreateViewport();
 
     return true;
@@ -19,9 +20,13 @@ bool K_Device::Frame()
 
 bool K_Device::PreRender()
 {
-    m_pImmediateContext->OMSetRenderTargets(1, &m_pRTV, NULL);
-    float color[4] = { 0.0f,0.0f,0.0f,1.0f };
+    m_pImmediateContext->OMSetRenderTargets(1, &m_pRTV, m_pDSV); // 세번째가 DSV 자리
+    float color[4] = { 0.5f,0.5f,0.5f,1.0f };
     m_pImmediateContext->ClearRenderTargetView(m_pRTV, color);
+    // 뎁스 스텐실 뷰 초기화. 2는 뎁스랑 스텐실 뭐 초기화할지(지금은 둘다), 3은 뎁스 뭘로 초기화, 4는 스텐실 뭘로 초기화
+    m_pImmediateContext->ClearDepthStencilView(m_pDSV, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+
+    //m_pImmediateContext->OMSetDepthStencilState(TDxState::g_pDefaultDepthStencil, 0xff);
     return true;
 }
 
@@ -156,6 +161,54 @@ void K_Device::CreateViewport()
     m_pImmediateContext->RSSetViewports(1, &vp);
 }
 
+HRESULT K_Device::CreateDepthStencilView()
+{
+    HRESULT hr;
+
+    //D3D11_RENDER_TARGET_VIEW_DESC rtvd;
+    //m_pRTV->GetDesc(&rtvd);
+
+    // 백버퍼의 크기를 가져와야 하는데 위에건 영양가가 없다, 그래서 스왑체인에서 가져와줌
+    DXGI_SWAP_CHAIN_DESC scd;
+    m_pSwapChain->GetDesc(&scd);
+
+    // 1번 텍스처를 생성한다.
+    ID3D11Texture2D*  pDSTexture;
+    D3D11_TEXTURE2D_DESC td;
+    ZeroMemory(&td, sizeof(td));
+    td.Width = scd.BufferDesc.Width;
+    td.Height = scd.BufferDesc.Height;
+    td.MipLevels = 1;
+    td.ArraySize = 1;
+    td.Format = DXGI_FORMAT_R24G8_TYPELESS; // Depth가 24비트, Stencil이 8비트
+    td.SampleDesc.Count = 1;
+    td.Usage = D3D11_USAGE_DEFAULT;
+    td.CPUAccessFlags = 0;
+    td.MiscFlags = 0;
+    td.BindFlags = D3D11_BIND_DEPTH_STENCIL; // 바인드 플래그가 중요
+
+    hr = m_pd3dDevice->CreateTexture2D(&td, NULL, &pDSTexture);
+
+
+    // 2번 깊이스텐실 뷰로 생성한다.
+    D3D11_DEPTH_STENCIL_VIEW_DESC dtvd;
+    ZeroMemory(&dtvd, sizeof(dtvd));
+    dtvd.Format = DXGI_FORMAT_D24_UNORM_S8_UINT; // UNORM은 정규화 안하겠다라는뜻ㅎ, 스텐실은 UINT형식으로? 라는느낌?
+    dtvd.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D; // 무조건 2차원
+    hr = m_pd3dDevice->CreateDepthStencilView(pDSTexture, &dtvd, &m_pDSV);
+
+
+    // 3번 뷰 적용
+    //m_pImmediateContext->OMSetRenderTargets(1, m_pRTV.GetAddressOf(),
+    //m_pDepthStencilView.Get());
+
+      
+    // 4번 깊이스텐실 뷰 상태 객체 생성해서 적용
+    
+    return hr;
+}
+
+
 HRESULT K_Device::ResizeDevice(UINT width, UINT height)
 {
     HRESULT hr;
@@ -165,10 +218,8 @@ HRESULT K_Device::ResizeDevice(UINT width, UINT height)
 
     // 현재 설정된 랜더타겟 해제 및 소멸
     m_pImmediateContext->OMSetRenderTargets(0, nullptr, NULL); 
-    if (m_pRTV != nullptr)
-    {
-        m_pRTV->Release();
-    }
+    if (m_pRTV != nullptr) m_pRTV->Release();
+    if (m_pDSV != nullptr) m_pDSV->Release();
 
     // 백버퍼의 크기를 조정
     DXGI_SWAP_CHAIN_DESC CurrentSD, AfterSD;
@@ -182,6 +233,8 @@ HRESULT K_Device::ResizeDevice(UINT width, UINT height)
 
     // 변경된 백 버퍼의 크기를 얻고 렌더타켓 뷰를 다시 생성 및 적용 -> CreateRenderTargetView() 한번하면 끝 ㅎ
     if (FAILED(hr = CreateRenderTargetView())) return hr;
+    // 뎁스 스텐실 뷰도 RTV랑 똑같이 다시 생성 및 적용 해준다
+    if (FAILED(hr = CreateDepthStencilView())) return hr;
     // 뷰포트 재 지정
     CreateViewport();
     // 연결된 놈들 다시 살려줌

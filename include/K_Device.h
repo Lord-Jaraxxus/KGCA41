@@ -24,6 +24,7 @@ public:
 	IDXGIFactory* m_pGIFactory = nullptr;
 	IDXGISwapChain* m_pSwapChain = nullptr;
 	ID3D11RenderTargetView* m_pRTV = nullptr;
+	ID3D11DepthStencilView* m_pDSV = nullptr;
 
 public:
 	HRESULT CreateDevice();		// 1) 디바이스 생성
@@ -31,6 +32,8 @@ public:
 	HRESULT CreateSwapChain();	// 3) 스왑체인 생성
 	HRESULT CreateRenderTargetView();	// 4) 렌더타겟뷰 생성
 	void CreateViewport();	// 5) 뷰포트 설정
+
+	HRESULT CreateDepthStencilView(); // 뎁스 스텐실 뷰 생성
 
 public:
 	virtual HRESULT ResizeDevice(UINT width, UINT height);

@@ -35,7 +35,7 @@ bool K_BaseObject::Frame()
     //else frame_test += 0.001f;
 
     // gpu update 함수
-    m_pImmediateContext->UpdateSubresource(m_pVertexBuffer, 0, NULL, &m_VertexList.at(0) ,0 ,0);
+    m_pImmediateContext->UpdateSubresource(m_pVertexBuffer, 0, nullptr, &m_VertexList.at(0) ,0 ,0);
     return true;
 }
 
@@ -53,6 +53,8 @@ bool K_BaseObject::PreRender()
         &stride,
         &offset
     ); // s가 붙은 것들은 배열로 넘길 수 있다
+    m_pImmediateContext->IASetIndexBuffer(m_pIndexBuffer, DXGI_FORMAT_R32_UINT, 0); // 인덱스 버퍼 세팅
+    m_pImmediateContext->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
 
     m_pImmediateContext->IASetInputLayout(m_pVertexLayout); // 인풋-어셈블 스테이지 세팅
     m_pImmediateContext->VSSetShader(m_pShader->m_pVS, NULL, 0); // 버텍스 쉐이더 세팅, 뒤에 두개는 일단 사용하지 않을것
@@ -83,7 +85,10 @@ bool K_BaseObject::Render()
 
 bool K_BaseObject::PostRender()
 {
-    m_pImmediateContext->Draw(m_VertexList.size(), 0);
+    if (m_pIndexBuffer == nullptr)
+        m_pImmediateContext->Draw(m_VertexList.size(), 0);
+    else
+        m_pImmediateContext->DrawIndexed(m_IndexList.size(), 0, 0);
 
     return true;
 }
@@ -105,10 +110,13 @@ bool K_BaseObject::Create(ID3D11Device* pd3dDevice,
 {
     SetDevice(pd3dDevice, pContext);
 
+    if (FAILED(CreateConstantBuffer())) return false;
     if (FAILED(CreateVertexBuffer())) return false;
+    if (FAILED(CreateIndexBuffer())) return false;
     if (CreateShader(shaderName) != true) return false;
     if (FAILED(CreateVertexLayout())) return false;
     if (LoadTexture(textureName) != true) return false;
+
     return true;
 }
 
@@ -118,61 +126,75 @@ void K_BaseObject::SetDevice(ID3D11Device* pd3dDevice, ID3D11DeviceContext* pCon
     m_pImmediateContext = pContext;
 }
 
+void K_BaseObject::CreateVertexData()
+{
+    if (m_VertexList.size() > 0)
+    {
+        m_InitVertexList = m_VertexList;
+        return;
+    }
+
+    m_VertexList.resize(4);
+    m_VertexList[0].p = { -1.0f, 1.0f, 0.0f };
+    m_VertexList[1].p = { +1.0f, 1.0f,  0.0f };
+    m_VertexList[2].p = { -1.0f, -1.0f, 0.0f };
+    m_VertexList[3].p = { 1.0f, -1.0f, 0.0f };
+
+    m_VertexList[0].c = { 1.0f, 1.0f, 1.0f, 1.0f };
+    m_VertexList[1].c = { 1.0f, 1.0f, 1.0f, 1.0f };
+    m_VertexList[2].c = { 1.0f, 1.0f, 1.0f, 1.0f };
+    m_VertexList[3].c = { 1.0f, 1.0f, 1.0f, 1.0f };
+
+    m_VertexList[0].t = { 0.0f, 0.0f };
+    m_VertexList[1].t = { 1.0f, 0.0f };
+    m_VertexList[2].t = { 0.0f, 1.0f };
+    m_VertexList[3].t = { 1.0f, 1.0f };
+
+    m_InitVertexList = m_VertexList;
+}
+
+void K_BaseObject::CreateIndexData()
+{
+    if (m_IndexList.size() > 0)return;
+
+    // 정점버퍼에 인덱스
+    m_IndexList.resize(6);
+    m_IndexList[0] = 0;
+    m_IndexList[1] = 1;
+    m_IndexList[2] = 2;
+    m_IndexList[3] = 2;
+    m_IndexList[4] = 1;
+    m_IndexList[5] = 3;
+}
+
+void K_BaseObject::CreateConstantData()
+{
+    m_cbData.matWorld.Identity();
+    m_cbData.matView.Identity();
+    m_cbData.matProj.Identity();
+    m_cbData.fTimer = 0.0f;
+    m_cbData.matWorld.Transpose();
+    m_cbData.matView.Transpose();
+    m_cbData.matProj.Transpose();
+}
+
 HRESULT K_BaseObject::CreateVertexBuffer()
 {
     HRESULT hr;
 
-    // NDC 좌표계 공간
-    // x,y는 -1 ~ 1, z는 0 ~ 1
-    // v0       v1,v4
-    //
-    // v2,v3    v5
-    // 
-    // 반드시 시계방향(앞면)으로 구성한다.
-    m_VertexList.resize(6); 
-    m_VertexList[0].p = { -1.0f, 1.0f, 0.5f };
-    m_VertexList[0].c = { 1.0f, 1.0f, 0.0f, 0.0f };
-    m_VertexList[0].t = { 0.0f, 0.0f };
+    CreateVertexData();
 
-    m_VertexList[1].p = { +1.0f, 1.0f,  0.5f };
-    m_VertexList[1].c = { 1.0f, 1.0f, 0.0f, 0.0f };
-    m_VertexList[1].t = { 1.0f, 0.0f };
-
-    m_VertexList[2].p = { -1.0f, -1.0f, 0.5f };
-    m_VertexList[2].c = { 1.0f, 1.0f, 0.0f, 0.0f };
-    m_VertexList[2].t = { 0.0f, 1.0f };
-
-    m_VertexList[3].p = m_VertexList[2].p;
-    m_VertexList[3].c = m_VertexList[2].c;
-    m_VertexList[3].t = m_VertexList[2].t;
-
-    m_VertexList[4].p = m_VertexList[1].p;
-    m_VertexList[4].c = m_VertexList[1].c;
-    m_VertexList[4].t = m_VertexList[1].t;
-
-    m_VertexList[5].p = { +1.0f, -1.0f, 0.5f };
-    m_VertexList[5].c = { 1.0f, 1.0f, 0.0f, 0.0f };
-    m_VertexList[5].t = { 1.0f, 1.0f };
-
-    m_InitVertexList = m_VertexList;
-
-    UINT NumVertex = m_VertexList.size();
     D3D11_BUFFER_DESC       bd;
     ZeroMemory(&bd, sizeof(bd));
-    bd.ByteWidth = sizeof(SimpleVertex) * NumVertex; // 바이트 용량
+    bd.ByteWidth = sizeof(SimpleVertex) * m_VertexList.size(); // 바이트 용량
+
+    // GPU 메모리에 할당
     bd.Usage = D3D11_USAGE_DEFAULT; // 버퍼의 할당 장소 내지는 버퍼의 용도. 디폴트가 GPU, 앵간하면 디폴트 쓴다생각
     bd.BindFlags = D3D11_BIND_VERTEX_BUFFER; // 이 버퍼가 뭐냐
-    //bd.CPUAccessFlags = 0; // cpu가 접근 가능해 안해? 안해임마
-    //bd.MiscFlags = 0; // 잡동사니 플래그, 일단 0
-    //bd.StructureByteStride = 0; // 지금은 당장 쓸일이 없읍니다 
 
     D3D11_SUBRESOURCE_DATA  sd;
     ZeroMemory(&sd, sizeof(sd));
     sd.pSysMem = &m_VertexList.at(0);   // 시스템 메모리, 얘는 씀
-    //sd.SysMemPitch = 0;      // 얘들은 지금
-    //sd.SysMemSlicePitch = 0; // 쓸모가 없다
-
-    //m_pVertexBuffer;
 
     hr = m_pd3dDevice->CreateBuffer
     (
@@ -181,6 +203,50 @@ HRESULT K_BaseObject::CreateVertexBuffer()
         &m_pVertexBuffer
     );
 
+    return hr;
+}
+
+HRESULT K_BaseObject::CreateIndexBuffer()
+{
+    HRESULT hr;
+
+    CreateIndexData();
+
+    D3D11_BUFFER_DESC       bd;
+    ZeroMemory(&bd, sizeof(bd));
+    bd.ByteWidth = sizeof(DWORD) * m_IndexList.size(); // 바이트 용량
+    // GPU 메모리에 할당
+    bd.Usage = D3D11_USAGE_DEFAULT; // 버퍼의 할당 장소 내지는 버퍼용도
+    bd.BindFlags = D3D11_BIND_INDEX_BUFFER; 
+
+    D3D11_SUBRESOURCE_DATA  sd;
+    ZeroMemory(&sd, sizeof(sd));
+    sd.pSysMem = &m_IndexList.at(0);
+    hr = m_pd3dDevice->CreateBuffer(
+        &bd, // 버퍼 할당
+        &sd, // 초기 할당된 버퍼를 체우는 CPU메모리 주소
+        &m_pIndexBuffer);
+    return hr;
+}
+
+HRESULT K_BaseObject::CreateConstantBuffer()
+{
+    HRESULT hr;
+    CreateConstantData();
+    D3D11_BUFFER_DESC       bd;
+    ZeroMemory(&bd, sizeof(bd));
+    bd.ByteWidth = sizeof(VS_CONSTANT_BUFFER) * 1; // 바이트 용량
+    // GPU 메모리에 할당
+    bd.Usage = D3D11_USAGE_DEFAULT; // 버퍼의 할당 장소 내지는 버퍼용도
+    bd.BindFlags = D3D11_BIND_CONSTANT_BUFFER; 
+
+    D3D11_SUBRESOURCE_DATA  sd;
+    ZeroMemory(&sd, sizeof(sd));
+    sd.pSysMem = &m_cbData;
+    hr = m_pd3dDevice->CreateBuffer(
+        &bd, // 버퍼 할당
+        &sd, // 초기 할당된 버퍼를 체우는 CPU메모리 주소
+        &m_pConstantBuffer);
     return hr;
 }
 
@@ -196,6 +262,7 @@ bool K_BaseObject::CreateShader(std::wstring filename)
 HRESULT K_BaseObject::CreateVertexLayout()
 {
     HRESULT hr;
+    // if (m_pVSCode == nullptr) return E_FAIL; // 어.. 선생님은 몬가 베이스오브젝트 멤버변수로 저게 있네
 
     // 정점 레이아웃은 정점 쉐이더랑 밀접한 관련이 있다
     // 정점 레이아웃 생성시 사전에 정점 쉐이더 생성이 필요하다
@@ -214,8 +281,8 @@ HRESULT K_BaseObject::CreateVertexLayout()
     //ied.InstanceDataStepRate = 0;
 
     UINT NumElements = sizeof(ied) / sizeof(ied[0]); // 구성 원소들의 갯수..인듯?
-    void* pShaderBytecodeWithInputSignature = m_pShader->m_pVSCode->GetBufferPointer(); // 버텍스 쉐이더의 인자값이 뭐냐고
-    SIZE_T BytecodeLength = m_pShader->m_pVSCode->GetBufferSize(); // 버퍼 사이즈 (오브젝트 파일의 크기인듯?)
+    //void* pShaderBytecodeWithInputSignature = m_pShader->m_pVSCode->GetBufferPointer(); // 버텍스 쉐이더의 인자값이 뭐냐고
+    //SIZE_T BytecodeLength = m_pShader->m_pVSCode->GetBufferSize(); // 버퍼 사이즈 (오브젝트 파일의 크기인듯?)
     //m_pVertexLayout;
 
     hr = m_pd3dDevice->CreateInputLayout(
@@ -226,6 +293,33 @@ HRESULT K_BaseObject::CreateVertexLayout()
         &m_pVertexLayout);
 
     return hr;
+}
+
+void K_BaseObject::UpdateVertexBuffer()
+{
+    m_pImmediateContext->UpdateSubresource(
+        m_pVertexBuffer, 0, nullptr,
+        &m_VertexList.at(0), 0, 0);
+}
+
+void K_BaseObject::UpdateConstantBuffer()
+{
+    m_cbData.matWorld = m_matWorld.Transpose();
+    m_cbData.matView = m_matView.Transpose();
+    m_cbData.matProj = m_matProj.Transpose();
+
+    m_pImmediateContext->UpdateSubresource(
+        m_pConstantBuffer, 0, nullptr,
+        &m_cbData, 0, 0);
+}
+
+void K_BaseObject::SetMatrix(K_Matrix* matWorld, K_Matrix* matView, K_Matrix* matProj)
+{
+    if (matWorld != nullptr) m_matWorld = *matWorld;
+    if (matView != nullptr) m_matView = *matView;
+    if (matProj != nullptr) m_matProj = *matProj;
+
+    UpdateConstantBuffer();
 }
 
 bool K_BaseObject::LoadTexture(std::wstring filename)

@@ -127,8 +127,8 @@ bool Sample::Frame()
 bool Sample::Render()
 {
 	m_pMap->Render();
-	for (auto obj : m_pNPCList) { obj->Render(); }
-	for (auto obj : m_pObjectList) { obj->Render(); }
+	//for (auto obj : m_pNPCList) { obj->Render(); }
+	//for (auto obj : m_pObjectList) { obj->Render(); }
 
 	return true;
 }

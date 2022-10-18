@@ -166,16 +166,19 @@ bool Sample::Frame()
 
 	float fWhat = sin(g_fGameTimer) * 0.5f + 0.5f;
 	K_Matrix scale, rotation, translation;
+	K_Matrix projection;
 	scale = scale.Scale(0.5f, 0.5f, 0.5f);
 	rotation = rotation.RotationZ(g_fGameTimer);
-	translation = translation.Translation(0.5f, 0.0f, 0.0f);
+	translation = translation.Translation(0.5f, 0.0f, 0.0f); 
+	projection = projection.PerspectiveFovLH(0.0f, 10.0f, 90.0f, 16.0f/9.0f);
 
 	for (int i = 0; i < m_pUser->m_InitVertexList.size(); i++)
 	{
 		k_Vector v = m_pUser->m_InitVertexList[i].p;
-		v = v * scale; // s * r * t 		
-		v = v * rotation;
+		//v = v * scale; // s * r * t 		
+		//v = v * rotation;
 		v = v * translation;
+		v = v * projection;
 		m_pUser->m_VertexList[i].p = v;
 	}
 	m_pImmediateContext->UpdateSubresource(m_pUser->m_pVertexBuffer, 0, nullptr, &m_pUser->m_VertexList.at(0), 0, 0);
