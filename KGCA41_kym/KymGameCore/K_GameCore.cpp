@@ -23,16 +23,23 @@ bool K_GameCore::Release()
 bool K_GameCore::K_GameCoreInit()
 {
     HRESULT hr;
+
     if(K_Device::Init() != true) return false; 
+
     if (I_Timer.Init() != true) return false;
     if (I_Input.Init() != true) return false;
     if (I_Write.Init() != true) return false;
     I_Write.Set(m_pSwapChain);
 
     I_Shader.SetDevice(m_pd3dDevice, m_pImmediateContext);
-    I_Shader.Load(L"DefaultShape.txt");
+    I_Shader.Load(L"../../data/shader/DefaultShape.txt");
     I_Tex.SetDevice(m_pd3dDevice, m_pImmediateContext);
     K_DxState::SetState(m_pd3dDevice);
+
+    std::wstring shaderfilename = L"../../data/shader/DefaultObject.txt";
+    m_BG.Create(m_pd3dDevice, m_pImmediateContext, L"../../data/img/map.jpg", L"../../data/shader/DefaultObject.txt");
+    m_RT.Create(m_pd3dDevice, m_pImmediateContext); //, 256, 256);
+
     if (Init() != true) return false;
 	return true; 
 }
@@ -51,6 +58,7 @@ bool K_GameCore::K_GameCorePreRender()
 {
     K_Device::PreRender();
     m_pImmediateContext->PSSetSamplers(0, 1, &K_DxState::g_pDefaultSS);
+
     return true;
 }
   
@@ -58,17 +66,35 @@ bool K_GameCore::K_GameCoreRender()
 {
     K_GameCorePreRender();
 
-    if (Render() != true) return false;
+    // 렌더 타겟 저장, 원래 렌더 타겟+a 를 RT의 멤버변수에 저장해둠
+    m_RT.m_pOldRTV = m_pRTV;
+    m_RT.m_pOldDSV = m_pDSV;
+    m_RT.m_OldViewport = m_ViewPort;
+
+    if (m_RT.Begin()) // 렌더타겟이랑 뷰포트를 RT가 가진 텍스처로 바까줌
+    {
+        if (Render() != true) return false;
+        m_RT.End(); // 바꾼 렌더타겟이랑 뷰포트를 원래껄로 되돌림
+    }
+
+    if (m_RT.m_pSRV) m_BG.m_pTextureSRV = m_RT.m_pSRV; // 그려진 텍스처를 m_BG의 텍스처(map.jpg)랑 바꿔끼워줌
+    
+    // 얘들은 뭐.. 사실 어따넣으나 상관없긴 한데 일단 저 텍스처랑은 별개로 그려줌
     if (I_Timer.Render() != true) return false;
-    if (I_Input.Render() != true) return false; 
+    if (I_Input.Render() != true) return false;
     //if (I_Write.Render() != true) return false;
     //I_Write.Draw(0, 0, I_Timer.m_szTimer, { 1,0,0,1 });
+
     K_GameCorePostRender();
+
 	return true;
 }
 
 bool K_GameCore::K_GameCorePostRender()
 {
+    m_BG.SetMatrix(nullptr, nullptr, nullptr); // 여긴 얘기를 하다 마셨어
+    m_BG.Render(); // 얘는 이제 백버퍼에 바로 그리는?듯?
+
     K_Device::PostRender();
     return true;
 }

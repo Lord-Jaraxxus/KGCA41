@@ -30,6 +30,7 @@
     <ClCompile Include="K_GameCore.cpp" />
     <ClCompile Include="K_Input.cpp" />
     <ClCompile Include="K_Matrix.cpp" />
+    <ClCompile Include="K_RenderTarget.cpp" />
     <ClCompile Include="K_Shader.cpp" />
     <ClCompile Include="K_ShaderManager.cpp" />
     <ClCompile Include="K_Sound.cpp" />
@@ -41,6 +42,7 @@
     <ClCompile Include="k_Vector2D.cpp" />
     <ClCompile Include="K_Window.cpp" />
     <ClCompile Include="K_Write.cpp" />
+    <ClCompile Include="TMath.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="K_2dObject.h" />
@@ -50,6 +52,7 @@
     <ClInclude Include="K_GameCore.h" />
     <ClInclude Include="K_Input.h" />
     <ClInclude Include="K_Matrix.h" />
+    <ClInclude Include="K_RenderTarget.h" />
     <ClInclude Include="K_Shader.h" />
     <ClInclude Include="K_ShaderManager.h" />
     <ClInclude Include="K_Sound.h" />
@@ -62,6 +65,7 @@
     <ClInclude Include="k_Vector2D.h" />
     <ClInclude Include="K_Window.h" />
     <ClInclude Include="K_Write.h" />
+    <ClInclude Include="TMath.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

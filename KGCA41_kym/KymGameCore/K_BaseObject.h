@@ -77,7 +77,7 @@ public:
 	VS_CONSTANT_BUFFER  m_cbData;
 	ID3D11Buffer* m_pConstantBuffer;
 	ID3D11InputLayout* m_pVertexLayout;
-
+	ID3D11ShaderResourceView* m_pTextureSRV = nullptr; // 얜 또 언제 추가됬디야.. 
 
 public:
 	K_Shader*	m_pShader;

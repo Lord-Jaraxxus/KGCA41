@@ -20,13 +20,16 @@ bool K_Device::Frame()
 
 bool K_Device::PreRender()
 {
+    // 렌더 타겟 지정
     m_pImmediateContext->OMSetRenderTargets(1, &m_pRTV, m_pDSV); // 세번째가 DSV 자리
+
+    // 렌더 타겟 초기화
     float color[4] = { 0.5f,0.5f,0.5f,1.0f };
     m_pImmediateContext->ClearRenderTargetView(m_pRTV, color);
+
     // 뎁스 스텐실 뷰 초기화. 2는 뎁스랑 스텐실 뭐 초기화할지(지금은 둘다), 3은 뎁스 뭘로 초기화, 4는 스텐실 뭘로 초기화
     m_pImmediateContext->ClearDepthStencilView(m_pDSV, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 
-    //m_pImmediateContext->OMSetDepthStencilState(TDxState::g_pDefaultDepthStencil, 0xff);
     return true;
 }
 
@@ -151,14 +154,13 @@ HRESULT K_Device::CreateRenderTargetView()
 // 5) 뷰포트 설정
 void K_Device::CreateViewport()
 {
-    D3D11_VIEWPORT vp;
-    vp.Width = g_rtClient.right;
-    vp.Height = g_rtClient.bottom;
-    vp.TopLeftX = 0;
-    vp.TopLeftY = 0;
-    vp.MinDepth = 0.0f;
-    vp.MaxDepth = 1.0f;
-    m_pImmediateContext->RSSetViewports(1, &vp);
+    m_ViewPort.Width = g_rtClient.right;
+    m_ViewPort.Height = g_rtClient.bottom;
+    m_ViewPort.TopLeftX = 0;
+    m_ViewPort.TopLeftY = 0;
+    m_ViewPort.MinDepth = 0.0f;
+    m_ViewPort.MaxDepth = 1.0f;
+    m_pImmediateContext->RSSetViewports(1, &m_ViewPort);
 }
 
 HRESULT K_Device::CreateDepthStencilView()
@@ -199,10 +201,8 @@ HRESULT K_Device::CreateDepthStencilView()
 
 
     // 3번 뷰 적용
-    //m_pImmediateContext->OMSetRenderTargets(1, m_pRTV.GetAddressOf(),
-    //m_pDepthStencilView.Get());
+    //m_pImmediateContext->OMSetRenderTargets(1, m_pRTV, m_pDSV); -> 이건 그 어디더라 암튼 거기서 해줌
 
-      
     // 4번 깊이스텐실 뷰 상태 객체 생성해서 적용
     
     return hr;

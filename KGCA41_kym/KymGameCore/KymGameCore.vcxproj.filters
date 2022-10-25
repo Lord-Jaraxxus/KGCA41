@@ -33,6 +33,8 @@
     <ClCompile Include="K_Sound.cpp" />
     <ClCompile Include="K_SoundManager.cpp" />
     <ClCompile Include="K_Matrix.cpp" />
+    <ClCompile Include="TMath.cpp" />
+    <ClCompile Include="K_RenderTarget.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="K_BaseObject.h">
@@ -90,6 +92,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="K_Matrix.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TMath.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="K_RenderTarget.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

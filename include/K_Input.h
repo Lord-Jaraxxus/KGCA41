@@ -19,6 +19,8 @@ public:
 
 public:
 	POINT m_ptPos; // 마우스 위치
+	POINT m_ptPrePos;
+	POINT m_ptOffset;
 
 public:
 	DWORD GetKey(DWORD dwkey);

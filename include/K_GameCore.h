@@ -5,6 +5,7 @@
 #include "K_Write.h"
 #include "K_BaseObject.h"
 #include "K_DxState.h"
+#include "K_RenderTarget.h"
 
 class K_GameCore : public K_Device
 {
@@ -32,6 +33,7 @@ public:
 	bool m_bGameRun = true;
 
 public:
-	//std::vector<K_BaseObject*> m_pObjectList;
+	K_BaseObject	m_BG;
+	K_RenderTarget	m_RT;
 };
 

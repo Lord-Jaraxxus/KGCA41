@@ -61,7 +61,7 @@ bool K_BaseObject::PreRender()
     m_pImmediateContext->PSSetShader(m_pShader->m_pPS, NULL, 0); // 픽셀 쉐이더 세팅, 얘는 반드시 해야함. 그러므로 픽셀 쉐이더를 만들러가보자..
 
     // 프리미티브는 점,선,면. 면(삼각형)이 디폴트
-    m_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST); // 디폴트 (삼각형)
+    //m_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST); // 디폴트 (삼각형)
 
     // PSSetShaderResources 함수에 필요한 매개변수들
     //UINT StartSlot = 0;
@@ -69,8 +69,9 @@ bool K_BaseObject::PreRender()
     //ID3D11ShaderResourceView* const* ppShaderResourceViews = &m_pTexture->m_pTextureSRV;
 
     //// 텍스처를 쉐이더리소스뷰에 담아? 쉐이더리소스뷰를 통해? 아무튼 그렇게 파이프라인에 넘겨줌
-    ID3D11ShaderResourceView* srv = m_pTexture->GetSRV();
-    m_pImmediateContext->PSSetShaderResources(0, 1, &srv);
+    //ID3D11ShaderResourceView* srv = m_pTexture->GetSRV();
+    //m_pImmediateContext->PSSetShaderResources(0, 1, &srv);
+    m_pImmediateContext->PSSetShaderResources(0, 1, &m_pTextureSRV);
 
     return true;
 }
@@ -116,6 +117,7 @@ bool K_BaseObject::Create(ID3D11Device* pd3dDevice,
     if (CreateShader(shaderName) != true) return false;
     if (FAILED(CreateVertexLayout())) return false;
     if (LoadTexture(textureName) != true) return false;
+    if (m_pTexture != nullptr) m_pTextureSRV = m_pTexture->m_pTextureSRV;
 
     return true;
 }

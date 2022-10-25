@@ -92,16 +92,16 @@ K_Matrix K_Matrix::Translation(float x, float y, float z)
 	return result;
 }
 
-// 뷰 행렬을 반환하는 함수, 외적 사용
+// 뷰 행렬을 반환하는 함수(근데 지 스스로도 뷰행렬이 됨), 외적 사용
 K_Matrix K_Matrix::ViewLookAt(k_Vector& vPosition, k_Vector& vTarget, k_Vector& vUp)
 {
 	K_Matrix matrix;
 	k_Vector vDirection = (vTarget - vPosition).Normal(); // z축 벡터, 카메라의 방향이 되겄다
-	k_Vector vRightVector = (vUp ^ vDirection); // x축 벡터, 임시 설정한 y축인 업벡터랑 외적해서 구함 
-	k_Vector vUpVector = (vDirection ^ vRightVector); // 진짜 y축 벡터
+	k_Vector vRightVector = (vUp ^ vDirection).Normal(); // x축 벡터, 임시 설정한 y축인 업벡터랑 외적해서 구함 
+	k_Vector vUpVector = (vDirection ^ vRightVector).Normal(); // 진짜 y축 벡터
 	// 밑에 두개 정규화 안한 이유는 싹다 단위벡터라서 그런듯? 
-	//정규화된 벡터 두개 외적해서 나온 결과도 정규화된 벡터인갑지 뭐
-
+	// 정규화된 벡터 두개 외적해서 나온 결과도 정규화된 벡터인갑지 뭐
+	// 응 아니었어~ 이거때문에 야랄났었어~
 
 	// 사실 카메라가 움직이는 게 아니라 오브젝트가 반대로 움직이는 것이기 때문에, 오브젝트 변환 행렬의 역행렬이 뷰 행렬이 된다
 	// 근데 얘는 직교행렬이라서 전치행렬 == 역행렬이니까 그냥 전치행렬임

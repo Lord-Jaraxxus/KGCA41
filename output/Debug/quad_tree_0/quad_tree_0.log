@@ -1,0 +1,29 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(498,5): warning MSB8004: Intermediate 디렉터리가 슬래시로 끝나지 않습니다. Intermediate 디렉터리의 적절한 평가를 허용하는 데 필요하므로 이 빌드 인스턴스에서 슬래시를 추가합니다.
+  k_Collision.cpp
+D:\KGCA41\KGCA41_kym\quad_tree_0\k_Object.h(119,21): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\KGCA41\KGCA41_kym\quad_tree_0\k_Object.h(118,21): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  k_GameCore.cpp
+D:\KGCA41\KGCA41_kym\quad_tree_0\k_Object.h(119,21): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\KGCA41\KGCA41_kym\quad_tree_0\k_Object.h(118,21): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\KGCA41\KGCA41_kym\quad_tree_0\k_GameCore.cpp(85,15): warning C4244: '인수': 'float'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  k_MapObject.cpp
+D:\KGCA41\KGCA41_kym\quad_tree_0\k_Object.h(119,21): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\KGCA41\KGCA41_kym\quad_tree_0\k_Object.h(118,21): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  k_NPC.cpp
+D:\KGCA41\KGCA41_kym\quad_tree_0\k_Object.h(119,21): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\KGCA41\KGCA41_kym\quad_tree_0\k_Object.h(118,21): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  k_Object.cpp
+D:\KGCA41\KGCA41_kym\quad_tree_0\k_Object.h(119,21): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\KGCA41\KGCA41_kym\quad_tree_0\k_Object.h(118,21): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  k_Player.cpp
+D:\KGCA41\KGCA41_kym\quad_tree_0\k_Object.h(119,21): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\KGCA41\KGCA41_kym\quad_tree_0\k_Object.h(118,21): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  k_QuadTree.cpp
+D:\KGCA41\KGCA41_kym\quad_tree_0\k_Object.h(119,21): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\KGCA41\KGCA41_kym\quad_tree_0\k_Object.h(118,21): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  k_Vector.cpp
+  sample.cpp
+D:\KGCA41\KGCA41_kym\quad_tree_0\k_Object.h(119,21): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\KGCA41\KGCA41_kym\quad_tree_0\k_Object.h(118,21): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+  quad_tree_0.vcxproj -> D:\KGCA41\output\Debug\quad_tree_0.exe

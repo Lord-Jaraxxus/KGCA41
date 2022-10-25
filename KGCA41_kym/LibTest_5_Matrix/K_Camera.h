@@ -4,9 +4,12 @@
 class K_Camera : public K_BaseObject
 {
 public:
-	k_Vector		m_vCameraPos;
+	k_Vector		m_vCameraPos = { 0,0,0 };
 	k_Vector		m_vTarget = { 0,0,0 };
-	k_Vector		m_vUp = { 0,1,0 };
+	k_Vector		m_vLook; // z axis, axis°¡ ¹¹¿©?
+	k_Vector		m_vUp = { 0,1,0 }; // y
+	k_Vector		m_vRight; // x
+
 	float			m_fNear;
 	float			m_fFar;
 	float			m_fFovY;
@@ -16,5 +19,6 @@ public:
 	virtual void  CreateViewMatrix(k_Vector vEye, k_Vector vAt, k_Vector vUp);
 	virtual void  CreateProjMatrix(float fNear, float fFar, float fFovY, float fAspectRatio);
 	virtual bool  Frame();
+	void		  Update();
 };
 

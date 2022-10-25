@@ -25,6 +25,7 @@ public:
 	IDXGISwapChain* m_pSwapChain = nullptr;
 	ID3D11RenderTargetView* m_pRTV = nullptr;
 	ID3D11DepthStencilView* m_pDSV = nullptr;
+	D3D11_VIEWPORT			m_ViewPort;
 
 public:
 	HRESULT CreateDevice();		// 1) 디바이스 생성

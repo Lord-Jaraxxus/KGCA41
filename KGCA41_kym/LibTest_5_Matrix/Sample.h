@@ -10,11 +10,15 @@
 class Sample : public K_GameCore
 {
 public:
-	K_BaseObject*	m_pBG = nullptr;
-	K_Map*			m_pMap = nullptr;
-	K_ShapeBox*		m_pBoxObjA = nullptr;
-	K_ShapeBox*		m_pBoxObjB = nullptr;
-	K_Camera*		m_pMainCamera = nullptr;
+	K_BaseObject*			m_pBG = nullptr;
+	K_Map*					m_pMap = nullptr;
+	K_Box*					m_pBoxObjA = nullptr;
+	K_ShapeDirectionLine*	m_pBoxADL = nullptr;
+	K_Box*					m_pBoxObjB = nullptr;
+	K_ShapeDirectionLine*	m_pBoxBDL = nullptr;
+	K_Camera*				m_pMainCamera = nullptr;
+	K_ShapeLine*			m_pZLine = nullptr;
+	K_ShapeDirectionLine*	m_pDL = nullptr;
 
 public:
 	bool Init();
