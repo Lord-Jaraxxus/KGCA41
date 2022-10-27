@@ -144,6 +144,7 @@
     <ClCompile Include="k_Collision.cpp" />
     <ClCompile Include="k_GameCore.cpp" />
     <ClCompile Include="k_MapObject.cpp" />
+    <ClCompile Include="K_Node.cpp" />
     <ClCompile Include="k_NPC.cpp" />
     <ClCompile Include="k_Object.cpp" />
     <ClCompile Include="k_Player.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="k_Collision.h" />
     <ClInclude Include="k_GameCore.h" />
     <ClInclude Include="k_MapObject.h" />
+    <ClInclude Include="K_Node.h" />
     <ClInclude Include="k_NPC.h" />
     <ClInclude Include="k_Object.h" />
     <ClInclude Include="k_Player.h" />
